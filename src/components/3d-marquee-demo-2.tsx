@@ -1,5 +1,5 @@
 "use client";
-import { ThreeDMarquee } from "@/components/ui/3d-marquee";
+import { ThreeDMarquee } from "@/components/ui/Marquee3D";
 
 export default function ThreeDMarqueeDemoSecond() {
   const images = [

@@ -46,7 +46,7 @@ export default function Contact() {
         >
           <Link
             href="mailto:hello@example.com"
-            className="group relative inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full font-medium overflow-hidden transition-all hover:bg-primary-hover hover:scale-105 active:scale-95"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-primary px-8 py-4 font-medium text-primary-foreground transition-all hover:scale-105 active:scale-95"
           >
             <span className="relative z-10">Get in Touch</span>
             <ArrowRight className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
@@ -58,9 +58,9 @@ export default function Contact() {
         <div className="mt-24 pt-8 border-t border-surface-border flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-foreground/50">
           <p>© {new Date().getFullYear()} Freelance Portfolio. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="#" className="hover:text-primary transition-colors">Twitter</Link>
-            <Link href="#" className="hover:text-primary transition-colors">LinkedIn</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Dribbble</Link>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">Twitter</a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">LinkedIn</a>
+            <a href="https://dribbble.com" target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">Dribbble</a>
           </div>
         </div>
       </div>

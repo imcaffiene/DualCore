@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Terminal } from "lucide-react";
-import { ThreeDMarquee } from "@/components/ui/3d-marquee";
+import { ThreeDMarquee } from "@/components/ui/Marquee3D";
 
 const images = [
   "https://assets.aceternity.com/cloudinary_bkp/3d-card.png",

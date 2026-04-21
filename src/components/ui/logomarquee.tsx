@@ -86,47 +86,52 @@ const logos2 = [
   { id: 9, component: <SvelteLogo /> },
 ];
 
+type LogoItem = (typeof logos1)[number];
 
-function Logomarquee() {
-  const Marquee = ({ logos, direction = 'normal' }: { logos: typeof logos1; direction?: string; }) => {
-    const numItems = logos.length;
-    const speed = '25s';
-    const itemWidth = '120px';
-    const itemGap = '25px';
+function Marquee({
+  logos,
+  direction = 'normal',
+}: {
+  logos: LogoItem[];
+  direction?: string;
+}) {
+  const speed = '25s';
+  const itemWidth = '120px';
+  const itemGap = '25px';
 
-    return (
+  return (
+    <div
+      className="relative h-[500px] flex-1 overflow-hidden"
+      style={{
+        maskImage:
+          'linear-gradient(to bottom, transparent, black 2rem, black calc(100% - 2rem), transparent)',
+      }}
+    >
       <div
-        className="h-[500px] overflow-hidden flex-1 relative"
+        className="flex w-full flex-col items-center"
         style={{
-          maskImage: 'linear-gradient(to bottom, transparent, black 2rem, black calc(100% - 2rem), transparent)',
+          animation: `marquee-vertical ${speed} linear infinite ${direction}`,
         }}
       >
-        <div
-          className="flex flex-col items-center w-full"
-          style={{
-            animation: `marquee-vertical ${speed} linear infinite ${direction}`,
-          }}
-        >
-          {[...logos, ...logos].map((logo, index) => (
-            <div
-              key={index}
-              className="shrink-0 flex justify-center items-center bg-surface/30 border border-surface-border rounded-2xl text-white"
-              style={{
-                width: itemWidth,
-                aspectRatio: '1 / 1.2',
-                marginBottom: itemGap,
-              }}
-            >
-              <div className="w-3/5 h-auto">
-                {logo.component}
-              </div>
-            </div>
-          ))}
-        </div>
+        {[...logos, ...logos].map((logo, index) => (
+          <div
+            key={`${logo.id}-${index}`}
+            className="flex shrink-0 items-center justify-center rounded-2xl border border-surface-border bg-surface/30 text-white"
+            style={{
+              width: itemWidth,
+              aspectRatio: '1 / 1.2',
+              marginBottom: itemGap,
+            }}
+          >
+            <div className="h-auto w-3/5">{logo.component}</div>
+          </div>
+        ))}
       </div>
-    );
-  };
+    </div>
+  );
+}
 
+function Logomarquee() {
   return (
     <>
       <style>{`
