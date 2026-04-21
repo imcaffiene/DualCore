@@ -83,7 +83,7 @@ export default function AboutPage() {
               <span className="text-foreground">One studio.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              We're a small studio of two — a designer-developer and a
+              We&apos;re a small studio of two — a designer-developer and a
               full-stack engineer — who design, build, and ship digital products
               end-to-end. No agencies, no middlemen, no fluff.
             </p>
@@ -172,7 +172,7 @@ export default function AboutPage() {
             <span className="text-gradient">Want to work with us?</span>
           </h2>
           <p className="mx-auto mt-5 max-w-md text-muted-foreground">
-            We're taking on a small number of projects this quarter. Tell us
+            We&apos;re taking on a small number of projects this quarter. Tell us
             about yours.
           </p>
           <Link
