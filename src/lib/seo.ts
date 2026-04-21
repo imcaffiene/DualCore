@@ -1,5 +1,4 @@
-export const SITE_URL = "https://dual-dev-five.vercel.app/";
-// export const SITE_URL = "http://localhost:3000/";
+export const SITE_URL = "https://dual-devs.vercel.app/";
 
 export function canonicalUrl(path: string): string {
   const clean =

@@ -16,7 +16,7 @@ const manrope = Manrope({
 
 // Root-level metadata — overridden by each page's own `export const metadata`
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dualdev.studio"),
+  metadataBase: new URL("https://dual-devs.vercel.app/"),
   title: {
     default: "dualdev — Web & App Development Studio",
     // Each page sets its own title; this template wraps it if they don't
