@@ -5,7 +5,7 @@ import { canonicalUrl } from "@/lib/seo";
 import { Header } from "@/features/Header";
 import { Marquee3D } from "@/components/ui/Marquee3D";
 import { ProjectCard } from "@/features/ProjectCard";
-import { Footer } from "@/features/Footer.tsx";
+import { Footer } from "@/features/Footer";
 import { CtaMotion, HeroMotion, ServicesMotion } from "@/features/HomeMotion";
 import { projects } from "@/data/projectData";
 

@@ -7,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 import { projects } from "@/data/projectData";
 import { Header } from "@/features/Header";
 import { ProjectCard } from "@/features/ProjectCard";
-import { Footer } from "@/features/Footer.tsx";
+import { Footer } from "@/features/Footer";
 
 type Filter = "all" | "web" | "android" | "ios";
 

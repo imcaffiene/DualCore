@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { canonicalUrl } from "@/lib/seo";
 import { AboutHeroMotion, PrincipleMotion, TeamCardMotion } from "@/components/AboutMotion";
 import { Header } from "@/features/Header";
-import { Footer } from "@/features/Footer.tsx";
+import { Footer } from "@/features/Footer";
 
 export const metadata: Metadata = {
   title: "About — dualdev",

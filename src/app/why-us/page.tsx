@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/accordion";
 import { canonicalUrl } from "@/lib/seo";
 import { Header } from "@/features/Header";
-import { Footer } from "@/features/Footer.tsx";
+import { Footer } from "@/features/Footer";
 import { ComparisonCardMotion, FaqMotion, WhyUsMotion } from "@/components/WhyUsMotion";
 
 export const metadata: Metadata = {

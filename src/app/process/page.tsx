@@ -4,7 +4,7 @@ import { ArrowRight, Compass, PenTool, Hammer, Rocket, LifeBuoy } from "lucide-r
 import { canonicalUrl } from "@/lib/seo";
 import { PhaseMotion, ProcessHeroMotion } from "@/components/ProcessMotion";
 import { Header } from "@/features/Header";
-import { Footer } from "@/features/Footer.tsx";
+import { Footer } from "@/features/Footer";
 
 export const metadata: Metadata = {
   title: "Our Process — How dualdev ships premium products",
