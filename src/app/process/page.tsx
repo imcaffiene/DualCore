@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Compass, PenTool, Hammer, Rocket, LifeBuoy } from "lucide-react";
+import {
+  ArrowRight, Compass, PenTool,
+  Hammer, Rocket, LifeBuoy,
+} from "lucide-react";
 import { canonicalUrl } from "@/lib/seo";
 import { PhaseMotion, ProcessHeroMotion } from "@/components/ProcessMotion";
 import { Header } from "@/features/Header";
@@ -19,73 +22,85 @@ export const metadata: Metadata = {
   alternates: { canonical: canonicalUrl("/process") },
 };
 
+// Who owns what
+const WEB = "Web & Design";
+const APP = "Mobile Apps";
+const BOTH = "Both of us";
+
 const phases = [
   {
     n: "01",
     icon: Compass,
     title: "Discovery",
-    duration: "Week 1",
     summary:
-      "We get inside your head, your users' heads, and the problem itself. No code, no Figma — just clarity.",
+      "We get inside your head, your users' heads, and the problem itself. No code, no Figma — just clarity about what we're building and why.",
     deliverables: [
       "Stakeholder interviews + workflow mapping",
-      "Scope, success metrics & shared Linear board",
+      "Scope definition and shared project board",
       "Fixed-price quote and signed SOW",
     ],
+    owner: BOTH,
   },
   {
     n: "02",
     icon: PenTool,
     title: "Design",
-    duration: "Weeks 2–3",
     summary:
-      "Information architecture first, then high-fidelity Figma. You see real screens by the end of week 2.",
+      "Information architecture first, then high-fidelity screens. You see real designs early and sign off before a single line of code is written.",
     deliverables: [
       "IA, user flows & wireframes",
       "High-fidelity Figma + design system tokens",
       "Clickable prototype for sign-off",
     ],
+    owner: WEB,
   },
   {
     n: "03",
     icon: Hammer,
     title: "Build",
-    duration: "Weeks 3–N",
     summary:
-      "Build in public — weekly Friday demos, a live staging URL, and a Linear board you can watch in real time.",
+      "We build in parallel — web and mobile developed simultaneously where needed. Regular demos, a live staging URL, and full visibility into progress.",
     deliverables: [
-      "Production-grade React + typed backend",
-      "Weekly demo + staging deploy",
-      "Test coverage on critical paths",
+      "Production-grade web app (Next.js + TypeScript)",
+      "Native mobile app (Flutter — iOS & Android)",
+      "Regular demos + staging deploys throughout",
     ],
+    owner: BOTH,
   },
   {
     n: "04",
     icon: Rocket,
     title: "Launch",
-    duration: "Final week",
     summary:
-      "QA, accessibility audit, performance pass, and a clean cutover. We sweat the details so launch day is boring.",
+      "QA, accessibility audit, performance pass, and a clean cutover. We sweat the details so launch day is boring — the way it should be.",
     deliverables: [
-      "Cross-browser + device QA",
-      "Lighthouse 95+ on production",
+      "Cross-browser, cross-device QA",
+      "App Store + Play Store submission (if mobile)",
       "Hand-off docs + recorded walkthroughs",
     ],
+    owner: BOTH,
   },
   {
     n: "05",
     icon: LifeBuoy,
     title: "Support",
-    duration: "Ongoing",
     summary:
-      "14 days of free post-launch support, then optional retainer for new features, fixes, and iteration.",
+      "14 days of free post-launch support included. After that, optional retainer for new features, fixes, and ongoing iteration.",
     deliverables: [
       "14-day free bug-fix window",
       "Optional monthly retainer",
       "Async-first communication, always",
     ],
+    owner: BOTH,
   },
 ];
+
+// Owner badge colors
+const ownerStyles: Record<string, string> = {
+  [WEB]: "border-blue-500/20 bg-blue-500/10 text-blue-400",
+  [APP]: "border-green-500/20 bg-green-500/10 text-green-400",
+  [BOTH]: "border-border bg-card text-foreground/60",
+};
 
 export default function ProcessPage() {
   return (
@@ -95,7 +110,7 @@ export default function ProcessPage() {
       {/* Hero */}
       <section className="relative overflow-hidden pb-20 pt-40">
         <div
-          className="absolute inset-x-0 top-0 -z-10 h-[600px] opacity-70"
+          className="absolute inset-x-0 top-0 -z-10 h-150 opacity-70"
           style={{
             background:
               "radial-gradient(ellipse 60% 80% at 50% 0%, oklch(0.22 0 0) 0%, transparent 70%)",
@@ -112,9 +127,30 @@ export default function ProcessPage() {
               <span className="text-foreground">to launch.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Five phases. Weekly demos. Zero surprises. Here&apos;s exactly what
-              working with us looks like, week by week.
+              Five phases. Regular demos. Zero surprises. Here&apos;s exactly
+              what working with us looks like — step by step.
             </p>
+
+            {/* Who does what legend */}
+            <div className="mt-10 inline-flex flex-wrap items-center justify-center gap-3 rounded-2xl border border-border bg-card px-6 py-4">
+              <span className="text-xs font-semibold uppercase tracking-wider text-foreground/40">
+                Who handles it
+              </span>
+              <div className="h-3 w-px bg-border" />
+              {[
+                { label: WEB, style: ownerStyles[WEB], dot: "bg-blue-400" },
+                { label: APP, style: ownerStyles[APP], dot: "bg-green-400" },
+                { label: BOTH, style: ownerStyles[BOTH], dot: "bg-foreground/40" },
+              ].map(({ label, style, dot }) => (
+                <span
+                  key={label}
+                  className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-medium ${style}`}
+                >
+                  <span className={`h-1.5 w-1.5 rounded-full ${dot}`} />
+                  {label}
+                </span>
+              ))}
+            </div>
           </ProcessHeroMotion>
         </div>
       </section>
@@ -123,11 +159,12 @@ export default function ProcessPage() {
       <section className="pb-32">
         <div className="mx-auto max-w-4xl px-6">
           <div className="relative">
-            {/* Vertical line */}
+            {/* Vertical connector line */}
             <div
               aria-hidden
-              className="absolute bottom-0 left-6 top-0 w-px bg-gradient-to-b from-transparent via-border to-transparent sm:left-8"
+              className="absolute bottom-0 left-6 top-0 w-px bg-linear-to-b from-transparent via-border to-transparent sm:left-8"
             />
+
             <div className="space-y-10">
               {phases.map((phase, i) => (
                 <PhaseMotion key={phase.n} delay={i * 0.05}>
@@ -138,6 +175,7 @@ export default function ProcessPage() {
                     </div>
 
                     <div className="glass rounded-2xl p-6 sm:p-8">
+                      {/* Header row */}
                       <div className="flex flex-wrap items-baseline justify-between gap-3">
                         <div className="flex items-baseline gap-3">
                           <span className="font-heading text-xs font-bold text-foreground/40">
@@ -147,8 +185,11 @@ export default function ProcessPage() {
                             {phase.title}
                           </h2>
                         </div>
-                        <span className="rounded-full border border-border px-3 py-1 text-[11px] font-medium uppercase tracking-wider text-foreground/60">
-                          {phase.duration}
+                        {/* Owner badge — replaces week timeline */}
+                        <span
+                          className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-medium ${ownerStyles[phase.owner]}`}
+                        >
+                          {phase.owner}
                         </span>
                       </div>
 
@@ -188,8 +229,8 @@ export default function ProcessPage() {
             <span className="text-gradient">Ready to start?</span>
           </h2>
           <p className="mx-auto mt-5 max-w-md text-muted-foreground">
-            Book a free 30-minute discovery call. We&apos;ll scope your project and
-            send a fixed-price quote within 48 hours.
+            Book a free discovery call. We&apos;ll scope your project and send
+            a fixed-price quote within 48 hours.
           </p>
           <Link
             href="/contact"

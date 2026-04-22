@@ -32,11 +32,56 @@ export function Header() {
       className="fixed left-1/2 top-4 z-50 w-[min(960px,calc(100%-1.5rem))] -translate-x-1/2"
     >
       <div className="glass-strong border-white/[0.06] bg-black/[0.12] backdrop-blur-2xl supports-[backdrop-filter]:bg-black/[0.1] flex h-14 items-center justify-between rounded-full px-2 pl-5 shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
-        <Link
-          href="/"
-          className="font-heading text-base font-bold tracking-tight text-foreground"
-        >
-          dual<span className="text-foreground/50">/</span>dev
+
+        {/* ── Logo ── */}
+        <Link href="/" aria-label="dualdev home" className="flex items-center gap-2.5 group">
+
+          {/* SVG mark — abstract overlapping */}
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 30 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden
+          >
+            {/* Back square — rotated, muted */}
+            <rect
+              x="9"
+              y="2"
+              width="16"
+              height="16"
+              rx="3.5"
+              transform="rotate(12 9 2)"
+              className="fill-foreground/20"
+            />
+            {/* Front square — sharp, solid */}
+            <rect
+              x="5"
+              y="10"
+              width="16"
+              height="16"
+              rx="3.5"
+              className="fill-foreground"
+            />
+            {/* Overlap highlight — intersection glow */}
+            <rect
+              x="9"
+              y="10"
+              width="8"
+              height="6"
+              rx="1.5"
+              className="fill-foreground/[0.08]"
+            />
+          </svg>
+
+          {/* Wordmark */}
+          {/* <span className="font-heading text-base font-bold tracking-tight text-foreground">
+            dual
+            <span className="text-foreground/40">/</span>
+            dev
+          </span> */}
+
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

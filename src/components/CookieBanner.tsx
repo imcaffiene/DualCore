@@ -61,7 +61,7 @@ export function CookieBanner() {
           aria-live="polite"
           className="fixed bottom-6 left-4 right-4 z-50 mx-auto max-w-lg"
         >
-          <div className="glass rounded-2xl border border-border p-5 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
+          <div className="glass rounded-2xl border border-white/[0.1] bg-black/[0.5] backdrop-blur-3xl supports-[backdrop-filter]:bg-black/[0.42] p-5 shadow-[0_24px_80px_rgba(0,0,0,0.48)]">
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
                 <p className="text-sm font-semibold text-foreground">
