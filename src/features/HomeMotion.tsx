@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 
-export function HeroMotion({ children }: { children: React.ReactNode; }) {
+export function HeroMotion({ children }: { children: ReactNode }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -19,9 +20,11 @@ export function HeroMotion({ children }: { children: React.ReactNode; }) {
 export function ServicesMotion({
   children,
   delay = 0,
+  className = "",
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   delay?: number;
+  className?: string;
 }) {
   return (
     <motion.div
@@ -29,7 +32,7 @@ export function ServicesMotion({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="mx-auto max-w-2xl text-center"
+      className={className}
     >
       {children}
     </motion.div>
@@ -37,7 +40,7 @@ export function ServicesMotion({
 }
 
 // CTA section
-export function CtaMotion({ children }: { children: React.ReactNode; }) {
+export function CtaMotion({ children }: { children: ReactNode }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

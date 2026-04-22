@@ -5,6 +5,7 @@ export interface CaseStudy extends Project {
   duration: string;
   role: string;
   liveUrl?: string;
+  platforms?: ("android" | "ios")[];
   problem: string;
   approach: string[];
   solution: string;
@@ -14,266 +15,313 @@ export interface CaseStudy extends Project {
 }
 
 export const projects: CaseStudy[] = [
-  {
-    id: "lumen-saas",
-    title: "Lumen — SaaS Dashboard",
+  //-----------------------------------------//
+
+
+{
+    id: "dmflow-instagram-automation",
+    title: "DMFlow — Instagram DM Automation SaaS",
     description:
-      "Real-time analytics dashboard with custom charts, role-based access, and a fully themed design system.",
-    tags: ["Next.js", "TypeScript", "Supabase", "Recharts"],
+      "A full ManyChat alternative built for the Indian creator market — keyword-triggered auto DMs, story reply flows, a visual automation builder, referral wallet system, and a BullMQ-powered async queue that handles 250+ DMs/hour per account.",
+    tags: [
+      "Next.js 14",
+      "TypeScript",
+      "tRPC",
+      "TanStack Query",
+      "Prisma",
+      "BullMQ",
+      "Redis",
+      "BetterAuth",
+      "Recharts",
+    ],
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=1000&fit=crop",
-    category: "web",
+      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1600&h=1000&fit=crop",
+    category: "fullstack",
     year: "2025",
-    client: "Lumen Analytics, Inc.",
-    duration: "10 weeks",
-    role: "Design + Full-stack engineering",
-    liveUrl: "https://example.com",
+    client: "Pr Creations",
+    duration: "8 weeks",
+    role: "Architecture + Full-stack engineering",
     problem:
-      "Lumen's internal team was juggling four disconnected dashboards and exporting CSVs into spreadsheets to make sense of their pipeline. The legacy interface was clunky, slow, and made onboarding new team members painful.",
+      "Indian Instagram creators were manually replying to hundreds of comments and DMs every day — losing leads and followers because they couldn't respond fast enough. Existing tools like ManyChat cost ₹3,700/month and were built for Western markets with no referral incentive for Indian growth loops.",
     approach: [
-      "Discovery sprint with 6 stakeholder interviews to map daily workflows",
-      "Information architecture rebuild — collapsed 4 tools into a single workspace",
-      "Custom design system with 60+ tokenized components in Figma",
-      "Real-time data pipeline using Supabase subscriptions and edge functions",
-      "Role-based access control with audit logging",
+      "Zero-REST architecture: every client query goes through tRPC + TanStack Query for end-to-end type safety — if you rename a procedure, TypeScript breaks at the call site before you ship",
+      "BullMQ + Redis async DM queue — DMs are never sent synchronously. Every Instagram trigger enqueues a job with retry, exponential backoff, and Instagram rate limiting (250 DMs/hour per token) built in",
+      "Webhook idempotency table with @@unique([provider, messageId]) — Meta retries failed webhooks 3×. Without this, one comment triggers three identical DMs. The DB constraint makes duplicate processing physically impossible",
+      "All monetary values stored in paise (₹1 = 100 paise) — floating point arithmetic on ₹24.75 gives 2474.9999 in JS. Integer paise is always exact",
+      "Instagram OAuth long-lived token lifecycle: exchange short-lived (1hr) → long-lived (60 days) → auto-refresh cron at day 53. Missing any step silently breaks all automations at day 60",
+      "Referral first-time enforcement via @unique constraint on referredUserId — no application-level check needed, the DB rejects the second insert even under race conditions",
+      "Multi-tenant architecture supporting solo creators and agency teams under one codebase via userId/organizationId dual ownership on every resource",
     ],
     solution:
-      "A single, real-time analytics workspace with custom charts, saved views, and granular role permissions. We rebuilt the front-end on Next.js with a typed Supabase client, shipped a Figma design system the team still uses, and migrated their data pipeline behind the scenes with zero downtime.",
+      "A production-grade Instagram DM automation SaaS with a visual automation builder (triggers → keywords → actions), an async BullMQ worker that processes webhooks and fires DMs via the Instagram Graph API, a full analytics dashboard with delivery rate tracking and hourly heatmaps, a referral wallet system where Creator Pro users earn ₹24.75 per referral, and a settings suite with billing, profile, and account deletion. Two pricing tiers: Free (₹0, 1,000 DMs/month) and Creator Pro (₹429/month, unlimited — or ₹99 first month via referral).",
     outcome:
-      "Launched in 10 weeks, ahead of schedule. Lumen's team replaced four legacy tools with one. Onboarding time for new analysts dropped from days to hours, and the leadership team finally had one source of truth for board reporting.",
+      "Shipped as a fully functional SaaS product with Instagram OAuth, real-time webhook processing, multi-tenant billing, and a referral growth loop. The codebase is structured for horizontal scaling — the Next.js app and BullMQ worker run as separate deployable processes so DM throughput scales independently of the web tier.",
     metrics: [
-      { label: "Tools consolidated", value: "4 → 1" },
-      { label: "Onboarding time", value: "−85%" },
-      { label: "Page load (p75)", value: "320ms" },
+      { label: "Dashboard sections", value: "7 pages" },
+      { label: "tRPC procedures", value: "40+" },
+      { label: "DM queue", value: "BullMQ + Redis" },
+      { label: "Pricing", value: "₹429 vs $49" },
+    ],
+  },
+
+  {
+    id: "nodebase-automation",
+    title: "Nodebase — Workflow Automation",
+    description:
+      "Internal Zapier/n8n-style automation platform built from scratch — visual drag-and-drop workflow builder with AI integrations, webhook triggers, background jobs, and a full SaaS billing layer.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "tRPC",
+      "Prisma",
+      "Inngest",
+      "React Flow",
+      "OpenAI",
+    ],
+    image:
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&h=1000&fit=crop",
+    category: "fullstack",
+    year: "2025",
+    client: "Confidential — Internal Enterprise Tool",
+    duration: "14 weeks",
+    role: "Design + Full-stack engineering",
+    problem:
+      "The firm was manually connecting their tools — Google Forms feeding into spreadsheets, Stripe events handled by hand, Slack notifications copy-pasted from dashboards. Every new automation request went to the dev team. They needed a self-serve internal platform where non-engineers could wire up workflows visually, without writing a single line of code.",
+    approach: [
+      "Visual React Flow canvas — drag, drop, and connect trigger/action nodes with no-code",
+      "Trigger nodes for Webhook, Google Form, Stripe events, and manual runs",
+      "AI action nodes integrating OpenAI, Claude, and Gemini for in-workflow intelligence",
+      "Discord and Slack messaging nodes for automated team notifications",
+      "Inngest-powered background job execution with retries, queuing, and concurrency control",
+      "Full SaaS layer: Better Auth authentication, Polar subscription plans, and usage paywalls",
+      "Sentry error tracking with AI-assisted monitoring and CodeRabbit PR review workflow",
+      "End-to-end type safety with TypeScript + tRPC across client and server",
+    ],
+    solution:
+      "A production-grade internal automation platform where the firm's ops team visually builds workflows on a drag-and-drop canvas — connecting Stripe events to Slack alerts, Google Form submissions to AI summarisers, webhooks to HTTP endpoints — all executing reliably in the background via Inngest. Non-engineers ship automations in minutes instead of filing dev tickets.",
+    outcome:
+      "Replaced a backlog of recurring automation requests overnight. The ops team now builds and deploys workflows independently. Background job reliability hit 99.9% with Inngest's retry engine, and Sentry + AI monitoring catches workflow failures before anyone notices.",
+    metrics: [
+      { label: "Trigger types", value: "4+" },
+      { label: "AI providers", value: "3" },
+      { label: "Job reliability", value: "99.9%" },
+      { label: "Shipped in", value: "14 weeks" },
+    ],
+  },
+  //------------------------------------------//
+  
+  //-----------------------------------------//
+  {
+    id: "timespark-scheduler",
+    title: "Timespark — Calendar Scheduler",
+    description:
+      "Smart scheduling platform that lets employees share availability and let others book slots instantly — no back-and-forth emails.",
+    tags: ["Next.js", "TypeScript", "Prisma", "Nylas API", "NextAuth"],
+    image:
+      "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1600&h=1000&fit=crop",
+    category: "web",
+    year: "2025",
+    client: "Confidential — Enterprise Client",
+    duration: "8 weeks",
+    role: "Design + Full-stack engineering",
+    problem:
+      "The client's internal teams were losing hours every week to scheduling meetings — endless reply-all email chains just to find a 30-minute slot that worked for everyone. With a growing employee headcount, the problem was only getting worse.",
+    approach: [
+      "Availability grid builder — employees set their open hours once, share a link",
+      "One-click slot booking for the person requesting the meeting",
+      "Instant push and email notifications on both sides at booking confirmation",
+      "Calendar sync so booked slots block the employee's actual calendar",
+      "Admin dashboard for managers to see team availability at a glance",
+    ],
+    solution:
+      "A clean internal scheduling tool where every employee gets a personal booking link. Share it in Slack, email, or anywhere — the other person picks a slot from live availability and it's confirmed instantly. No logins required for the booker, no friction, no back-and-forth.",
+    outcome:
+      "Deployed internally across the client's organisation, cutting meeting-scheduling overhead dramatically. Employees now share a single link instead of 5 reply-all emails, and managers have full visibility into team availability.",
+    metrics: [
+      { label: "Scheduling emails", value: "~0" },
+      { label: "Time to book", value: "<30 sec" },
+      { label: "Notifications", value: "Instant" },
+      { label: "Shipped in", value: "8 weeks" },
+    ],
+  },
+  //-----------------------------------------//
+  {
+    id: "taskcalendar-pm",
+    title: "TaskCalendar — Project Management",
+    description:
+      "All-in-one project management platform with Kanban boards, calendar, timeline, file storage, and team collaboration — built with a Stripe-powered subscription model.",
+    tags: ["React", "TypeScript", "Supabase"],
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&h=1000&fit=crop",
+    category: "fullstack",
+    year: "2026",
+    client: "Securovix LTD",
+    duration: "4 weeks",
+    role: "Design + Full-stack engineering",
+    liveUrl: "https://taskcalendar.co.uk/",
+    problem:
+      "Teams managing projects across multiple tools — a Trello board here, a Google Calendar there, Slack for comments, Drive for files — were losing context constantly. The tab-switching and copy-pasting between tools was killing momentum and hiding blockers.",
+    approach: [
+      "Unified workspace architecture: projects, tasks, calendar, timeline and files under one roof",
+      "Drag-and-drop Kanban with custom columns, priorities, and assignees",
+      "Supabase PostgreSQL for relational data with real-time subscriptions for live updates",
+      "Firebase Authentication for secure, low-friction team onboarding",
+      "Stripe-powered subscription engine with a 28-day free trial and organization-level billing",
+      "Recharts-driven reports dashboard for work insights and deadline tracking",
+    ],
+    solution:
+      "A full-featured project management SaaS with Kanban boards, calendar, single-timeline view across all projects, file storage, @mention comments, and a notification engine. Teams get everything from task creation to shipping in one workspace — with a clean subscription flow so the product pays for itself.",
+    outcome:
+      "Shipped as a fully functional SaaS product with Stripe billing, multi-organization support, and a 28-day trial flow. Demonstrates end-to-end product thinking: from auth and data modelling through to payments and team management.",
+    metrics: [
+      { label: "Core modules", value: "10+" },
+      { label: "Auth + Payments", value: "Firebase + Stripe" },
+      { label: "Trial window", value: "28 days" },
+      { label: "Shipped in", value: "12 weeks" },
+    ],
+  },
+  //-----------------------------------------//
+  {
+    id: "clynox-school",
+    title: "Clynox — School Management",
+    description:
+      "All-in-one school management app for students, teachers, and transport staff — attendance, assignments, bus tracking, and more.",
+    tags: ["Flutter", "Node.js", "PostgreSQL", "TypeScript"],
+    image: "",
+    category: "mobile",
+    platforms: ["android", "ios"],
+    year: "2025",
+    client: "Clynox Solutions",
+    duration: "12 weeks",
+    role: "Design + Mobile + Backend",
+    liveUrl:
+      "https://play.google.com/store/apps/details?id=com.application.clynox",
+    problem:
+      "Schools were managing attendance on registers, assignments via WhatsApp groups, and bus tracking with phone calls. Students, teachers, and parents had no single source of truth — coordination was chaotic.",
+    approach: [
+      "Three separate role-based interfaces: student, teacher, and transport staff",
+      "Live GPS bus monitoring with ETA push notifications for parents",
+      "Digital attendance with instant absent alerts to parents",
+      "Assignment and test management with submission tracking",
+      "End-to-end data encryption for student privacy compliance",
+    ],
+    solution:
+      "A unified school management platform where teachers post assignments, parents track the bus, and students see their timetable — all in one app, with encrypted data and role-specific views.",
+    outcome:
+      "Deployed across schools with immediate reduction in parent support calls. The transport staff module alone eliminated the daily flood of 'where is the bus?' messages.",
+    metrics: [
+      { label: "User roles", value: "3" },
+      { label: "Core modules", value: "8+" },
+      { label: "Data encryption", value: "In-transit" },
+      { label: "Shipped in", value: "12 weeks" },
+    ],
+  },
+  //-----------------------------------------//
+  {
+    id: "unikon-ai",
+    title: "Unikon.ai — Expert Network",
+    description:
+      "AI-powered networking app connecting users with paid experts for career, mental health, and entrepreneurship guidance.",
+    tags: ["Flutter", "GraphQL", "Node.js", "AI"],
+    image: "",
+    category: "mobile",
+    platforms: ["android", "ios"],
+    year: "2024",
+    client: "Unikon Innovations Pvt. Ltd.",
+    duration: "16 weeks",
+    role: "Design + Mobile + Backend",
+    liveUrl:
+      "https://play.google.com/store/apps/details?id=ai.unikon.app.unikon",
+    problem:
+      "Professionals with valuable knowledge had no easy way to monetize it, while people needing guidance were stuck with generic content. A real-time, paid 1:1 connection layer didn't exist in the Indian market.",
+    approach: [
+      "Socio-professional profile builder with video intro and rate-setting",
+      "Real-time audio and video call infrastructure with per-minute billing",
+      "UniShorts — a discoverable feed of recorded expert sessions",
+      "UniPal AI — conversational expert-matching and content recommendations",
+      "Availability calendar with session booking and automated payouts",
+    ],
+    solution:
+      "A LinkedIn-meets-Cameo platform where experts set their own rates for calls and messages, and users get AI-matched to the right person for any query — career, wellness, business, or personal.",
+    outcome:
+      "Crossed 100k downloads with strong retention driven by the AI matching quality. The session marketplace grew organically as experts shared their Unikon profiles on existing social audiences.",
+    metrics: [
+      { label: "Downloads", value: "100K+" },
+      { label: "Categories", value: "10+" },
+      { label: "Call latency", value: "<100ms" },
+      { label: "Shipped in", value: "16 weeks" },
+    ],
+  },
+  //-----------------------------------------//
+  {
+    id: "fridge-ai",
+    title: "Fridge AI: Food & Recipes",
+    description:
+      "AI-powered recipe app that identifies fridge ingredients from a photo and suggests personalized recipes instantly.",
+    tags: ["Flutter", "Firebase", "TypeScript", "AI/ML"],
+    image: "",
+    category: "mobile",
+    platforms: ["android", "ios"],
+    year: "2025",
+    client: "DuckMa",
+    duration: "6 weeks",
+    role: "Design + Mobile engineering + Backend",
+    liveUrl:
+      "https://apps.apple.com/az/app/fridge-ai-food-recipes/id6739216407",
+    problem:
+      "People waste food because they don't know what to cook with what they already have. Existing recipe apps require typing ingredients manually — a friction that kills daily usage.",
+    approach: [
+      "AI ingredient recognition model trained on fridge and pantry photos",
+      "Cross-platform build for iOS and Android from a single codebase",
+      "Recipe matching engine ranked by ingredient availability and dietary preference",
+      "Custom recipe collections with save, share, and meal plan features",
+      "Offline-capable recipe storage so it works without internet mid-cook",
+    ],
+    solution:
+      "Snap a photo of your fridge, get recipes instantly. The AI identifies ingredients in seconds and surfaces relevant recipes ranked by how many ingredients you already have — no typing, no friction.",
+    outcome:
+      "Live on both App Store and Google Play with a 4.4★ rating. Users report measurably less food waste and cite the photo-to-recipe flow as the feature they show friends first.",
+    metrics: [
+      { label: "Platform", value: "iOS + Android" },
+      { label: "App Store rating", value: "4.4★" },
+      { label: "Ingredient scan", value: "<3 sec" },
       { label: "Shipped in", value: "10 weeks" },
     ],
   },
+  //-----------------------------------------//
   {
-    id: "northwind-commerce",
-    title: "Northwind Commerce",
+    id: "vetic-pet-app",
+    title: "Vetic - Pet Clinic & Grooming",
     description:
-      "Headless e-commerce platform with real-time inventory, Stripe payments, and a custom admin suite.",
-    tags: ["React", "Node.js", "Stripe", "Postgres"],
+      "All-in-one pet healthcare app with vet booking, doorstep grooming, 3-hour food delivery, and digital health records for pet parents.",
+    tags: ["Flutter", "Firebass", "swift", "MixPanel"],
     image:
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&h=1000&fit=crop",
-    category: "fullstack",
-    year: "2025",
-    client: "Northwind Goods Co.",
-    duration: "14 weeks",
-    role: "Design + Full-stack engineering",
-    problem:
-      "Northwind was selling on Shopify but hitting hard limits — they needed multi-warehouse inventory, B2B pricing tiers, and a custom checkout. Off-the-shelf wasn't going to cut it.",
-    approach: [
-      "Mapped 32 existing storefront flows and rebuilt the critical 8",
-      "Designed a headless architecture: React storefront + Node API + Postgres",
-      "Built a custom admin suite with order routing and inventory sync",
-      "Stripe Connect for B2B accounts with net-30 terms",
-      "Migrated 12k SKUs and 5 years of order history with zero data loss",
-    ],
-    solution:
-      "A fully custom commerce stack: a fast headless storefront, a Node API with row-level inventory locking, and an internal admin tool the warehouse team genuinely enjoys using. Built to scale from 12k SKUs to 100k.",
-    outcome:
-      "Northwind doubled their AOV in the first quarter post-launch and onboarded 40 new B2B accounts that the old platform couldn't support. The warehouse team's order-processing time dropped by half.",
-    metrics: [
-      { label: "AOV", value: "+102%" },
-      { label: "B2B accounts", value: "+40" },
-      { label: "Order processing", value: "−50%" },
-      { label: "Conversion rate", value: "+38%" },
-    ],
-  },
-  {
-    id: "pulse-fitness",
-    title: "Pulse Fitness",
-    description:
-      "Cross-platform mobile app with workout plans, progress tracking, and a social community feed.",
-    tags: ["React Native", "Firebase", "TypeScript"],
-    image:
-      "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=1600&h=1000&fit=crop",
+      "https://drive.google.com/uc?export=view&id=18uEB8w1wemTweU8wIYUzZ87h7NMmjfOm",
     category: "mobile",
+    platforms: ["android"],
     year: "2024",
-    client: "Pulse Fitness",
-    duration: "12 weeks",
+    client: "PETPAI TECHNOLOGIES PRIVATE LIMITED",
+    duration: "8 weeks",
     role: "Design + Mobile engineering",
+    liveUrl: "https://play.google.com/store/apps/details?id=com.vetic.vetic",
     problem:
-      "Pulse had a loyal in-person community but no way to keep members engaged between sessions. They wanted a single app for workouts, progress, and community — without hiring an in-house dev team.",
+      "Pet parents across India had no single platform to book vet appointments, schedule grooming, and order pet food — they were juggling multiple apps, WhatsApp groups, and phone calls just to care for their pets.",
     approach: [
-      "User research with 20 active members to prioritize features",
-      "Native-feeling React Native app shared across iOS + Android",
-      "Firebase for auth, real-time feed, and push notifications",
-      "Offline-first workout player so the gym's spotty wifi didn't matter",
-      "Submitted to both stores with first-try approval",
+      "User research with 30 pet parents across Delhi, Mumbai, and Bengaluru",
+      "Unified 3-step booking flow for vet, grooming, and food delivery",
+      "Multi-pet profile management with vaccination and prescription records",
+      "3-hour doorstep delivery engine integrated with 45+ clinic inventory",
+      "Push notification system for reminders, deworming, and order updates",
     ],
     solution:
-      "A polished cross-platform app that members can use offline mid-workout, with a community feed that drives daily engagement and a streak system that keeps people coming back.",
+      "A single Flutter app covering the entire pet care journey — from booking a vet in 3 taps to tracking a food order in real time. Medical records, invoices, and vaccination reminders are all in one place, across multiple pets.",
     outcome:
-      "Pulse hit 8k installs in the first 3 months with 62% weekly active users — well above the 20% industry benchmark. Member retention is up 34% year-over-year.",
+      "Scaled to 100k+ downloads with 1L+ active installs across 11 Indian cities. The app became Vetic's primary growth channel, onboarding new pet parents daily through organic store discovery.",
     metrics: [
-      { label: "Installs (3 mo)", value: "8,000+" },
-      { label: "WAU", value: "62%" },
-      { label: "Member retention", value: "+34%" },
-      { label: "App Store rating", value: "4.8★" },
-    ],
-  },
-  {
-    id: "atelier-portfolio",
-    title: "Atelier — Studio Portfolio",
-    description:
-      "Editorial portfolio site for an architecture studio with a custom CMS and motion-rich case studies.",
-    tags: ["Figma", "Framer Motion", "Sanity"],
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&h=1000&fit=crop",
-    category: "design",
-    year: "2024",
-    client: "Atelier Architects",
-    duration: "6 weeks",
-    role: "Design + Front-end + CMS",
-    problem:
-      "Atelier had stunning work and a website that buried it in a generic template. They wanted something that felt as considered as the buildings they design.",
-    approach: [
-      "Editorial design direction inspired by print architecture monographs",
-      "Custom Sanity CMS so the studio can publish new projects in 10 minutes",
-      "Framer Motion choreography on hero, transitions, and case studies",
-      "Image pipeline with smart cropping and AVIF/WebP delivery",
-    ],
-    solution:
-      "A motion-rich editorial site with a CMS the studio actually uses. Every case study feels custom-made because the templates were designed for flexibility, not uniformity.",
-    outcome:
-      "Atelier's inbound inquiries tripled in the first 60 days, and the studio now publishes new projects weekly instead of waiting on a developer.",
-    metrics: [
-      { label: "Inbound inquiries", value: "3×" },
-      { label: "Publish time", value: "10 min" },
-      { label: "Lighthouse score", value: "98" },
-      { label: "Shipped in", value: "6 weeks" },
-    ],
-  },
-  {
-    id: "orbit-booking",
-    title: "Orbit Booking",
-    description:
-      "End-to-end booking platform with calendar sync, payments, and automated client notifications.",
-    tags: ["Vue", "Node.js", "MongoDB"],
-    image:
-      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&h=1000&fit=crop",
-    category: "fullstack",
-    year: "2024",
-    client: "Orbit Studios",
-    duration: "9 weeks",
-    role: "Design + Full-stack engineering",
-    problem:
-      "Orbit was booking 200+ appointments a month over email and DMs. Double-bookings and no-shows were eating margin. They needed a real system, fast.",
-    approach: [
-      "Mapped the booking funnel and identified 5 drop-off points",
-      "Built a Vue front-end with a 3-step booking flow",
-      "Two-way Google + Apple Calendar sync with conflict detection",
-      "Stripe deposits at booking to cut no-shows",
-      "Automated SMS + email reminder sequence",
-    ],
-    solution:
-      "A self-serve booking platform with calendar sync, deposit-at-booking, and a notification engine that handles the back-and-forth so the team doesn't have to.",
-    outcome:
-      "No-shows dropped 70% in month one. The admin team reclaimed 15 hours a week from manual scheduling. Bookings grew 45% because the funnel finally converts.",
-    metrics: [
-      { label: "No-show rate", value: "−70%" },
-      { label: "Admin hours saved", value: "15/wk" },
-      { label: "Booking growth", value: "+45%" },
-      { label: "Time-to-book", value: "<60s" },
-    ],
-  },
-  {
-    id: "halo-social",
-    title: "Halo — Social App",
-    description:
-      "Feature-rich social platform with real-time messaging, stories, and a moderation toolkit.",
-    tags: ["Flutter", "GraphQL", "AWS"],
-    image:
-      "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1600&h=1000&fit=crop",
-    category: "mobile",
-    year: "2023",
-    client: "Halo Communities",
-    duration: "16 weeks",
-    role: "Design + Mobile + Backend",
-    problem:
-      "Halo wanted to launch a community-first social app — no algorithmic feed, no ads — and needed it cross-platform with serious moderation tools from day one.",
-    approach: [
-      "Flutter for true cross-platform parity",
-      "GraphQL API on AWS Lambda + DynamoDB for sub-50ms reads",
-      "Real-time messaging with end-to-end delivery receipts",
-      "Built a moderator dashboard with report queues and ban tooling",
-    ],
-    solution:
-      "A polished cross-platform social app with the moderation backbone of a much bigger product, launched in 16 weeks for both stores simultaneously.",
-    outcome:
-      "Halo crossed 25k MAU in the first six months with a 4.7★ average rating and an active mod team that stays ahead of issues thanks to purpose-built tooling.",
-    metrics: [
-      { label: "MAU (6 mo)", value: "25,000+" },
-      { label: "Avg rating", value: "4.7★" },
-      { label: "Message latency", value: "<50ms" },
-      { label: "Mod response", value: "<5 min" },
-    ],
-  },
-  {
-    id: "fjord-brand",
-    title: "Fjord — Brand & Site",
-    description:
-      "Identity refresh and marketing website for a Nordic furniture brand. Figma → ship in six weeks.",
-    tags: ["Figma", "Webflow", "Branding"],
-    image:
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&h=1000&fit=crop",
-    category: "design",
-    year: "2023",
-    client: "Fjord Furniture",
-    duration: "6 weeks",
-    role: "Brand + Design + Webflow",
-    problem:
-      "Fjord's brand looked dated next to the Scandinavian competitors they were stocked alongside. They needed a refresh that read premium without losing the warmth of the original.",
-    approach: [
-      "Brand audit + 2 visual directions explored",
-      "New wordmark, typography system, and photography direction",
-      "Webflow build so the marketing team can edit copy without us",
-      "Custom CMS for product collections and editorial content",
-    ],
-    solution:
-      "A refreshed identity that pairs Nordic restraint with editorial warmth, plus a Webflow site the marketing team owns and updates daily.",
-    outcome:
-      "Fjord landed two new wholesale accounts in the first month attributable to the rebrand, and online sales grew 28% quarter-over-quarter.",
-    metrics: [
-      { label: "Online sales", value: "+28% QoQ" },
-      { label: "New wholesale", value: "2 accounts" },
-      { label: "Bounce rate", value: "−41%" },
-      { label: "Shipped in", value: "6 weeks" },
-    ],
-  },
-  {
-    id: "vertex-fintech",
-    title: "Vertex — Fintech App",
-    description:
-      "Investing app with portfolio analytics, secure auth, and bank integration. Built end-to-end.",
-    tags: ["React Native", "Plaid", "Node.js"],
-    image:
-      "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1600&h=1000&fit=crop",
-    category: "mobile",
-    year: "2023",
-    client: "Vertex Capital",
-    duration: "14 weeks",
-    role: "Design + Mobile + Backend",
-    problem:
-      "Vertex was a registered advisor with no client-facing app. Clients had to call in for portfolio updates. They needed a secure, regulator-friendly mobile app — and they needed it to feel premium.",
-    approach: [
-      "Compliance-first architecture: SOC 2 ready from day one",
-      "Plaid integration for real-time account aggregation",
-      "Biometric auth + device pairing for high-value accounts",
-      "Custom charting library for portfolio analytics",
-      "Penetration testing and audit before App Store submission",
-    ],
-    solution:
-      "A polished, secure investing app that gives Vertex's clients real-time portfolio visibility, while giving the firm a compliant, audited backend they can trust.",
-    outcome:
-      "Vertex reduced client service calls by 60% within 90 days of launch and onboarded 15% more AUM in the first six months — the app became a sales tool, not just a utility.",
-    metrics: [
-      { label: "Client calls", value: "−60%" },
-      { label: "AUM growth", value: "+15%" },
-      { label: "App rating", value: "4.9★" },
-      { label: "Audit findings", value: "0 critical" },
+      { label: "Downloads", value: "1L+" },
+      { label: "Cities live", value: "11" },
+      { label: "Clinics covered", value: "45+" },
+      { label: "Delivery SLA", value: "3 hours" },
     ],
   },
 ];

@@ -31,7 +31,7 @@ export function Header() {
       transition={{ duration: 0.5 }}
       className="fixed left-1/2 top-4 z-50 w-[min(960px,calc(100%-1.5rem))] -translate-x-1/2"
     >
-      <div className="glass-strong flex h-14 items-center justify-between rounded-full px-2 pl-5 shadow-[0_8px_40px_rgba(0,0,0,0.6)]">
+      <div className="glass-strong border-white/[0.06] bg-black/[0.12] backdrop-blur-2xl supports-[backdrop-filter]:bg-black/[0.1] flex h-14 items-center justify-between rounded-full px-2 pl-5 shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
         <Link
           href="/"
           className="font-heading text-base font-bold tracking-tight text-foreground"
@@ -45,7 +45,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors hover:text-foreground ${isActive(item.href, item.exact)
-                  ? "bg-white/10 text-foreground"
+                  ? "bg-white/[0.12] text-foreground"
                   : "text-foreground/60"
                 }`}
             >
@@ -78,7 +78,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="glass-strong mt-2 flex flex-col gap-1 rounded-2xl p-3 md:hidden"
+            className="glass-strong border-white/[0.06] bg-black/[0.1] backdrop-blur-2xl supports-[backdrop-filter]:bg-black/[0.08] mt-2 flex flex-col gap-1 rounded-2xl p-3 md:hidden"
           >
             {navItems.map((item) => (
               <Link
@@ -86,7 +86,7 @@ export function Header() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={`rounded-xl px-4 py-2.5 text-sm font-medium transition-colors ${isActive(item.href, item.exact)
-                    ? "bg-white/10 text-foreground"
+                    ? "bg-white/[0.12] text-foreground"
                     : "text-foreground/70"
                   }`}
               >

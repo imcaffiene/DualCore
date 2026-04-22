@@ -33,14 +33,22 @@ export function ProjectCard({
         href={`/projects/${project.id}`}
         className="group relative block overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-foreground/20"
       >
-        <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
-          />
+        <div className="relative aspect-4/3 overflow-hidden bg-secondary">
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-card">
+              <span className="font-heading text-5xl font-bold text-foreground/10">
+                {project.title.charAt(0)}
+              </span>
+            </div>
+          )}
           <div className="absolute inset-0 bg-linear-to-t from-background/80 via-transparent to-transparent" />
           <div className="absolute right-3 top-3 flex h-9 w-9 items-center justify-center rounded-full bg-background/60 backdrop-blur-md transition-transform group-hover:rotate-45">
             <ArrowUpRight className="h-4 w-4 text-foreground" />

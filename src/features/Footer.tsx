@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { VisitCounter } from "./VisitCounter";
 
 export function Footer() {
   return (
@@ -46,10 +47,10 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>
                 <a
-                  href="mailto:hello@dualdev.studio"
+                  href="mailto:imcaffiene@gmail.com"
                   className="text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  hello@dualdev.studio
+                  imcaffiene@gmail.com
                 </a>
               </li>
               <li>
@@ -67,6 +68,9 @@ export function Footer() {
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} dualdev. All rights reserved.
           </p>
+
+          <VisitCounter />
+
           <p className="text-xs text-muted-foreground">
             Designed & built by us. Of course.
           </p>

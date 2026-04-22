@@ -41,10 +41,10 @@ export default function HomePage() {
       <Header />
 
       {/* HERO */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+      <section className="relative flex min-h-screen items-start justify-center overflow-hidden px-6 pb-16 pt-44 sm:pt-48 lg:pt-52">
         <Marquee3D />
 
-        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+        <div className="relative z-10 mx-auto max-w-3xl text-center">
           <HeroMotion>
             <span className="glass mx-auto mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-foreground/80">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
@@ -93,7 +93,7 @@ export default function HomePage() {
       {/* SERVICES */}
       <section className="relative py-32">
         <div className="mx-auto max-w-7xl px-6">
-          <ServicesMotion>
+          <ServicesMotion className="mx-auto max-w-2xl text-center">
             <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
               Services
             </span>
@@ -106,8 +106,8 @@ export default function HomePage() {
 
           <div className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
-              <ServicesMotion key={s.title} delay={i * 0.06}>
-                <div className="group relative bg-card p-8 transition-colors hover:bg-accent">
+              <ServicesMotion key={s.title} delay={i * 0.06} className="h-full">
+                <div className="group relative flex h-full flex-col bg-card p-8 transition-colors hover:bg-accent">
                   <s.icon className="h-7 w-7 text-foreground/80 transition-transform group-hover:scale-110" />
                   <h3 className="mt-5 font-heading text-lg font-semibold text-foreground">
                     {s.title}

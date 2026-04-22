@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
 
-export function CaseStudyHeroMotion({ children }: { children: React.ReactNode; }) {
+export function CaseStudyHeroMotion({ children }: { children: ReactNode }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -17,9 +18,11 @@ export function CaseStudyHeroMotion({ children }: { children: React.ReactNode; }
 export function MetricsMotion({
   children,
   delay = 0,
+  className = "",
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   delay?: number;
+  className?: string;
 }) {
   return (
     <motion.div
@@ -27,6 +30,7 @@ export function MetricsMotion({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.5 }}
+      className={className}
     >
       {children}
     </motion.div>

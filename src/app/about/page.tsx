@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 
 const team = [
   {
-    name: "Your Name",
-    initials: "YN",
-    role: "Design & Front-End",
+    name: "Shubham Singh",
+    initials: "SS",
+    role: "Mobile Enginnering ( IOS & Android)",
     bio: "Replace this with your bio. Designs interfaces, ships pixel-perfect React, lives inside Figma.",
-    skills: ["UI / UX", "Figma", "React", "Framer Motion"],
+    skills: ["Flutter", "Swift", "Kotlin"],
   },
   {
     name: "Co-founder Name",
@@ -124,10 +124,10 @@ export default function AboutPage() {
               </TeamCardMotion>
             ))}
           </div>
-          <p className="mt-6 text-center text-xs text-muted-foreground/60">
+          {/* <p className="mt-6 text-center text-xs text-muted-foreground/60">
             Replace names, photos & bios in{" "}
             <code className="text-foreground/70">app/about/page.tsx</code>
-          </p>
+          </p> */}
         </div>
       </section>
 

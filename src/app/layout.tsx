@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Sora, Manrope } from "next/font/google";
 import "./globals.css";
+import { PageTransition } from "@/components/PageTransition";
+import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+
 
 const sora = Sora({
   subsets: ["latin"],
@@ -50,7 +54,13 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body>{children}</body>
+      <body>
+        <PageTransition>
+          {children}
+          <Analytics /> {/* ← add this */}
+          <GoogleAnalytics/>
+        </PageTransition>
+      </body>
     </html>
   );
 }

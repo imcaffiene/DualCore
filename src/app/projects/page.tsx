@@ -9,20 +9,29 @@ import { Header } from "@/features/Header";
 import { ProjectCard } from "@/features/ProjectCard";
 import { Footer } from "@/features/Footer.tsx";
 
-type Filter = "all" | "web" | "mobile" | "design" | "fullstack";
+type Filter = "all" | "web" | "android" | "ios";
 
 const filters: { label: string; value: Filter; }[] = [
   { label: "All", value: "all" },
   { label: "Web", value: "web" },
-  { label: "Mobile", value: "mobile" },
-  { label: "Design", value: "design" },
-  { label: "Full-Stack", value: "fullstack" },
+  { label: "Android", value: "android" },
+  { label: "iOS", value: "ios" },
 ];
 
 export default function ProjectsPage() {
   const [filter, setFilter] = useState<Filter>("all");
-  const filtered =
-    filter === "all" ? projects : projects.filter((p) => p.category === filter);
+  const filtered = projects.filter((project) => {
+    if (filter === "all") return true;
+
+    if (filter === "web") {
+      return project.category !== "mobile";
+    }
+
+    return (
+      project.category === "mobile" &&
+      project.platforms?.includes(filter)
+    );
+  });
 
   return (
     <div className="min-h-screen bg-background">

@@ -7,12 +7,26 @@ import { canonicalUrl } from "@/lib/seo";
 import { projects } from "@/data/projectData";
 import { Header } from "@/features/Header";
 import { CaseStudyHeroMotion, MetricsMotion } from "@/components/CaseStudyMotion";
-import { Footer } from "@/features/Footer.tsx";
+import { Footer } from "@/features/Footer";
+
+
+
+function isValidUrl(url?: string): boolean {
+  if (!url) return false;
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 // Statically generate all project pages at build time
 export function generateStaticParams() {
   return projects.map((p) => ({ projectId: p.id }));
 }
+
+
 
 // Per-page metadata
 export async function generateMetadata({
@@ -42,6 +56,8 @@ export async function generateMetadata({
   };
 }
 
+
+
 function Block({
   label,
   children,
@@ -69,7 +85,6 @@ export default async function CaseStudyPage({
   const { projectId } = await params;
   const project = projects.find((p) => p.id === projectId);
 
-  // Triggers app/projects/[projectId]/not-found.tsx
   if (!project) notFound();
 
   const idx = projects.findIndex((p) => p.id === project.id);
@@ -122,8 +137,8 @@ export default async function CaseStudyPage({
                 { label: "Role", value: project.role },
                 {
                   label: "Live",
-                  value: project.liveUrl ? "Visit site" : "—",
-                  href: project.liveUrl,
+                  value: isValidUrl(project.liveUrl) ? "Visit site" : "—",
+                  href: isValidUrl(project.liveUrl) ? project.liveUrl : undefined,
                 },
               ].map((item) => (
                 <div key={item.label} className="bg-card p-5">
@@ -155,15 +170,24 @@ export default async function CaseStudyPage({
       <section className="pb-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="overflow-hidden rounded-3xl border border-border bg-secondary">
-            <div className="relative aspect-[16/10] w-full">
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1152px"
-                className="object-cover"
-              />
+            <div className="relative aspect-16/10 w-full">
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1152px"
+                  className="object-cover"
+                />
+              ) : (
+                // Placeholder when no image is provided
+                <div className="flex h-full w-full items-center justify-center bg-card">
+                  <span className="font-heading text-6xl font-bold text-foreground/10">
+                    {project.title.charAt(0)}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -235,8 +259,8 @@ export default async function CaseStudyPage({
           </div>
           <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             {project.metrics.map((m, i) => (
-              <MetricsMotion key={m.label} delay={i * 0.06}>
-                <div className="bg-card p-8 text-center">
+              <MetricsMotion key={m.label} delay={i * 0.06} className="h-full">
+                <div className="flex h-full flex-col items-center justify-center bg-card p-8 text-center">
                   <div className="font-heading text-4xl font-bold text-gradient sm:text-5xl">
                     {m.value}
                   </div>
