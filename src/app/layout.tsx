@@ -4,6 +4,7 @@ import "./globals.css";
 import { PageTransition } from "@/components/PageTransition";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { CookieBanner } from "@/components/CookieBanner";
 
 
 const sora = Sora({
@@ -58,7 +59,8 @@ export default function RootLayout({
         <PageTransition>
           {children}
           <Analytics /> {/* ← add this */}
-          <GoogleAnalytics/>
+          <GoogleAnalytics />
+          <CookieBanner />
         </PageTransition>
       </body>
     </html>
