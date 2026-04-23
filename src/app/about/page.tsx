@@ -10,10 +10,10 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "About — dualdev",
   description:
-    "AI engineers who ship. Meet the team behind dualdev — building production AI agents, automation systems, and complex applications.",
+    "Engineers who ship. Meet the team behind dualdev — building complex applications, AI agents, automation systems, and mobile products.",
   openGraph: {
     title: "About — dualdev",
-    description: "AI engineers who ship. Meet the team behind dualdev.",
+    description: "Engineers who ship. Meet the team behind dualdev.",
     url: canonicalUrl("/about"),
   },
   alternates: { canonical: canonicalUrl("/about") },
@@ -36,8 +36,8 @@ const team: TeamMember[] = [
     name: "Sumit Kumar",
     initials: "SK",
     photo: "/team/sumit.jpg",
-    role: "AI Engineering & Full-Stack",
-    bio: "Architects production AI agent systems — multi-agent orchestration, LLM pipelines, and complex automation engines. Owns everything from system design to deployment.",
+    role: "Full-Stack Engineering & AI",
+    bio: "Builds complex full-stack applications and production AI agent systems — multi-tenant platforms, automation engines, LLM pipelines, and everything in between. Owns everything from system design to deployment.",
     skills: ["AI Agents", "LLMs", "Next.js", "TypeScript", "Node.js"],
     socials: [
       { label: "Twitter", href: "https://x.com/i_m_caffeine", platform: "twitter" as const },
@@ -115,13 +115,13 @@ export default function AboutPage() {
               About
             </span>
             <h1 className="mt-4 font-heading text-5xl font-bold leading-[1.05] sm:text-6xl lg:text-7xl">
-              <span className="text-gradient">AI engineers</span>
+              <span className="text-gradient">Engineers</span>
               <br />
               <span className="text-foreground">who ship.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              We&apos;re a two-person studio — one building AI agents &amp; complex
-              web systems, one shipping cross-platform mobile apps — engineering
+              We&apos;re a two-person studio — one building complex web
+              systems &amp; AI agents, one shipping cross-platform mobile apps — engineering
               production-grade products end-to-end. No agencies, no middlemen, no fluff.
             </p>
           </AboutHeroMotion>

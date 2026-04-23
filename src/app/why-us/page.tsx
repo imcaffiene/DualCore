@@ -14,12 +14,12 @@ import { Footer } from "@/features/Footer";
 import { ComparisonCardMotion, FaqMotion, WhyUsMotion } from "@/components/WhyUsMotion";
 
 export const metadata: Metadata = {
-  title: "Why dualdev — AI Agents vs Freelancers vs Agencies",
+  title: "Why dualdev — Complex Apps & AI vs Freelancers vs Agencies",
   description:
-    "See how dualdev stacks up for AI agent development. Two senior engineers, production AI systems, agency-quality architecture without the overhead.",
+    "See how dualdev stacks up for complex application and AI agent development. Two senior engineers, production systems, agency-quality architecture without the overhead.",
   openGraph: {
     title: "Why dualdev — How we stack up",
-    description: "Freelancers vs Agencies vs dualdev for AI agent development — the head-to-head comparison.",
+    description: "Freelancers vs Agencies vs dualdev for complex software & AI agent development — the head-to-head comparison.",
     url: canonicalUrl("/why-us"),
   },
   alternates: { canonical: canonicalUrl("/why-us") },
@@ -175,7 +175,7 @@ export default function WhyUsPage() {
               <span className="text-foreground">different?</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              Most teams can&apos;t build AI agent systems. We ship them to production.
+              Most teams can&apos;t build complex systems or production AI. We ship both.
               See how we stack up — honestly.
             </p>
           </WhyUsMotion>

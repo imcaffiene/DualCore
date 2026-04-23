@@ -10,9 +10,9 @@ import { Header } from "@/features/Header";
 import { Footer } from "@/features/Footer";
 
 export const metadata: Metadata = {
-  title: "Our Process — How dualdev ships AI agents & complex products",
+  title: "Our Process — How dualdev ships complex products & AI agents",
   description:
-    "Discovery, design, build, launch, support — a transparent five-phase process designed to ship AI agents and complex products fast, without surprises.",
+    "Discovery, design, build, launch, support — a transparent five-phase process designed to ship complex applications and AI agents fast, without surprises.",
   openGraph: {
     title: "Our Process — How dualdev works",
     description:

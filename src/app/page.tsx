@@ -12,25 +12,25 @@ import { CtaMotion, HeroMotion, ServicesMotion } from "@/features/HomeMotion";
 import { cloudinaryUrl } from "@/lib/cloudinary";
 
 export const metadata: Metadata = {
-  title: "dualdev — AI Agents & Full-Stack Engineering Studio",
+  title: "dualdev — Engineering Studio for Complex Software & AI",
   description:
-    "We build AI agents, automation systems, and complex full-stack applications that ship to production. From multi-agent architectures to workflow engines — we engineer intelligence that works.",
+    "We engineer complex full-stack applications, AI agents, and automation systems that ship to production. From multi-tenant platforms to multi-agent architectures — we build what others can't.",
   openGraph: {
-    title: "dualdev — AI Agents & Full-Stack Engineering Studio",
+    title: "dualdev — Engineering Studio for Complex Software & AI",
     description:
-      "We build AI agents and complex applications that actually ship. Multi-agent systems, automation engines, and production AI.",
+      "We engineer complex applications and AI agents that actually ship. Full-stack platforms, automation engines, and production AI.",
     url: canonicalUrl("/"),
   },
   alternates: { canonical: canonicalUrl("/") },
 };
 
 const services = [
+  { icon: Network, title: "Complex System Design", desc: "Event-driven architectures, real-time processing, multi-tenant platforms, and systems built to handle serious scale." },
+  { icon: Layers, title: "Full-Stack Applications", desc: "End-to-end SaaS, dashboards, and data-heavy platforms — from database design to pixel-perfect frontends." },
   { icon: Bot, title: "AI Agent Architecture", desc: "Multi-agent systems, tool-calling pipelines, and autonomous workflows that reason, plan, and act." },
-  { icon: Workflow, title: "Workflow Automation", desc: "Visual builders, BullMQ queues, webhook processing, and background job engines that scale." },
   { icon: BrainCircuit, title: "LLM Integration", desc: "OpenAI, Claude, Gemini APIs in production — with streaming, RAG, embeddings, and function calling." },
-  { icon: Layers, title: "Full-Stack AI Products", desc: "End-to-end SaaS with AI at the core — from data pipelines to user-facing intelligence." },
-  { icon: Network, title: "Complex System Design", desc: "Event-driven architectures, real-time processing, multi-tenant platforms built to last." },
-  { icon: Activity, title: "Production AI Ops", desc: "Monitoring, evaluation, cost optimization, and scaling of AI workloads in production." },
+  { icon: Workflow, title: "Workflow Automation", desc: "Visual builders, BullMQ queues, webhook processing, and background job engines that scale." },
+  { icon: Activity, title: "Production Operations", desc: "Monitoring, evaluation, cost optimization, and scaling of complex workloads in production." },
 ];
 
 // Cloudinary-powered showcase images
@@ -59,19 +59,19 @@ export default function HomePage() {
           <HeroMotion>
             <span className="glass mx-auto mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-foreground/80">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-              AI Agents · Automation · Full-Stack
+              Complex Apps · AI Agents · Automation
             </span>
 
             <h1 className="font-heading text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              <span className="text-gradient">We build AI agents</span>
+              <span className="text-gradient">We engineer what</span>
               <br />
-              <span className="text-foreground">that actually ship.</span>
+              <span className="text-foreground">others can&apos;t.</span>
             </h1>
 
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              We engineer production-grade AI agents, automation systems, and
-              complex full-stack applications. From multi-agent architectures
-              to workflow engines — if it needs to think and act, we build it.
+              Complex full-stack applications, AI agents, and automation
+              systems — engineered for production. From multi-tenant platforms
+              to multi-agent architectures, if it&apos;s hard to build, we build it.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
@@ -79,7 +79,7 @@ export default function HomePage() {
                 href="/projects"
                 className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition-all hover:opacity-90"
               >
-                See Our AI Projects
+                See Our Work
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
@@ -101,9 +101,9 @@ export default function HomePage() {
               What we build
             </span>
             <h2 className="mt-4 font-heading text-4xl font-bold sm:text-5xl">
-              <span className="text-gradient">AI-native systems</span>
+              <span className="text-gradient">Systems engineered</span>
               <br />
-              built for production.
+              for production.
             </h2>
           </ServicesMotion>
 
@@ -213,12 +213,12 @@ export default function HomePage() {
                 }}
               />
               <h2 className="mx-auto max-w-2xl font-heading text-4xl font-bold sm:text-5xl">
-                <span className="text-gradient">Need an AI agent</span>
+                <span className="text-gradient">Have something complex</span>
                 <br />
-                <span className="text-foreground">that actually works?</span>
+                <span className="text-foreground">to build?</span>
               </h2>
               <p className="mx-auto mt-5 max-w-lg text-muted-foreground">
-                Tell us about your AI project. We respond within 24 hours, every time.
+                Tell us about your project. We respond within 24 hours, every time.
               </p>
               <Link
                 href="/contact"
