@@ -6,14 +6,24 @@ import { AboutHeroMotion, PrincipleMotion, TeamCardMotion } from "@/components/A
 import { Header } from "@/features/Header";
 import { Footer } from "@/features/Footer";
 import Image from "next/image";
+import { JsonLd } from "@/components/JsonLd";
+import { buildAboutPageJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "About — dualdev",
+  title: "About dualdev — Meet the AI Engineers & Full-Stack Developers Behind the Studio",
   description:
-    "Engineers who ship. Meet the team behind dualdev — building complex applications, AI agents, automation systems, and mobile products.",
+    "Two senior engineers who ship production AI agents, SaaS platforms, and mobile apps. Meet Sumit Kumar (AI & full-stack) and Shubham Singh (mobile & cross-platform) — hire us for your next complex project.",
+  keywords: [
+    "AI engineers for hire",
+    "freelance full-stack developers",
+    "software development team India",
+    "Next.js developer portfolio",
+    "Flutter developer for hire",
+    "AI agent engineer",
+  ],
   openGraph: {
-    title: "About — dualdev",
-    description: "Engineers who ship. Meet the team behind dualdev.",
+    title: "About dualdev — Senior AI & Full-Stack Engineers",
+    description: "Two engineers who ship production AI agents, SaaS platforms, and mobile apps. No agencies, no middlemen.",
     url: canonicalUrl("/about"),
   },
   alternates: { canonical: canonicalUrl("/about") },
@@ -98,6 +108,7 @@ function SocialIcon({ platform }: { platform: SocialPlatform; }) {
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
+      <JsonLd data={buildAboutPageJsonLd()} />
       <Header />
 
       {/* Hero */}
@@ -143,63 +154,61 @@ export default function AboutPage() {
           <div className="grid gap-6 md:grid-cols-2">
             {team.map((m, i) => (
               <TeamCardMotion key={m.name} delay={i * 0.1}>
-                <div className="glass relative overflow-hidden rounded-3xl p-6 sm:p-8">
+                <div className="glass relative flex h-full flex-col overflow-hidden rounded-3xl p-6 sm:p-8">
 
-                  {/* ── Top row: photo + name + socials all in one line ── */}
-                  <div className="flex items-center gap-3">
+                  {/* ── Top row: photo + name + socials ── */}
+                  <div className="flex items-start gap-4">
 
-                    {/* Photo — left */}
-                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-gradient-to-br from-foreground/15 to-foreground/5 ring-1 ring-foreground/10">
+                    {/* Photo */}
+                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-gradient-to-br from-foreground/15 to-foreground/5 ring-1 ring-foreground/10">
                       {m.photo ? (
                         <Image
                           src={m.photo}
                           alt={m.name}
                           fill
-                          sizes="48px"
+                          sizes="80px"
                           className="object-cover"
                         />
                       ) : (
-                        <span className="flex h-full w-full items-center justify-center font-heading text-lg font-bold text-gradient">
+                        <span className="flex h-full w-full items-center justify-center font-heading text-2xl font-bold text-gradient">
                           {m.initials}
                         </span>
                       )}
                     </div>
 
-                    {/* Name + role — middle */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-heading text-lg font-bold text-foreground leading-tight truncate">
+                    {/* Name + role */}
+                    <div className="flex-1 min-w-0 pt-1">
+                      <h3 className="font-heading text-xl font-bold text-foreground leading-tight">
                         {m.name}
                       </h3>
-                      <p className="mt-0.5 text-xs text-foreground/55 truncate">{m.role}</p>
-                    </div>
+                      <p className="mt-1 text-sm text-foreground/55">{m.role}</p>
 
-                    {/* Social icon buttons — right */}
-                    <div className="flex items-center gap-1.5 shrink-0">
-                      {m.socials.map((social) => (
-                        <a
-                          key={social.platform}
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${m.name} on ${social.label}`}
-                          className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-white/[0.02] text-foreground/50 transition-colors hover:border-foreground/30 hover:text-foreground"
-                        >
-                          <SocialIcon platform={social.platform} />
-                        </a>
-                      ))}
+                      {/* Social icon buttons */}
+                      <div className="mt-3 flex items-center gap-2">
+                        {m.socials.map((social) => (
+                          <a
+                            key={social.platform}
+                            href={social.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${m.name} on ${social.label}`}
+                            className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-white/[0.02] text-foreground/50 transition-colors hover:border-foreground/30 hover:text-foreground"
+                          >
+                            <SocialIcon platform={social.platform} />
+                          </a>
+                        ))}
+                      </div>
                     </div>
 
                   </div>
 
-
-
                   {/* Bio */}
-                  <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+                  <p className="mt-6 flex-1 text-sm leading-relaxed text-muted-foreground">
                     {m.bio}
                   </p>
 
                   {/* Skills */}
-                  <div className="mt-4 flex flex-wrap gap-1.5">
+                  <div className="mt-5 flex flex-wrap gap-1.5">
                     {m.skills.map((s) => (
                       <span
                         key={s}

@@ -8,15 +8,25 @@ import { canonicalUrl } from "@/lib/seo";
 import { PhaseMotion, ProcessHeroMotion } from "@/components/ProcessMotion";
 import { Header } from "@/features/Header";
 import { Footer } from "@/features/Footer";
+import { JsonLd } from "@/components/JsonLd";
+import { buildProcessPageJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Our Process — How dualdev ships complex products & AI agents",
+  title: "Our Development Process — How dualdev Ships AI Agents, Apps & SaaS Products",
   description:
-    "Discovery, design, build, launch, support — a transparent five-phase process designed to ship complex applications and AI agents fast, without surprises.",
+    "Transparent five-phase software development process: Discovery, Design, Build, Launch, Support. See exactly how we ship AI agents, full-stack apps, and mobile products — with regular demos and fixed-price quotes.",
+  keywords: [
+    "software development process",
+    "how to hire app developers",
+    "agile development workflow",
+    "AI development process",
+    "custom software development timeline",
+    "fixed price software development",
+  ],
   openGraph: {
-    title: "Our Process — How dualdev works",
+    title: "Our Process — How dualdev Ships Complex Products",
     description:
-      "A transparent five-phase process: Discovery → Design → Build → Launch → Support.",
+      "Five phases: Discovery → Design → Build → Launch → Support. Regular demos, fixed pricing, zero surprises.",
     url: canonicalUrl("/process"),
   },
   alternates: { canonical: canonicalUrl("/process") },
@@ -107,6 +117,7 @@ const ownerStyles: Record<string, string> = {
 export default function ProcessPage() {
   return (
     <div className="min-h-screen bg-background">
+      <JsonLd data={buildProcessPageJsonLd()} />
       <Header />
 
       {/* Hero */}

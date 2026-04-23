@@ -14,12 +14,21 @@ import { Footer } from "@/features/Footer";
 import { ComparisonCardMotion, FaqMotion, WhyUsMotion } from "@/components/WhyUsMotion";
 
 export const metadata: Metadata = {
-  title: "Why dualdev — Complex Apps & AI vs Freelancers vs Agencies",
+  title: "Why Hire dualdev — Freelancer vs Agency vs Engineering Studio for AI & App Development",
   description:
-    "See how dualdev stacks up for complex application and AI agent development. Two senior engineers, production systems, agency-quality architecture without the overhead.",
+    "Comparing freelancers, agencies, and dualdev for AI agent development and custom software. Two senior engineers delivering agency-quality architecture at freelancer rates — with full end-to-end ownership.",
+  keywords: [
+    "freelancer vs agency",
+    "hire AI developer comparison",
+    "best way to hire developers",
+    "freelancer vs development studio",
+    "AI development agency alternative",
+    "affordable custom software development",
+    "senior developer for hire",
+  ],
   openGraph: {
-    title: "Why dualdev — How we stack up",
-    description: "Freelancers vs Agencies vs dualdev for complex software & AI agent development — the head-to-head comparison.",
+    title: "Why dualdev — Freelancer vs Agency vs Studio",
+    description: "Freelancers vs Agencies vs dualdev for complex software & AI agent development — the honest comparison.",
     url: canonicalUrl("/why-us"),
   },
   alternates: { canonical: canonicalUrl("/why-us") },

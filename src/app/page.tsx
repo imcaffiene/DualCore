@@ -10,16 +10,39 @@ import { Marquee3D } from "@/components/ui/Marquee3D";
 import { Footer } from "@/features/Footer";
 import { CtaMotion, HeroMotion, ServicesMotion } from "@/features/HomeMotion";
 import { cloudinaryUrl } from "@/lib/cloudinary";
+import { JsonLd } from "@/components/JsonLd";
+import { buildProfessionalServiceJsonLd, buildWebSiteJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "dualdev — Engineering Studio for Complex Software & AI",
+  title: "dualdev — Hire AI Developers & Full-Stack Engineers | Production AI Agents & SaaS Development",
   description:
-    "We engineer complex full-stack applications, AI agents, and automation systems that ship to production. From multi-tenant platforms to multi-agent architectures — we build what others can't.",
+    "Looking to hire AI developers or a full-stack engineering team? dualdev builds production AI agents, automation systems, SaaS platforms, and complex web & mobile applications. Senior engineers, agency-quality, freelancer pricing.",
+  keywords: [
+    "hire AI developers",
+    "AI agent development company",
+    "full-stack development studio",
+    "freelance AI engineer",
+    "custom software development",
+    "SaaS development agency",
+    "Next.js development company",
+    "hire full-stack developer",
+    "LLM integration services",
+    "workflow automation developer",
+    "mobile app development studio",
+    "production AI systems",
+  ],
   openGraph: {
-    title: "dualdev — Engineering Studio for Complex Software & AI",
+    title: "dualdev — Hire AI Developers & Full-Stack Engineers",
     description:
-      "We engineer complex applications and AI agents that actually ship. Full-stack platforms, automation engines, and production AI.",
+      "We build production AI agents, automation systems, and complex full-stack applications. Senior engineers, agency-quality work, freelancer pricing.",
     url: canonicalUrl("/"),
+    type: "website",
+    siteName: "dualdev",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "dualdev — AI Agents & Full-Stack Engineering Studio",
+    description: "Production AI agents, SaaS platforms, and mobile apps — engineered by two senior developers.",
   },
   alternates: { canonical: canonicalUrl("/") },
 };
@@ -50,6 +73,8 @@ const row2 = showcaseImages.slice(10, 20);
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
+      <JsonLd data={buildProfessionalServiceJsonLd()} />
+      <JsonLd data={buildWebSiteJsonLd()} />
       <Header />
 
       {/* ── HERO ── */}
