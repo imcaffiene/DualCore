@@ -13,3 +13,8 @@ export async function getVisitCount(): Promise<number> {
   const count = await redis.get<number>("site:visits");
   return count ?? 0;
 }
+
+export async function resetVisits(): Promise<number> {
+  await redis.set("site:visits", 0);
+  return 0;
+}
