@@ -100,8 +100,9 @@ export function buildProfessionalServiceJsonLd() {
         sameAs: ["https://www.linkedin.com/in/shubhamsingh2135/"],
       },
     ],
-    ...organizationJsonLd,
-    "@type": "ProfessionalService", // override Organization @type
+    foundingDate: organizationJsonLd.foundingDate,
+    numberOfEmployees: organizationJsonLd.numberOfEmployees,
+    sameAs: organizationJsonLd.sameAs,
   };
 }
 
