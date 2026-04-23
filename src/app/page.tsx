@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowRight, Sparkles, Zap,
-  Layers, Rocket, Code2, Smartphone,
+  ArrowRight, Bot, Workflow,
+  BrainCircuit, Layers, Network, Activity,
 } from "lucide-react";
 import { canonicalUrl } from "@/lib/seo";
 import { Header } from "@/features/Header";
@@ -12,25 +12,25 @@ import { CtaMotion, HeroMotion, ServicesMotion } from "@/features/HomeMotion";
 import { cloudinaryUrl } from "@/lib/cloudinary";
 
 export const metadata: Metadata = {
-  title: "dualdev — Premium Web, App & Design Studio",
+  title: "dualdev — AI Agents & Full-Stack Engineering Studio",
   description:
-    "A two-person studio designing and shipping websites, mobile apps, and digital products end-to-end. Available for freelance engagements.",
+    "We build AI agents, automation systems, and complex full-stack applications that ship to production. From multi-agent architectures to workflow engines — we engineer intelligence that works.",
   openGraph: {
-    title: "dualdev — Premium Web, App & Design Studio",
+    title: "dualdev — AI Agents & Full-Stack Engineering Studio",
     description:
-      "Two developers, one obsession with craft. End-to-end websites, mobile apps, and design.",
+      "We build AI agents and complex applications that actually ship. Multi-agent systems, automation engines, and production AI.",
     url: canonicalUrl("/"),
   },
   alternates: { canonical: canonicalUrl("/") },
 };
 
 const services = [
-  { icon: Code2, title: "Web Development", desc: "Pixel-perfect websites and web apps built on modern stacks." },
-  { icon: Smartphone, title: "Mobile Apps", desc: "Cross-platform iOS and Android apps that feel native." },
-  { icon: Sparkles, title: "UI / UX Design", desc: "Figma-first design systems, prototypes, and brand identity." },
-  { icon: Layers, title: "Backend & APIs", desc: "Scalable APIs, databases, and auth — designed to last." },
-  { icon: Rocket, title: "Launch & DevOps", desc: "CI/CD, cloud hosting, and a smooth path to production." },
-  { icon: Zap, title: "Maintenance", desc: "Ongoing support, iteration, and feature work post-launch." },
+  { icon: Bot, title: "AI Agent Architecture", desc: "Multi-agent systems, tool-calling pipelines, and autonomous workflows that reason, plan, and act." },
+  { icon: Workflow, title: "Workflow Automation", desc: "Visual builders, BullMQ queues, webhook processing, and background job engines that scale." },
+  { icon: BrainCircuit, title: "LLM Integration", desc: "OpenAI, Claude, Gemini APIs in production — with streaming, RAG, embeddings, and function calling." },
+  { icon: Layers, title: "Full-Stack AI Products", desc: "End-to-end SaaS with AI at the core — from data pipelines to user-facing intelligence." },
+  { icon: Network, title: "Complex System Design", desc: "Event-driven architectures, real-time processing, multi-tenant platforms built to last." },
+  { icon: Activity, title: "Production AI Ops", desc: "Monitoring, evaluation, cost optimization, and scaling of AI workloads in production." },
 ];
 
 // Cloudinary-powered showcase images
@@ -59,19 +59,19 @@ export default function HomePage() {
           <HeroMotion>
             <span className="glass mx-auto mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-foreground/80">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-              Available for new freelance projects
+              AI Agents · Automation · Full-Stack
             </span>
 
             <h1 className="font-heading text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-              <span className="text-gradient">Two devs.</span>
+              <span className="text-gradient">We build AI agents</span>
               <br />
-              <span className="text-foreground">Endless craft.</span>
+              <span className="text-foreground">that actually ship.</span>
             </h1>
 
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              We design and ship premium websites, mobile apps, and digital
-              products end-to-end. Browse our work — if it speaks to you, hire
-              us for your next launch.
+              We engineer production-grade AI agents, automation systems, and
+              complex full-stack applications. From multi-agent architectures
+              to workflow engines — if it needs to think and act, we build it.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
@@ -79,7 +79,7 @@ export default function HomePage() {
                 href="/projects"
                 className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-semibold text-background transition-all hover:opacity-90"
               >
-                View Our Work
+                See Our AI Projects
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
@@ -98,12 +98,12 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-6">
           <ServicesMotion className="mx-auto max-w-2xl text-center">
             <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
-              Services
+              What we build
             </span>
             <h2 className="mt-4 font-heading text-4xl font-bold sm:text-5xl">
-              <span className="text-gradient">Everything you need</span>
+              <span className="text-gradient">AI-native systems</span>
               <br />
-              to ship a product.
+              built for production.
             </h2>
           </ServicesMotion>
 
@@ -166,6 +166,40 @@ export default function HomePage() {
         </div> */}
 
 
+      {/* ── PROOF ── */}
+      <section className="relative border-t border-border py-24">
+        <div className="mx-auto max-w-6xl px-6">
+          <ServicesMotion className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
+              Track record
+            </span>
+            <h2 className="mt-4 font-heading text-4xl font-bold sm:text-5xl">
+              <span className="text-gradient">Numbers</span>{" "}
+              <span className="text-foreground">don&apos;t lie.</span>
+            </h2>
+          </ServicesMotion>
+          <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { value: "8+", label: "Complex products shipped" },
+              { value: "200K+", label: "Users across our apps" },
+              { value: "99.9%", label: "Background job reliability" },
+              { value: "4.4★", label: "App Store rating" },
+            ].map((stat) => (
+              <ServicesMotion key={stat.label}>
+                <div className="flex flex-col items-center justify-center bg-card p-8 text-center">
+                  <div className="font-heading text-4xl font-bold text-gradient sm:text-5xl">
+                    {stat.value}
+                  </div>
+                  <div className="mt-3 text-xs font-medium uppercase tracking-wider text-foreground/60">
+                    {stat.label}
+                  </div>
+                </div>
+              </ServicesMotion>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA ── */}
       <section className="relative border-t border-border py-32">
         <div className="mx-auto max-w-4xl px-6">
@@ -179,12 +213,12 @@ export default function HomePage() {
                 }}
               />
               <h2 className="mx-auto max-w-2xl font-heading text-4xl font-bold sm:text-5xl">
-                <span className="text-gradient">Like what you see?</span>
+                <span className="text-gradient">Need an AI agent</span>
                 <br />
-                <span className="text-foreground">Let&apos;s build yours.</span>
+                <span className="text-foreground">that actually works?</span>
               </h2>
               <p className="mx-auto mt-5 max-w-lg text-muted-foreground">
-                Tell us about your project. We respond within 24 hours, every time.
+                Tell us about your AI project. We respond within 24 hours, every time.
               </p>
               <Link
                 href="/contact"

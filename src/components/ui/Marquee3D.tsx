@@ -1,16 +1,16 @@
 "use client";
 
 const ROW_1 = [
-  "UI / UX Design", "Figma Prototyping", "Mobile Apps", "Design Systems",
-  "Web Development", "Brand Identity", "Motion Design", "Product Strategy",
+  "AI Agents", "Multi-Agent Systems", "Tool Calling", "Autonomous Workflows",
+  "RAG Pipelines", "LLM Orchestration", "Prompt Engineering", "Agent Memory",
 ];
 const ROW_2 = [
-  "SaaS Platform", "E-Commerce", "Fintech App", "Booking System",
-  "Analytics Dashboard", "Landing Page", "Portfolio CMS", "AI Chatbot",
+  "OpenAI", "Claude", "Gemini", "LangChain",
+  "Vector Search", "Embeddings", "Streaming", "Function Calling",
 ];
 const ROW_3 = [
-  "React", "Next.js", "TypeScript", "React Native",
-  "Tailwind", "Node.js", "Supabase", "Framer Motion",
+  "Next.js", "TypeScript", "BullMQ", "Redis",
+  "tRPC", "Prisma", "React Flow", "Inngest",
 ];
 
 function MarqueeRow({

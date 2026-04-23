@@ -10,9 +10,9 @@ import { Header } from "@/features/Header";
 import { Footer } from "@/features/Footer";
 
 export const metadata: Metadata = {
-  title: "Our Process — How dualdev ships premium products",
+  title: "Our Process — How dualdev ships AI agents & complex products",
   description:
-    "Discovery, design, build, launch, support — a transparent five-phase process designed to ship premium products fast, without surprises.",
+    "Discovery, design, build, launch, support — a transparent five-phase process designed to ship AI agents and complex products fast, without surprises.",
   openGraph: {
     title: "Our Process — How dualdev works",
     description:
@@ -62,6 +62,7 @@ const phases = [
       "We build in parallel — web and mobile developed simultaneously where needed. Regular demos, a live staging URL, and full visibility into progress.",
     deliverables: [
       "Production-grade web app (Next.js + TypeScript)",
+      "AI agent architecture + LLM integration (OpenAI, Claude, Gemini)",
       "Native mobile app (Flutter — iOS & Android)",
       "Regular demos + staging deploys throughout",
     ],
@@ -75,6 +76,7 @@ const phases = [
       "QA, accessibility audit, performance pass, and a clean cutover. We sweat the details so launch day is boring — the way it should be.",
     deliverables: [
       "Cross-browser, cross-device QA",
+      "AI agent evaluation + edge-case testing",
       "App Store + Play Store submission (if mobile)",
       "Hand-off docs + recorded walkthroughs",
     ],

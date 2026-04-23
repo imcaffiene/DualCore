@@ -23,15 +23,15 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL("https://dual-devs.vercel.app/"),
   title: {
-    default: "dualdev — Web & App Development Studio",
+    default: "dualdev — AI Agents & Full-Stack Engineering Studio",
     // Each page sets its own title; this template wraps it if they don't
     template: "%s | dualdev",
   },
   description:
-    "Two developers building end-to-end websites and apps. See our work and hire us for your next project.",
+    "We build production AI agents, automation systems, and complex full-stack applications. See our work and hire us for your next project.",
   openGraph: {
-    title: "dualdev — Web & App Development Studio",
-    description: "Two developers building end-to-end websites and apps.",
+    title: "dualdev — AI Agents & Full-Stack Engineering Studio",
+    description: "We build production AI agents, automation systems, and complex applications.",
     type: "website",
   },
   twitter: {

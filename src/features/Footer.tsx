@@ -14,8 +14,8 @@ export function Footer() {
               dual<span className="text-foreground/50">/</span>dev
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              A two-person studio crafting websites, mobile apps, and digital
-              products end-to-end. Available for freelance engagements.
+              A two-person studio building AI agents, automation systems, and
+              complex applications end-to-end. Available for engagements.
             </p>
           </div>
           <div>

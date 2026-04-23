@@ -10,10 +10,10 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "About — dualdev",
   description:
-    "Two developers, one studio. Meet the team behind dualdev — the duo that designs and ships premium digital products end-to-end.",
+    "AI engineers who ship. Meet the team behind dualdev — building production AI agents, automation systems, and complex applications.",
   openGraph: {
     title: "About — dualdev",
-    description: "Two developers, one studio. Meet the duo behind dualdev.",
+    description: "AI engineers who ship. Meet the team behind dualdev.",
     url: canonicalUrl("/about"),
   },
   alternates: { canonical: canonicalUrl("/about") },
@@ -36,9 +36,9 @@ const team: TeamMember[] = [
     name: "Sumit Kumar",
     initials: "SK",
     photo: "/team/sumit.jpg",
-    role: "Web Development & Design",
-    bio: "Figma mockup to AI agent to production app — no hand-offs, no gaps. Owns design, full-stack engineering, and AI integration on every web project. If it runs in a browser or talks to an LLM, it's in scope.",
-    skills: ["AI Agents", "Next.js", "TypeScript", "Node.js", "Figma"],
+    role: "AI Engineering & Full-Stack",
+    bio: "Architects production AI agent systems — multi-agent orchestration, LLM pipelines, and complex automation engines. Owns everything from system design to deployment.",
+    skills: ["AI Agents", "LLMs", "Next.js", "TypeScript", "Node.js"],
     socials: [
       { label: "Twitter", href: "https://x.com/i_m_caffeine", platform: "twitter" as const },
     ],
@@ -48,7 +48,7 @@ const team: TeamMember[] = [
     initials: "SS",
     photo: "/team/shubham.jpeg",
     role: "Mobile Engineering — iOS & Android",
-    bio: "Builds and ships cross-platform mobile apps from scratch to App Store and Play Store. Owns the entire mobile stack — architecture, native integrations, and performance.",
+    bio: "Ships cross-platform mobile apps from zero to App Store and Play Store. Owns the full mobile stack — architecture, native APIs, performance, and on-device AI integration.",
     skills: ["Flutter", "Swift", "Kotlin", "iOS", "Android"],
     socials: [
       { label: "LinkedIn", href: "https://www.linkedin.com/in/shubhamsingh2135/", platform: "linkedin" as const },
@@ -59,13 +59,13 @@ const team: TeamMember[] = [
 const principles = [
   {
     n: "01",
-    t: "Two people, one mind",
-    d: "No project managers, no hand-offs. You talk directly to the person building your product.",
+    t: "AI-native thinking",
+    d: "Every system we build starts with the question: where does intelligence add value? Not AI for AI's sake — AI where it matters.",
   },
   {
     n: "02",
     t: "End-to-end ownership",
-    d: "Design, code, deploy, iterate. We own the whole thing — from Figma to production.",
+    d: "Architecture, code, AI integration, deploy, iterate. We own the whole thing — from system design to production monitoring.",
   },
   {
     n: "03",
@@ -74,8 +74,8 @@ const principles = [
   },
   {
     n: "04",
-    t: "Craft over flash",
-    d: "Premium feel, restrained design, great typography. The details matter — always.",
+    t: "Production over prototypes",
+    d: "Anyone can build a demo. We build systems that handle real traffic, real edge cases, and real users.",
   },
 ];
 
@@ -115,14 +115,14 @@ export default function AboutPage() {
               About
             </span>
             <h1 className="mt-4 font-heading text-5xl font-bold leading-[1.05] sm:text-6xl lg:text-7xl">
-              <span className="text-gradient">Two specialists.</span>
+              <span className="text-gradient">AI engineers</span>
               <br />
-              <span className="text-foreground">One studio.</span>
+              <span className="text-foreground">who ship.</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              We&apos;re a two-person studio — one focused on web &amp; design,
-              one on mobile — who design, build, and ship digital products
-              end-to-end. No agencies, no middlemen, no fluff.
+              We&apos;re a two-person studio — one building AI agents &amp; complex
+              web systems, one shipping cross-platform mobile apps — engineering
+              production-grade products end-to-end. No agencies, no middlemen, no fluff.
             </p>
           </AboutHeroMotion>
         </div>

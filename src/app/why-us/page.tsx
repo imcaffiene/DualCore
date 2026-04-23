@@ -14,12 +14,12 @@ import { Footer } from "@/features/Footer";
 import { ComparisonCardMotion, FaqMotion, WhyUsMotion } from "@/components/WhyUsMotion";
 
 export const metadata: Metadata = {
-  title: "Why dualdev — Freelancers vs Agencies vs Us",
+  title: "Why dualdev — AI Agents vs Freelancers vs Agencies",
   description:
-    "See how dualdev stacks up against solo freelancers and traditional agencies. Two senior devs, end-to-end ownership, agency quality without the overhead.",
+    "See how dualdev stacks up for AI agent development. Two senior engineers, production AI systems, agency-quality architecture without the overhead.",
   openGraph: {
     title: "Why dualdev — How we stack up",
-    description: "Freelancers vs Agencies vs dualdev — the head-to-head comparison.",
+    description: "Freelancers vs Agencies vs dualdev for AI agent development — the head-to-head comparison.",
     url: canonicalUrl("/why-us"),
   },
   alternates: { canonical: canonicalUrl("/why-us") },
@@ -52,6 +52,10 @@ const faqs = [
     a: "Yes. After launch you can keep us on a monthly retainer for new features, fixes, and improvements. No retainer, no problem — we'll always reply to bug reports for free in the first 14 days.",
   },
   {
+    q: "Can you build AI agents and automation systems?",
+    a: "That's our core expertise. We've shipped production AI agent systems including multi-agent orchestration, LLM-powered automation pipelines, RAG systems, and visual workflow builders with background job engines processing 250+ operations per hour. We integrate OpenAI, Claude, and Gemini APIs into real products — not wrapper demos.",
+  },
+  {
     q: "Where are you based and what timezones do you cover?",
     a: "We work fully remote and overlap with most timezones across the US, Europe, and Asia. Async-first by default — calls when they actually move things forward.",
   },
@@ -71,6 +75,7 @@ const tiers: Tier[] = [
     tagline: "Solo, scrappy, single-skill.",
     rows: [
       { label: "Design + Engineering", status: "no", note: "Usually one or the other" },
+      { label: "AI / Agent expertise", status: "no", note: "Prompt wrappers at best" },
       { label: "End-to-end ownership", status: "meh", note: "Hits a wall outside their lane" },
       { label: "Reliability", status: "no", note: "Sick day = project paused" },
       { label: "Speed", status: "yes", note: "Fast, but bottlenecked solo" },
@@ -85,7 +90,8 @@ const tiers: Tier[] = [
     badge: "Recommended",
     rows: [
       { label: "Design + Engineering", status: "yes", note: "Both, deeply, in-house" },
-      { label: "End-to-end ownership", status: "yes", note: "Figma → production, we own it all" },
+      { label: "AI / Agent expertise", status: "yes", note: "Production agent systems shipped" },
+      { label: "End-to-end ownership", status: "yes", note: "Architecture → production, we own it all" },
       { label: "Reliability", status: "yes", note: "Two devs = built-in redundancy" },
       { label: "Speed", status: "yes", note: "Two senior brains, zero red tape" },
       { label: "Pricing", status: "yes", note: "Agency quality, freelancer rates" },
@@ -97,6 +103,7 @@ const tiers: Tier[] = [
     tagline: "Big team, bigger overhead.",
     rows: [
       { label: "Design + Engineering", status: "yes", note: "Yes — separate departments" },
+      { label: "AI / Agent expertise", status: "meh", note: "Outsource to contractors" },
       { label: "End-to-end ownership", status: "meh", note: "Hand-offs between specialists" },
       { label: "Reliability", status: "yes", note: "Reliable but slow" },
       { label: "Speed", status: "no", note: "Layers of approvals & PMs" },
@@ -168,8 +175,8 @@ export default function WhyUsPage() {
               <span className="text-foreground">different?</span>
             </h1>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              See how we stack up against the competition. Honest, unflinching,
-              and built from years of seeing how the other side actually works.
+              Most teams can&apos;t build AI agent systems. We ship them to production.
+              See how we stack up — honestly.
             </p>
           </WhyUsMotion>
         </div>

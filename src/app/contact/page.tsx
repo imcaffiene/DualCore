@@ -12,9 +12,10 @@ import { Footer } from "@/features/Footer";
 const CONTACT_EMAIL = "imcaffiene@gmail.com";
 const WHATSAPP_NUMBER = "918434262589"; // ← replace with your number
 const PROJECT_TYPES = [
+  "AI agent / Automation",
+  "Full-stack app",
   "Website",
   "Mobile app",
-  "Full-stack app",
   "UI / UX design",
   "Something else",
 ] as const;
@@ -29,7 +30,7 @@ export default function ContactPage() {
     name: "",
     email: "",
     phone: "",
-    projectType: "Website" as (typeof PROJECT_TYPES)[number],
+    projectType: "AI agent / Automation" as (typeof PROJECT_TYPES)[number],
     message: "",
   });
 
@@ -78,7 +79,7 @@ export default function ContactPage() {
 
       if (res.ok && data.success) {
         setFormState("success");
-        setForm({ name: "", email: "", phone: "", projectType: "Website", message: "" });
+        setForm({ name: "", email: "", phone: "", projectType: "AI agent / Automation", message: "" });
       } else {
         setFormState("error");
       }
@@ -337,7 +338,7 @@ export default function ContactPage() {
                           value={form.message}
                           onChange={(e) => setForm({ ...form, message: e.target.value })}
                           className="w-full resize-none rounded-xl border border-border bg-input px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-foreground/40 focus:outline-none focus:ring-1 focus:ring-foreground/20"
-                          placeholder="What are you building? Timeline, budget, links — anything helps."
+                          placeholder="What are you building? AI agent, automation system, complex app? Timeline, budget, links — anything helps."
                         />
                       </div>
 
