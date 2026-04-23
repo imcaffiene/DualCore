@@ -26,7 +26,7 @@ function MarqueeRow({
   return (
     <div className="relative flex w-full overflow-hidden">
       <div
-        className={`flex shrink-0 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
+        className={`flex w-max shrink-0 ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
         style={{ animationDuration: `${duration}s` }}
       >
         {doubled.map((item, i) => (
@@ -50,8 +50,10 @@ export function Marquee3D() {
       style={{ perspective: "800px" }}
       aria-hidden="true"
     >
+      <div className="absolute inset-0 bg-fade" />
+
       <div
-        className="absolute left-1/2 top-1/2 flex w-[160%] -translate-x-1/2 -translate-y-1/2 flex-col gap-10"
+        className="absolute left-1/2 top-1/2 z-10 flex w-[160%] -translate-x-1/2 -translate-y-1/2 flex-col gap-10"
         style={{
           transform: "translate(-50%, -50%) rotateX(55deg) rotateZ(-20deg)",
           transformStyle: "preserve-3d",
@@ -65,9 +67,8 @@ export function Marquee3D() {
         <MarqueeRow items={ROW_3} reverse duration={42} />
       </div>
 
-      <div className="absolute inset-0 bg-fade" />
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 z-20"
         style={{
           background:
             "radial-gradient(ellipse 60% 50% at 50% 50%, transparent 0%, oklch(0 0 0 / 0.6) 70%, oklch(0 0 0) 100%)",

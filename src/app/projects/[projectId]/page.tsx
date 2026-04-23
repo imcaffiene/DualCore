@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { canonicalUrl } from "@/lib/seo";
 import { projects } from "@/data/projectData";
@@ -166,32 +166,7 @@ export default async function CaseStudyPage({
         </div>
       </section>
 
-      {/* Hero image */}
-      <section className="pb-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="overflow-hidden rounded-3xl border border-border bg-secondary">
-            <div className="relative aspect-16/10 w-full">
-              {project.image ? (
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1152px"
-                  className="object-cover"
-                />
-              ) : (
-                // Placeholder when no image is provided
-                <div className="flex h-full w-full items-center justify-center bg-card">
-                  <span className="font-heading text-6xl font-bold text-foreground/10">
-                    {project.title.charAt(0)}
-                  </span>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Body sections */}
       <section className="pb-24">

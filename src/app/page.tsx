@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Sparkles, Zap, Layers, Rocket, Code2, Smartphone } from "lucide-react";
+import {
+  ArrowRight, Sparkles, Zap,
+  Layers, Rocket, Code2, Smartphone,
+} from "lucide-react";
 import { canonicalUrl } from "@/lib/seo";
 import { Header } from "@/features/Header";
 import { Marquee3D } from "@/components/ui/Marquee3D";
-import { ProjectCard } from "@/features/ProjectCard";
 import { Footer } from "@/features/Footer";
 import { CtaMotion, HeroMotion, ServicesMotion } from "@/features/HomeMotion";
-import { projects } from "@/data/projectData";
+import { cloudinaryUrl } from "@/lib/cloudinary";
 
 export const metadata: Metadata = {
   title: "dualdev — Premium Web, App & Design Studio",
@@ -19,9 +21,7 @@ export const metadata: Metadata = {
       "Two developers, one obsession with craft. End-to-end websites, mobile apps, and design.",
     url: canonicalUrl("/"),
   },
-  alternates: {
-    canonical: canonicalUrl("/"),
-  },
+  alternates: { canonical: canonicalUrl("/") },
 };
 
 const services = [
@@ -33,17 +33,28 @@ const services = [
   { icon: Zap, title: "Maintenance", desc: "Ongoing support, iteration, and feature work post-launch." },
 ];
 
-export default function HomePage() {
-  const featured = projects.slice(0, 3);
+// Cloudinary-powered showcase images
+// Public IDs must match your Cloudinary Media Library: showcase/01, showcase/02 ...
+const showcaseImages = Array.from({ length: 20 }, (_, i) => ({
+  src: cloudinaryUrl(`${String(i + 1).padStart(2, "0")}`, {
+    width: 640,
+    quality: "auto",
+    format: "auto",
+  }),
+  alt: `UI/UX design showcase ${i + 1}`,
+}));
 
+const row1 = showcaseImages.slice(0, 10);
+const row2 = showcaseImages.slice(10, 20);
+
+export default function HomePage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
 
-      {/* HERO */}
+      {/* ── HERO ── */}
       <section className="relative flex min-h-screen items-start justify-center overflow-hidden px-6 pb-16 pt-44 sm:pt-48 lg:pt-52">
         <Marquee3D />
-
         <div className="relative z-10 mx-auto max-w-3xl text-center">
           <HeroMotion>
             <span className="glass mx-auto mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium text-foreground/80">
@@ -78,19 +89,11 @@ export default function HomePage() {
                 Hire Us
               </Link>
             </div>
-
-            <div className="mt-16 flex items-center justify-center gap-8 text-xs uppercase tracking-wider text-foreground/40">
-              <span>50+ Projects</span>
-              <span className="h-1 w-1 rounded-full bg-foreground/20" />
-              <span>2 Founders</span>
-              <span className="h-1 w-1 rounded-full bg-foreground/20" />
-              <span>End-to-End</span>
-            </div>
           </HeroMotion>
         </div>
       </section>
 
-      {/* SERVICES */}
+      {/* ── SERVICES ── */}
       <section className="relative py-32">
         <div className="mx-auto max-w-7xl px-6">
           <ServicesMotion className="mx-auto max-w-2xl text-center">
@@ -122,35 +125,49 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FEATURED WORK */}
-      <section className="relative border-t border-border py-32">
-        <div className="mx-auto max-w-7xl px-6">
-          <div className="flex items-end justify-between gap-6">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
-                Featured Work
-              </span>
-              <h2 className="mt-4 font-heading text-4xl font-bold sm:text-5xl">
-                <span className="text-gradient">Recent projects.</span>
-              </h2>
-            </div>
-            <Link
-              href="/projects"
-              className="hidden items-center gap-2 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground md:inline-flex"
-            >
-              All work <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+      {/* ── UI/UX SHOWCASE MARQUEE ── */}
+      <section className="relative overflow-hidden border-t border-border py-24">
+        {/* Edge fades */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-40 bg-gradient-to-r from-background to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-40 bg-gradient-to-l from-background to-transparent" />
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((p, i) => (
-              <ProjectCard key={p.id} project={p} index={i} />
+        {/* Row 1 — left scroll */}
+        <div className="flex overflow-hidden">
+          <div className="animate-marquee-left flex w-max items-stretch gap-4">
+            {[...row1, ...row1].map((img, i) => (
+              <div key={i} className="relative h-52 shrink-0 overflow-hidden rounded-2xl border border-border bg-card">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-auto object-cover"
+                />
+              </div>
             ))}
           </div>
         </div>
+
+        {/* Row 2 — right scroll */}
+        <div className="mt-4 flex overflow-hidden">
+          <div className="animate-marquee-right flex w-max items-stretch gap-4">
+            {[...row2, ...row2].map((img, i) => (
+              <div key={i} className="relative h-52 shrink-0 overflow-hidden rounded-2xl border border-border bg-card">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-auto object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
       </section>
 
-      {/* CTA */}
+      {/* ── CTA ── */}
       <section className="relative border-t border-border py-32">
         <div className="mx-auto max-w-4xl px-6">
           <CtaMotion>

@@ -35,7 +35,7 @@ export const projects: CaseStudy[] = [
       "Recharts",
     ],
     image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1600&h=1000&fit=crop",
+      "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776946807/07.jpg",
     category: "fullstack",
     year: "2025",
     client: "Pr Creations",
@@ -152,7 +152,7 @@ export const projects: CaseStudy[] = [
       "All-in-one project management platform with Kanban boards, calendar, timeline, file storage, and team collaboration — built with a Stripe-powered subscription model.",
     tags: ["React", "TypeScript", "Supabase"],
     image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&h=1000&fit=crop",
+      "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776958095/18.png",
     category: "fullstack",
     year: "2026",
     client: "Securovix LTD",
@@ -187,7 +187,7 @@ export const projects: CaseStudy[] = [
     description:
       "All-in-one school management app for students, teachers, and transport staff — attendance, assignments, bus tracking, and more.",
     tags: ["Flutter", "Node.js", "PostgreSQL", "TypeScript"],
-    image: "",
+    image: "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776957447/769839a0-c20d-4591-b0ff-adaf0412b3dc_himy4q.jpg",
     category: "mobile",
     platforms: ["android", "ios"],
     year: "2025",
@@ -223,7 +223,7 @@ export const projects: CaseStudy[] = [
     description:
       "AI-powered networking app connecting users with paid experts for career, mental health, and entrepreneurship guidance.",
     tags: ["Flutter", "GraphQL", "Node.js", "AI"],
-    image: "",
+    image: "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776957283/11e4ae74-6e39-4150-828f-c585cea9a714_kd13xu.jpg",
     category: "mobile",
     platforms: ["android", "ios"],
     year: "2024",
@@ -259,7 +259,7 @@ export const projects: CaseStudy[] = [
     description:
       "AI-powered recipe app that identifies fridge ingredients from a photo and suggests personalized recipes instantly.",
     tags: ["Flutter", "Firebase", "TypeScript", "AI/ML"],
-    image: "",
+    image: "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776956634/d993806d-a305-40cb-8960-d54cfe2f4edb_qqu6xm.jpg",
     category: "mobile",
     platforms: ["android", "ios"],
     year: "2025",
