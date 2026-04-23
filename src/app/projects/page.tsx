@@ -87,6 +87,37 @@ export default function ProjectsPage() {
             {filtered.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />
             ))}
+
+            {/* "Many More" card */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: filtered.length * 0.06 }}
+            >
+              <Link
+                href="/contact"
+                className="group relative flex h-full min-h-[280px] flex-col items-center justify-center gap-4 overflow-hidden rounded-2xl border border-border bg-card p-8 text-center transition-colors hover:bg-accent"
+              >
+                <div
+                  className="absolute inset-0 -z-10 opacity-40 transition-opacity group-hover:opacity-60"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse at center, oklch(0.25 0 0) 0%, transparent 70%)",
+                  }}
+                />
+                <span className="font-heading text-4xl font-bold text-gradient sm:text-5xl">
+                  &amp; Many More
+                </span>
+                <p className="max-w-xs text-sm text-muted-foreground">
+                  These are just some of our highlights. Reach out to see the
+                  full portfolio or discuss your project.
+                </p>
+                <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground/80 transition-colors group-hover:text-foreground">
+                  Get in Touch
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </Link>
+            </motion.div>
           </div>
 
           {filtered.length === 0 && (

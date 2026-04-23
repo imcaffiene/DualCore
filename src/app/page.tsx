@@ -126,13 +126,13 @@ export default function HomePage() {
       </section>
 
       {/* ── UI/UX SHOWCASE MARQUEE ── */}
-      <section className="relative overflow-hidden border-t border-border py-24">
+      {/* <section className="relative overflow-hidden border-t border-border py-24"></section> */}
         {/* Edge fades */}
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-40 bg-gradient-to-r from-background to-transparent" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-40 bg-gradient-to-l from-background to-transparent" />
 
         {/* Row 1 — left scroll */}
-        <div className="flex overflow-hidden">
+        {/* <div className="flex overflow-hidden">
           <div className="animate-marquee-left flex w-max items-stretch gap-4">
             {[...row1, ...row1].map((img, i) => (
               <div key={i} className="relative h-52 shrink-0 overflow-hidden rounded-2xl border border-border bg-card">
@@ -146,9 +146,9 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
-        {/* Row 2 — right scroll */}
+        {/* Row 2 — right scroll
         <div className="mt-4 flex overflow-hidden">
           <div className="animate-marquee-right flex w-max items-stretch gap-4">
             {[...row2, ...row2].map((img, i) => (
@@ -163,9 +163,8 @@ export default function HomePage() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
-      </section>
 
       {/* ── CTA ── */}
       <section className="relative border-t border-border py-32">

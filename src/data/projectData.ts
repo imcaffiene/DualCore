@@ -259,7 +259,7 @@ export const projects: CaseStudy[] = [
     description:
       "AI-powered recipe app that identifies fridge ingredients from a photo and suggests personalized recipes instantly.",
     tags: ["Flutter", "Firebase", "TypeScript", "AI/ML"],
-    image: "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776956634/d993806d-a305-40cb-8960-d54cfe2f4edb_qqu6xm.jpg",
+    image: "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776956634/13.jpg",
     category: "mobile",
     platforms: ["android", "ios"],
     year: "2025",

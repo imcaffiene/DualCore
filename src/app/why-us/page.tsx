@@ -28,24 +28,21 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "How much does a project cost?",
-    a: "Most websites land between $4k–$12k and full-stack apps between $10k–$30k, depending on scope. We send a fixed-price quote after a free 30-min discovery call — no hourly surprises, no scope creep invoices.",
+    a: "Every project is scoped individually based on your goals, timeline, and requirements. We’d first discuss the details with you, understand the full scope, and then share a tailored quote.",
   },
   {
     q: "How long until my project ships?",
-    a: "Marketing sites: 2–4 weeks. Web apps & MVPs: 4–10 weeks. Larger products: 8–16 weeks. We share a weekly demo every Friday so you always see real progress, not status reports.",
+    a: "Timelines depend on scope, but most projects wrap up within 2-6 weeks. After our initial discussion, you'll receive a clear timeline with milestones.",
   },
   {
-    q: "What's your process look like?",
-    a: "Week 1: discovery + design direction. Weeks 2–N: build in public — weekly demo calls, a live staging URL, and a shared Linear board you can watch in real time. Final week: polish, QA, deploy. We hand off clean code and stay on for 2 weeks of free post-launch support.",
+    q: "Why not just hire a full-time developer?",
+    a: "Hiring in-house is costly, experienced designers can exceed $100k and developers $120k annually, not including the benefits. We deliver senior-level expertise at a fraction of the cost.",
   },
   {
     q: "Do you handle both design AND development?",
     a: 'Yes — that\'s the whole point of dualdev. One of us leads design (Figma, UX, brand), the other leads engineering (front-end, back-end, infra). No hand-offs, no "that\'s not in scope," no separate vendors to coordinate.',
   },
-  {
-    q: "What tech stack do you use?",
-    a: "React, TypeScript, TanStack Start / Next.js on the front-end. Node, Postgres, and Supabase or your cloud of choice on the back-end. We pick the boring, proven stack so your product is easy to maintain after we're gone.",
-  },
+
   {
     q: "What if I just need a redesign or a small change?",
     a: "We take on small scoped engagements too — landing pages, redesigns, audits, or week-long sprints. Just tell us what you need on the contact page and we'll let you know honestly if we're the right fit.",
