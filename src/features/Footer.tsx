@@ -11,7 +11,7 @@ export function Footer() {
               href="/"
               className="font-heading text-2xl font-bold tracking-tight text-foreground"
             >
-              dual<span className="text-foreground/50">/</span>dev
+              2x<span className="text-foreground/50">Studio</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
               A two-person studio building AI agents, automation systems, and
