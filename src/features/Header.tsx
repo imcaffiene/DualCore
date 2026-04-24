@@ -34,7 +34,7 @@ export function Header() {
       <div className="glass-strong border-white/[0.06] bg-black/[0.12] backdrop-blur-2xl supports-[backdrop-filter]:bg-black/[0.1] flex h-14 items-center justify-between rounded-full px-2 pl-5 shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
 
         {/* ── Logo ── */}
-        <Link href="/" aria-label="dualdev home" className="flex items-center gap-2.5 group">
+        <Link href="/" aria-label="2xStudio home" className="flex items-center gap-2.5 group">
 
           {/* SVG mark — abstract overlapping */}
           <svg

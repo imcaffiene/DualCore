@@ -12,7 +12,7 @@ export function CookieBanner() {
 
   useEffect(() => {
     // Check if user already decided
-    const stored = localStorage.getItem("dualdev:cookie-consent") as Consent;
+    const stored = localStorage.getItem("2xStudio:cookie-consent") as Consent;
     if (stored === "granted" || stored === "denied") {
       setConsent(stored);
       applyConsent(stored);
@@ -35,14 +35,14 @@ export function CookieBanner() {
   }
 
   function handleAccept() {
-    localStorage.setItem("dualdev:cookie-consent", "granted");
+    localStorage.setItem("2xStudio:cookie-consent", "granted");
     setConsent("granted");
     applyConsent("granted");
     setVisible(false);
   }
 
   function handleDecline() {
-    localStorage.setItem("dualdev:cookie-consent", "denied");
+    localStorage.setItem("2xStudio:cookie-consent", "denied");
     setConsent("denied");
     applyConsent("denied");
     setVisible(false);

@@ -10,7 +10,7 @@ import { SITE_URL } from "./seo";
 export const organizationJsonLd = {
   "@type": "Organization",
   "@id": `${SITE_URL}#organization`,
-  name: "dualdev",
+  name: "2xStudio",
   url: SITE_URL,
   email: "imcaffiene@gmail.com",
   description:
@@ -29,7 +29,7 @@ export function buildProfessionalServiceJsonLd() {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${SITE_URL}#service`,
-    name: "dualdev — AI & Full-Stack Engineering Studio",
+    name: "2xStudio — AI & Full-Stack Engineering Studio",
     url: SITE_URL,
     description:
       "We engineer production AI agents, automation systems, and complex full-stack applications. Hire senior AI developers and full-stack engineers for your next project.",
@@ -112,7 +112,7 @@ export function buildWebSiteJsonLd() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_URL}#website`,
-    name: "dualdev",
+    name: "2xStudio",
     url: SITE_URL,
     description:
       "AI agents, full-stack applications, and automation systems — engineered for production by a two-person studio.",
@@ -125,7 +125,7 @@ export function buildAboutPageJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "AboutPage",
-    name: "About dualdev",
+    name: "About 2xStudio",
     url: `${SITE_URL}/about`,
     mainEntity: {
       ...organizationJsonLd,
@@ -174,7 +174,7 @@ export function buildProcessPageJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    name: "dualdev Engineering Process",
+    name: "2xStudio Engineering Process",
     url: `${SITE_URL}/process`,
     provider: { "@id": `${SITE_URL}#organization` },
     description:
@@ -200,11 +200,11 @@ export function buildContactPageJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "Hire dualdev — Start a Project",
+    name: "Hire 2xStudio — Start a Project",
     url: `${SITE_URL}/contact`,
     mainEntity: {
       "@type": "Organization",
-      name: "dualdev",
+      name: "2xStudio",
       email: "imcaffiene@gmail.com",
       contactPoint: {
         "@type": "ContactPoint",
@@ -224,7 +224,7 @@ export function buildProjectsListJsonLd(
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "Case Studies & Portfolio — dualdev",
+    name: "Case Studies & Portfolio — 2xStudio",
     url: `${SITE_URL}/projects`,
     mainEntity: {
       "@type": "ItemList",

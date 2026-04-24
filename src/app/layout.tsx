@@ -21,16 +21,16 @@ const manrope = Manrope({
 
 // Root-level metadata — overridden by each page's own `export const metadata`
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dual-devs.vercel.app/"),
+  metadataBase: new URL("https://www.2xstudio.in/"),
   title: {
-    default: "dualdev — AI Agents & Full-Stack Engineering Studio",
+    default: "2xStudio — AI Agents & Full-Stack Engineering Studio",
     // Each page sets its own title; this template wraps it if they don't
-    template: "%s | dualdev",
+    template: "%s | 2xStudio",
   },
   description:
     "We build production AI agents, automation systems, and complex full-stack applications. See our work and hire us for your next project.",
   openGraph: {
-    title: "dualdev — AI Agents & Full-Stack Engineering Studio",
+    title: "2xStudio — AI Agents & Full-Stack Engineering Studio",
     description: "We build production AI agents, automation systems, and complex applications.",
     type: "website",
   },

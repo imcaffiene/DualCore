@@ -14,9 +14,9 @@ import { Footer } from "@/features/Footer";
 import { ComparisonCardMotion, FaqMotion, WhyUsMotion } from "@/components/WhyUsMotion";
 
 export const metadata: Metadata = {
-  title: "Why Hire dualdev — Freelancer vs Agency vs Engineering Studio for AI & App Development",
+  title: "Why Hire 2xStudio — Freelancer vs Agency vs Engineering Studio for AI & App Development",
   description:
-    "Comparing freelancers, agencies, and dualdev for AI agent development and custom software. Two senior engineers delivering agency-quality architecture at freelancer rates — with full end-to-end ownership.",
+    "Comparing freelancers, agencies, and 2xStudio for AI agent development and custom software. Two senior engineers delivering agency-quality architecture at freelancer rates — with full end-to-end ownership.",
   keywords: [
     "freelancer vs agency",
     "hire AI developer comparison",
@@ -27,8 +27,8 @@ export const metadata: Metadata = {
     "senior developer for hire",
   ],
   openGraph: {
-    title: "Why dualdev — Freelancer vs Agency vs Studio",
-    description: "Freelancers vs Agencies vs dualdev for complex software & AI agent development — the honest comparison.",
+    title: "Why 2xStudio — Freelancer vs Agency vs Studio",
+    description: "Freelancers vs Agencies vs 2xStudio for complex software & AI agent development — the honest comparison.",
     url: canonicalUrl("/why-us"),
   },
   alternates: { canonical: canonicalUrl("/why-us") },
@@ -49,7 +49,7 @@ const faqs = [
   },
   {
     q: "Do you handle both design AND development?",
-    a: 'Yes — that\'s the whole point of dualdev. One of us leads design (Figma, UX, brand), the other leads engineering (front-end, back-end, infra). No hand-offs, no "that\'s not in scope," no separate vendors to coordinate.',
+    a: 'Yes — that\'s the whole point of 2xStudio. One of us leads design (Figma, UX, brand), the other leads engineering (front-end, back-end, infra). No hand-offs, no "that\'s not in scope," no separate vendors to coordinate.',
   },
 
   {
@@ -93,7 +93,7 @@ const tiers: Tier[] = [
     ],
   },
   {
-    name: "dualdev",
+    name: "2xStudio",
     tagline: "Two senior devs. One studio.",
     highlighted: true,
     badge: "Recommended",
@@ -176,7 +176,7 @@ export default function WhyUsPage() {
         <div className="mx-auto max-w-4xl px-6 text-center">
           <WhyUsMotion>
             <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
-              Why dualdev
+              Why 2xStudio
             </span>
             <h1 className="mt-4 font-heading text-5xl font-bold leading-[1.05] sm:text-6xl lg:text-7xl">
               <span className="text-gradient">What makes us</span>

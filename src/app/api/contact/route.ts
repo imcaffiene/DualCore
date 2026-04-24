@@ -28,7 +28,7 @@ export async function POST(req: Request) {
       html: `
         <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto;color:#111;">
           <h2 style="margin-bottom:4px;">New project inquiry</h2>
-          <p style="color:#666;margin-top:0;">Via dual-devs.vercel.app contact form</p>
+          <p style="color:#666;margin-top:0;">Via 2xstudio.in contact form</p>
           <hr style="border:none;border-top:1px solid #eee;margin:24px 0;"/>
           <table style="width:100%;border-collapse:collapse;">
             <tr>
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
     });
 
     // ❌ Skip client auto-reply — needs verified domain
-    // Will add once you have dualdev.studio or any custom domain
+    // Will add once you have 2xStudio.studio or any custom domain
 
     return NextResponse.json({ success: true });
   } catch (err) {

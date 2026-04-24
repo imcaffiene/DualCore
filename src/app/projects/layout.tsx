@@ -5,9 +5,9 @@ import { buildProjectsListJsonLd } from "@/lib/jsonld";
 import { projects } from "@/data/projectData";
 
 export const metadata: Metadata = {
-  title: "Portfolio & Case Studies — AI Agents, SaaS Platforms & Mobile Apps | dualdev",
+  title: "Portfolio & Case Studies — AI Agents, SaaS Platforms & Mobile Apps | 2xStudio",
   description:
-    "Explore dualdev's portfolio: production AI agent systems, SaaS platforms, workflow automation tools, and cross-platform mobile apps. Detailed case studies with tech stacks, architecture decisions, and measurable outcomes.",
+    "Explore 2xStudio's portfolio: production AI agent systems, SaaS platforms, workflow automation tools, and cross-platform mobile apps. Detailed case studies with tech stacks, architecture decisions, and measurable outcomes.",
   keywords: [
     "AI agent case study",
     "SaaS development portfolio",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "AI development portfolio",
   ],
   openGraph: {
-    title: "Portfolio & Case Studies — dualdev",
+    title: "Portfolio & Case Studies — 2xStudio",
     description:
       "Production AI agents, SaaS platforms, and mobile apps — shipped end-to-end. See our detailed case studies.",
     url: canonicalUrl("/projects"),

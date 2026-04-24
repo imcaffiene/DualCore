@@ -66,7 +66,7 @@ export function Footer() {
         </div>
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 md:flex-row md:items-center">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} dualdev. All rights reserved.
+            © {new Date().getFullYear()} 2xStudio. All rights reserved.
           </p>
 
           <VisitCounter />

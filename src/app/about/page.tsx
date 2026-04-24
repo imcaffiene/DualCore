@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { buildAboutPageJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "About dualdev — Meet the AI Engineers & Full-Stack Developers Behind the Studio",
+  title: "About 2xStudio — Meet the AI Engineers & Full-Stack Developers Behind the Studio",
   description:
     "Two senior engineers who ship production AI agents, SaaS platforms, and mobile apps. Meet Sumit Kumar (AI & full-stack) and Shubham Singh (mobile & cross-platform) — hire us for your next complex project.",
   keywords: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "AI agent engineer",
   ],
   openGraph: {
-    title: "About dualdev — Senior AI & Full-Stack Engineers",
+    title: "About 2xStudio — Senior AI & Full-Stack Engineers",
     description: "Two engineers who ship production AI agents, SaaS platforms, and mobile apps. No agencies, no middlemen.",
     url: canonicalUrl("/about"),
   },

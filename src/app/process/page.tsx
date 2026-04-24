@@ -12,7 +12,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { buildProcessPageJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Our Development Process — How dualdev Ships AI Agents, Apps & SaaS Products",
+  title: "Our Development Process — How 2xStudio Ships AI Agents, Apps & SaaS Products",
   description:
     "Transparent five-phase software development process: Discovery, Design, Build, Launch, Support. See exactly how we ship AI agents, full-stack apps, and mobile products — with regular demos and fixed-price quotes.",
   keywords: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "fixed price software development",
   ],
   openGraph: {
-    title: "Our Process — How dualdev Ships Complex Products",
+    title: "Our Process — How 2xStudio Ships Complex Products",
     description:
       "Five phases: Discovery → Design → Build → Launch → Support. Regular demos, fixed pricing, zero surprises.",
     url: canonicalUrl("/process"),

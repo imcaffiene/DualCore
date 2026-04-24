@@ -38,7 +38,7 @@ export async function generateMetadata({
   const project = projects.find((p) => p.id === projectId);
   if (!project) return {};
 
-  const title = `${project.title} — Case Study | dualdev`;
+  const title = `${project.title} — Case Study | 2xStudio`;
   return {
     title,
     description: project.description,

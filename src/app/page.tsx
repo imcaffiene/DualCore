@@ -14,9 +14,9 @@ import { JsonLd } from "@/components/JsonLd";
 import { buildProfessionalServiceJsonLd, buildWebSiteJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "dualdev — Hire AI Developers & Full-Stack Engineers | Production AI Agents & SaaS Development",
+  title: "2xStudio — Hire AI Developers & Full-Stack Engineers | Production AI Agents & SaaS Development",
   description:
-    "Looking to hire AI developers or a full-stack engineering team? dualdev builds production AI agents, automation systems, SaaS platforms, and complex web & mobile applications. Senior engineers, agency-quality, freelancer pricing.",
+    "Looking to hire AI developers or a full-stack engineering team? 2xStudio builds production AI agents, automation systems, SaaS platforms, and complex web & mobile applications. Senior engineers, agency-quality, freelancer pricing.",
   keywords: [
     "hire AI developers",
     "AI agent development company",
@@ -32,16 +32,16 @@ export const metadata: Metadata = {
     "production AI systems",
   ],
   openGraph: {
-    title: "dualdev — Hire AI Developers & Full-Stack Engineers",
+    title: "2xStudio — Hire AI Developers & Full-Stack Engineers",
     description:
       "We build production AI agents, automation systems, and complex full-stack applications. Senior engineers, agency-quality work, freelancer pricing.",
     url: canonicalUrl("/"),
     type: "website",
-    siteName: "dualdev",
+    siteName: "2xStudio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "dualdev — AI Agents & Full-Stack Engineering Studio",
+    title: "2xStudio — AI Agents & Full-Stack Engineering Studio",
     description: "Production AI agents, SaaS platforms, and mobile apps — engineered by two senior developers.",
   },
   alternates: { canonical: canonicalUrl("/") },
