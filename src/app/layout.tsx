@@ -5,6 +5,7 @@ import { PageTransition } from "@/components/PageTransition";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { CookieBanner } from "@/components/CookieBanner";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 
 const sora = Sora({
@@ -47,7 +48,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      // `dark` class activates your @custom-variant dark (&:is(.dark *)) in globals.css
       className={`${sora.variable} ${manrope.variable} dark`}
       suppressHydrationWarning
     >
@@ -58,9 +58,10 @@ export default function RootLayout({
       <body>
         <PageTransition>
           {children}
-          <Analytics /> {/* ← add this */}
+          <Analytics />
           <GoogleAnalytics />
           <CookieBanner />
+          <SpeedInsights />
         </PageTransition>
       </body>
     </html>
