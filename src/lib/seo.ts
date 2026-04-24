@@ -1,4 +1,4 @@
-export const SITE_URL = "https://www.2xstudio.in/";
+export const SITE_URL = "https://www.2xstudio.in";
 
 export function canonicalUrl(path: string): string {
   const clean =
