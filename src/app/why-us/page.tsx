@@ -198,7 +198,7 @@ export default function WhyUsPage() {
             {tiers.map((tier, i) => (
               <ComparisonCardMotion key={tier.name} delay={i * 0.1}>
                 <div
-                  className={`relative flex h-full flex-col rounded-3xl p-8 sm:p-10 ${tier.highlighted
+                  className={`relative flex h-full flex-col rounded-3xl p-6 sm:p-8 lg:p-10 ${tier.highlighted
                     ? "glass-strong shadow-[0_0_60px_-15px_rgba(255,255,255,0.15)] ring-1 ring-foreground/20 lg:-my-4 lg:scale-[1.03]"
                     : "glass"
                     }`}

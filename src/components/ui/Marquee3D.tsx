@@ -47,7 +47,7 @@ export function Marquee3D() {
   return (
     <div
       className="pointer-events-none absolute inset-0 overflow-hidden"
-      style={{ perspective: "800px" }}
+      style={{ perspective: "800px", clipPath: "inset(0)" }}
       aria-hidden="true"
     >
       <div className="absolute inset-0 bg-fade" />

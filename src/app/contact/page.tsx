@@ -35,17 +35,17 @@ export default function ContactPage() {
   });
 
   useEffect(() => {
-    function handlePointerDown(e: MouseEvent) {
+    function handlePointerDown(e: PointerEvent) {
       if (!projectTypeRef.current?.contains(e.target as Node))
         setProjectTypeOpen(false);
     }
     function handleEscape(e: KeyboardEvent) {
       if (e.key === "Escape") setProjectTypeOpen(false);
     }
-    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("pointerdown", handlePointerDown);
     document.addEventListener("keydown", handleEscape);
     return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleEscape);
     };
   }, []);

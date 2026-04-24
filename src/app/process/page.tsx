@@ -181,7 +181,7 @@ export default function ProcessPage() {
             <div className="space-y-10">
               {phases.map((phase, i) => (
                 <PhaseMotion key={phase.n} delay={i * 0.05}>
-                  <div className="relative pl-20 sm:pl-24">
+                  <div className="relative pl-16 sm:pl-20 md:pl-24">
                     {/* Icon node */}
                     <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-2xl border border-foreground/15 bg-card shadow-[0_8px_30px_rgba(0,0,0,0.4)] sm:h-16 sm:w-16">
                       <phase.icon className="h-5 w-5 text-foreground sm:h-6 sm:w-6" />
