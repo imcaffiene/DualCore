@@ -2,17 +2,15 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Home", exact: true },
   { href: "/projects", label: "Work" },
-  { href: "/process", label: "Process" },
   { href: "/why-us", label: "Why Us" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -25,18 +23,11 @@ export function Header() {
   }
 
   return (
-    <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="fixed left-1/2 top-4 z-50 w-[min(960px,calc(100%-1.5rem))] -translate-x-1/2"
-    >
-      <div className="glass-strong border-white/[0.06] bg-black/[0.12] backdrop-blur-2xl supports-[backdrop-filter]:bg-black/[0.1] flex h-14 items-center justify-between rounded-full px-2 pl-5 shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
+    <header className="fixed left-1/2 top-4 z-50 w-[min(960px,calc(100%-1.5rem))] -translate-x-1/2">
+      <div className="flex h-14 items-center justify-between rounded-full border border-white/8 bg-white/[0.03] px-2 pl-5 backdrop-blur-xl shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
 
         {/* ── Logo ── */}
         <Link href="/" aria-label="2xStudio home" className="flex items-center gap-2.5 group">
-
-          {/* SVG mark — abstract overlapping */}
           <svg
             width="30"
             height="30"
@@ -45,43 +36,14 @@ export function Header() {
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden
           >
-            {/* Back square — rotated, muted */}
             <rect
-              x="9"
-              y="2"
-              width="16"
-              height="16"
-              rx="3.5"
+              x="9" y="2" width="16" height="16" rx="3.5"
               transform="rotate(12 9 2)"
               className="fill-foreground/20"
             />
-            {/* Front square — sharp, solid */}
-            <rect
-              x="5"
-              y="10"
-              width="16"
-              height="16"
-              rx="3.5"
-              className="fill-foreground"
-            />
-            {/* Overlap highlight — intersection glow */}
-            <rect
-              x="9"
-              y="10"
-              width="8"
-              height="6"
-              rx="1.5"
-              className="fill-foreground/[0.08]"
-            />
+            <rect x="5" y="10" width="16" height="16" rx="3.5" className="fill-foreground" />
+            <rect x="9" y="10" width="8" height="6" rx="1.5" className="fill-foreground/8" />
           </svg>
-
-          {/* Wordmark */}
-          {/* <span className="font-heading text-base font-bold tracking-tight text-foreground">
-            dual
-            <span className="text-foreground/40">/</span>
-            dev
-          </span> */}
-
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
@@ -90,7 +52,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors hover:text-foreground ${isActive(item.href, item.exact)
-                  ? "bg-white/[0.12] text-foreground"
+                  ? "bg-white/12 text-foreground"
                   : "text-foreground/60"
                 }`}
             >
@@ -101,7 +63,7 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <Link
-            href="/contact"
+            href="/#contact"
             className="hidden rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background transition-all hover:opacity-90 md:inline-flex"
           >
             Hire Us
@@ -123,7 +85,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="glass-strong border-white/[0.06] bg-black/[0.1] backdrop-blur-2xl supports-[backdrop-filter]:bg-black/[0.08] mt-2 flex flex-col gap-1 rounded-2xl p-3 md:hidden"
+            className="mt-2 flex flex-col gap-1 rounded-2xl border border-white/8 bg-white/[0.03] p-3 backdrop-blur-xl shadow-[0_8px_24px_rgba(0,0,0,0.2)] md:hidden"
           >
             {navItems.map((item) => (
               <Link
@@ -131,7 +93,7 @@ export function Header() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={`rounded-xl px-4 py-2.5 text-sm font-medium transition-colors ${isActive(item.href, item.exact)
-                    ? "bg-white/[0.12] text-foreground"
+                    ? "bg-white/12 text-foreground"
                     : "text-foreground/70"
                   }`}
               >
@@ -139,7 +101,7 @@ export function Header() {
               </Link>
             ))}
             <Link
-              href="/contact"
+              href="/#contact"
               onClick={() => setOpen(false)}
               className="mt-1 rounded-xl bg-foreground px-4 py-2.5 text-center text-sm font-semibold text-background"
             >
@@ -148,6 +110,6 @@ export function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }

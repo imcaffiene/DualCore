@@ -92,18 +92,25 @@ export default async function CaseStudyPage({
   const prev = projects[(idx - 1 + projects.length) % projects.length];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-black">
+      {/* ── Cosmic Nebula Background ── */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          background: `
+            radial-gradient(ellipse 110% 70% at 25% 80%, rgba(147, 51, 234, 0.12), transparent 55%),
+            radial-gradient(ellipse 130% 60% at 75% 15%, rgba(59, 130, 246, 0.10), transparent 65%),
+            radial-gradient(ellipse 80% 90% at 20% 30%, rgba(236, 72, 153, 0.14), transparent 50%),
+            radial-gradient(ellipse 100% 40% at 60% 70%, rgba(16, 185, 129, 0.08), transparent 45%),
+            #000000
+          `,
+        }}
+      />
+
       <Header />
 
       {/* Hero */}
-      <section className="relative overflow-hidden pb-16 pt-32">
-        <div
-          className="absolute inset-x-0 top-0 -z-10 h-[600px] opacity-70"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 80% at 50% 0%, oklch(0.2 0 0) 0%, transparent 70%)",
-          }}
-        />
+      <section className="relative z-10 overflow-hidden pb-16 pt-32">
         <div className="mx-auto max-w-5xl px-6">
           <CaseStudyHeroMotion>
             <Link
@@ -130,7 +137,7 @@ export default async function CaseStudyPage({
             </p>
 
             {/* Meta strip */}
-            <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-10 grid gap-px overflow-hidden rounded-2xl border border-white/8 bg-white/8 sm:grid-cols-2 lg:grid-cols-4 backdrop-blur-sm">
               {[
                 { label: "Client", value: project.client },
                 { label: "Duration", value: project.duration },
@@ -141,7 +148,7 @@ export default async function CaseStudyPage({
                   href: isValidUrl(project.liveUrl) ? project.liveUrl : undefined,
                 },
               ].map((item) => (
-                <div key={item.label} className="bg-card p-5">
+                <div key={item.label} className="bg-black/40 p-5">
                   <div className="text-[10px] font-semibold uppercase tracking-wider text-foreground/40">
                     {item.label}
                   </div>
@@ -169,7 +176,7 @@ export default async function CaseStudyPage({
 
 
       {/* Body sections */}
-      <section className="pb-24">
+      <section className="relative z-10 pb-24">
         <div className="mx-auto grid max-w-6xl gap-16 px-6 lg:grid-cols-[1fr_2fr]">
           {/* Sidebar */}
           <aside className="space-y-8 lg:sticky lg:top-28 lg:self-start">
@@ -202,7 +209,7 @@ export default async function CaseStudyPage({
                 {project.approach.map((step, i) => (
                   <li
                     key={step}
-                    className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5"
+                    className="flex items-start gap-4 rounded-2xl border border-white/8 bg-white/2 backdrop-blur-sm p-5"
                   >
                     <span className="font-heading text-sm font-bold text-foreground/40">
                       {String(i + 1).padStart(2, "0")}
@@ -222,7 +229,7 @@ export default async function CaseStudyPage({
       </section>
 
       {/* Metrics */}
-      <section className="border-t border-border py-24">
+      <section className="relative z-10 border-t border-border py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="text-center">
             <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
@@ -232,10 +239,10 @@ export default async function CaseStudyPage({
               <span className="text-gradient">Results that matter.</span>
             </h2>
           </div>
-          <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/8 bg-white/8 sm:grid-cols-2 lg:grid-cols-4 backdrop-blur-sm">
             {project.metrics.map((m, i) => (
               <MetricsMotion key={m.label} delay={i * 0.06} className="h-full">
-                <div className="flex h-full flex-col items-center justify-center bg-card p-8 text-center">
+                <div className="flex h-full flex-col items-center justify-center bg-black/40 p-8 text-center">
                   <div className="font-heading text-4xl font-bold text-gradient sm:text-5xl">
                     {m.value}
                   </div>
@@ -250,7 +257,7 @@ export default async function CaseStudyPage({
       </section>
 
       {/* Prev / Next */}
-      <section className="border-t border-border py-20">
+      <section className="relative z-10 border-t border-border py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid gap-4 sm:grid-cols-2">
             <Link
@@ -280,20 +287,28 @@ export default async function CaseStudyPage({
       </section>
 
       {/* CTA */}
-      <section className="border-t border-border py-32">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="font-heading text-4xl font-bold sm:text-5xl">
-            <span className="text-gradient">Want results like these?</span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-md text-muted-foreground">
-            Tell us about your project. We respond within 24 hours.
-          </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all hover:opacity-90"
-          >
-            Start a project <ArrowRight className="h-4 w-4" />
-          </Link>
+      <section className="relative z-10 border-t border-border py-32">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="glass relative overflow-hidden rounded-3xl p-12 text-center sm:p-16">
+            <div
+              className="absolute inset-0 -z-10 opacity-60"
+              style={{
+                background: "radial-gradient(ellipse at center, oklch(0.25 0 0) 0%, transparent 70%)",
+              }}
+            />
+            <h2 className="mx-auto max-w-2xl font-heading text-4xl font-bold sm:text-5xl">
+              <span className="text-gradient">Want results like these?</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-md text-muted-foreground">
+              Tell us about your project. We respond within 24 hours.
+            </p>
+            <Link
+              href="/#contact"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all hover:opacity-90"
+            >
+              Start a project <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 

@@ -1,22 +1,21 @@
 const CLOUD = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME ?? "dzzuo1ivo";
 
-export function cloudinaryUrl(
-  publicId: string,
-  options: {
-    width?: number;
-    quality?: number | "auto";
-    format?: "auto" | "webp" | "jpg";
-  } = {}
-) {
-  const { width = 1200, quality = "auto", format = "auto" } = options;
+type CardType = "web" | "mobile" | "featured";
 
-  const transforms = [
-    `f_${format}`,
-    `q_${quality}`,
-    `w_${width}`,
-    "c_fill",
-    "dpr_auto",
-  ].join(",");
+const PRESETS: Record<CardType, string> = {
+  featured: "f_auto,q_auto,c_fill,g_north_west,w_1600,h_900",
+  web: "f_auto,q_auto,c_fill,g_north_west,w_1200,h_675",
+  mobile: "f_auto,q_auto,c_fill,g_north,w_400,h_844",
+};
 
-  return `https://res.cloudinary.com/${CLOUD}/image/upload/${transforms}/${publicId}`;
+function extractPublicId(input: string): string {
+  if (!input.includes("res.cloudinary.com")) return input;
+  const match = input.match(/\/upload\/(?:(?:[^/,]+,)*[^/,]+\/)?(.+)/);
+  return match ? match[1] : input;
+}
+
+export function cloudinaryImg(input: string, type: CardType = "web"): string {
+  const publicId = extractPublicId(input);
+  const transform = PRESETS[type];
+  return `https://res.cloudinary.com/${CLOUD}/image/upload/${transform}/${publicId}`;
 }

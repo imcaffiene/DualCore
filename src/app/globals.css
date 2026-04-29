@@ -125,11 +125,12 @@
     text-size-adjust: none;
     scroll-behavior: smooth;
     hanging-punctuation: first last;
+    background-color: #000;
   }
 
   body {
     min-height: 100dvh;
-    background-color: var(--color-background);
+    background-color: transparent;
     color: var(--color-foreground);
     font-family: var(--font-body);
     line-height: 1.6;

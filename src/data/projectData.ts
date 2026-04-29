@@ -35,7 +35,7 @@ export const projects: CaseStudy[] = [
       "Recharts",
     ],
     image:
-      "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776946807/07.jpg",
+      "https://res.cloudinary.com/dzzuo1ivo/image/upload/f_auto,q_auto,w_1200/v1776946807/07.jpg",
     category: "fullstack",
     year: "2025",
     client: "Pr Creations",
@@ -296,7 +296,7 @@ export const projects: CaseStudy[] = [
       "All-in-one pet healthcare app with vet booking, doorstep grooming, 3-hour food delivery, and digital health records for pet parents.",
     tags: ["Flutter", "Firebass", "swift", "MixPanel"],
     image:
-      "https://drive.google.com/uc?export=view&id=18uEB8w1wemTweU8wIYUzZ87h7NMmjfOm",
+      "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1777454878/unnamed_1_x1d118.webp",
     category: "mobile",
     platforms: ["android"],
     year: "2024",

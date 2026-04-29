@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ThemeToggle } from "@/features/ThemeToggle";
 
 export default function Navbar() {
   return (
@@ -21,7 +20,6 @@ export default function Navbar() {
             <a href="#work" className="hover:text-primary transition-colors">Work</a>
             <a href="#contact" className="hover:text-primary transition-colors">Contact</a>
           </nav>
-          <ThemeToggle />
         </div>
       </div>
     </motion.header>

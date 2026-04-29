@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
-export function HeroMotion({ children }: { children: ReactNode }) {
+export function HeroMotion({ children }: { children: ReactNode; }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className="flex flex-col items-center"
@@ -40,7 +40,7 @@ export function ServicesMotion({
 }
 
 // CTA section
-export function CtaMotion({ children }: { children: ReactNode }) {
+export function CtaMotion({ children }: { children: ReactNode; }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}

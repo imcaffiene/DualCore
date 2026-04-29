@@ -107,19 +107,26 @@ function SocialIcon({ platform }: { platform: SocialPlatform; }) {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-black">
+      {/* ── Cosmic Nebula Background ── */}
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          background: `
+            radial-gradient(ellipse 110% 70% at 25% 80%, rgba(147, 51, 234, 0.12), transparent 55%),
+            radial-gradient(ellipse 130% 60% at 75% 15%, rgba(59, 130, 246, 0.10), transparent 65%),
+            radial-gradient(ellipse 80% 90% at 20% 30%, rgba(236, 72, 153, 0.14), transparent 50%),
+            radial-gradient(ellipse 100% 40% at 60% 70%, rgba(16, 185, 129, 0.08), transparent 45%),
+            #000000
+          `,
+        }}
+      />
+
       <JsonLd data={buildAboutPageJsonLd()} />
       <Header />
 
       {/* Hero */}
-      <section className="relative overflow-hidden pb-24 pt-40">
-        <div
-          className="absolute inset-x-0 top-0 -z-10 h-[600px] opacity-70"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 80% at 50% 0%, oklch(0.22 0 0) 0%, transparent 70%)",
-          }}
-        />
+      <section className="relative z-10 overflow-hidden pb-24 pt-40">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <AboutHeroMotion>
             <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
@@ -140,7 +147,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="border-t border-border py-24">
+      <section className="relative z-10 border-t border-border py-24">
         <div className="mx-auto max-w-6xl px-6">
           <div className="mb-12 text-center">
             <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
@@ -160,7 +167,7 @@ export default function AboutPage() {
                   <div className="flex items-start gap-4">
 
                     {/* Photo */}
-                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-gradient-to-br from-foreground/15 to-foreground/5 ring-1 ring-foreground/10">
+                    <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-linear-to-br from-foreground/15 to-foreground/5 ring-1 ring-foreground/10">
                       {m.photo ? (
                         <Image
                           src={m.photo}
@@ -192,7 +199,7 @@ export default function AboutPage() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`${m.name} on ${social.label}`}
-                            className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-white/[0.02] text-foreground/50 transition-colors hover:border-foreground/30 hover:text-foreground"
+                            className="flex h-8 w-8 items-center justify-center rounded-full border border-border bg-white/2 text-foreground/50 transition-colors hover:border-foreground/30 hover:text-foreground"
                           >
                             <SocialIcon platform={social.platform} />
                           </a>
@@ -226,56 +233,32 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Principles */}
-      <section className="border-t border-border py-32">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="mx-auto max-w-2xl text-center">
-            <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
-              How we work
-            </span>
-            <h2 className="mt-4 font-heading text-4xl font-bold sm:text-5xl">
-              <span className="text-gradient">Four principles.</span>
-              <br />
-              <span className="text-foreground">No exceptions.</span>
-            </h2>
-          </div>
 
-          <div className="mt-16 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2">
-            {principles.map((p, i) => (
-              <PrincipleMotion key={p.n} delay={i * 0.06}>
-                <div className="bg-card p-10">
-                  <div className="font-heading text-sm font-bold text-foreground/40">
-                    {p.n}
-                  </div>
-                  <h3 className="mt-3 font-heading text-xl font-semibold text-foreground">
-                    {p.t}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                    {p.d}
-                  </p>
-                </div>
-              </PrincipleMotion>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA */}
-      <section className="border-t border-border py-32">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="font-heading text-4xl font-bold sm:text-5xl">
-            <span className="text-gradient">Want to work with us?</span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-md text-muted-foreground">
-            We&apos;re taking on a small number of projects this quarter. Tell
-            us about yours.
-          </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all hover:opacity-90"
-          >
-            Get in touch <ArrowRight className="h-4 w-4" />
-          </Link>
+      <section className="relative z-10 border-t border-border py-32">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="glass relative overflow-hidden rounded-3xl p-12 text-center sm:p-16">
+            <div
+              className="absolute inset-0 -z-10 opacity-60"
+              style={{
+                background: "radial-gradient(ellipse at center, oklch(0.25 0 0) 0%, transparent 70%)",
+              }}
+            />
+            <h2 className="mx-auto max-w-2xl font-heading text-4xl font-bold sm:text-5xl">
+              <span className="text-gradient">Want to work with us?</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-md text-muted-foreground">
+              We&apos;re taking on a small number of projects this quarter. Tell
+              us about yours.
+            </p>
+            <Link
+              href="/#contact"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all hover:opacity-90"
+            >
+              Get in touch <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 

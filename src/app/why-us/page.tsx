@@ -11,7 +11,9 @@ import {
 import { canonicalUrl } from "@/lib/seo";
 import { Header } from "@/features/Header";
 import { Footer } from "@/features/Footer";
-import { ComparisonCardMotion, FaqMotion, WhyUsMotion } from "@/components/WhyUsMotion";
+import {  FaqMotion, WhyUsMotion } from "@/components/WhyUsMotion";
+import { ComparisonGrid } from "@/features/ComparisonGrid";
+
 
 export const metadata: Metadata = {
   title: "Why Hire 2xStudio — Freelancer vs Agency vs Engineering Studio for AI & App Development",
@@ -155,7 +157,19 @@ const faqJsonLd = {
 
 export default function WhyUsPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-black">
+      <div
+        className="pointer-events-none fixed inset-0 z-0"
+        style={{
+          background: `
+        radial-gradient(ellipse 110% 70% at 25% 80%, rgba(147, 51, 234, 0.12), transparent 55%),
+        radial-gradient(ellipse 130% 60% at 75% 15%, rgba(59, 130, 246, 0.10), transparent 65%),
+        radial-gradient(ellipse 80% 90% at 20% 30%, rgba(236, 72, 153, 0.14), transparent 50%),
+        radial-gradient(ellipse 100% 40% at 60% 70%, rgba(16, 185, 129, 0.08), transparent 45%),
+        #000000
+      `,
+        }}
+      />
       {/* FAQ JSON-LD */}
       <script
         type="application/ld+json"
@@ -165,7 +179,7 @@ export default function WhyUsPage() {
       <Header />
 
       {/* Hero */}
-      <section className="relative overflow-hidden pb-20 pt-40">
+      <section className="relative z-10 overflow-hidden pb-20 pt-40">
         <div
           className="absolute inset-x-0 top-0 -z-10 h-[600px] opacity-70"
           style={{
@@ -192,83 +206,14 @@ export default function WhyUsPage() {
       </section>
 
       {/* Comparison cards */}
-      <section className="pb-24">
+      <section className="relative z-10 pb-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="grid items-stretch gap-6 lg:grid-cols-3">
-            {tiers.map((tier, i) => (
-              <ComparisonCardMotion key={tier.name} delay={i * 0.1}>
-                <div
-                  className={`relative flex h-full flex-col rounded-3xl p-6 sm:p-8 lg:p-10 ${tier.highlighted
-                    ? "glass-strong shadow-[0_0_60px_-15px_rgba(255,255,255,0.15)] ring-1 ring-foreground/20 lg:-my-4 lg:scale-[1.03]"
-                    : "glass"
-                    }`}
-                >
-                  {tier.highlighted && (
-                    <>
-                      <div
-                        aria-hidden
-                        className="pointer-events-none absolute inset-0 -z-10 rounded-3xl opacity-60"
-                        style={{
-                          background:
-                            "radial-gradient(ellipse 80% 50% at 50% 0%, oklch(0.35 0 0) 0%, transparent 70%)",
-                        }}
-                      />
-                      {tier.badge && (
-                        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                          <span className="inline-flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-background">
-                            <Sparkles className="h-3 w-3" />
-                            {tier.badge}
-                          </span>
-                        </div>
-                      )}
-                    </>
-                  )}
-
-                  <div>
-                    <h3
-                      className={`font-heading text-2xl font-bold ${tier.highlighted ? "text-gradient" : "text-foreground/90"
-                        }`}
-                    >
-                      {tier.name}
-                    </h3>
-                    <p className="mt-1 text-sm text-muted-foreground">{tier.tagline}</p>
-                  </div>
-
-                  <ul className="mt-8 space-y-4">
-                    {tier.rows.map((row) => (
-                      <li key={row.label} className="flex items-start gap-3">
-                        <div className="pt-0.5">
-                          <StatusIcon status={row.status} />
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <div className="text-sm font-medium text-foreground">{row.label}</div>
-                          <div className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
-                            {row.note}
-                          </div>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {tier.highlighted && (
-                    <div className="mt-8 pt-2">
-                      <Link
-                        href="/contact"
-                        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-foreground py-3 text-sm font-semibold text-background transition-all hover:opacity-90"
-                      >
-                        Work with us <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              </ComparisonCardMotion>
-            ))}
-          </div>
+          <ComparisonGrid tiers={tiers} />
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="border-t border-border py-32">
+      <section className="relative z-10 border-t border-border py-32">
         <div className="mx-auto max-w-4xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <span className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
@@ -307,7 +252,7 @@ export default function WhyUsPage() {
           <p className="mt-8 text-center text-sm text-muted-foreground">
             Still curious?{" "}
             <Link
-              href="/contact"
+              href="/#contact"
               className="font-medium text-foreground underline-offset-4 hover:underline"
             >
               Ask us anything →
@@ -317,20 +262,28 @@ export default function WhyUsPage() {
       </section>
 
       {/* Closing CTA */}
-      <section className="border-t border-border py-32">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="font-heading text-4xl font-bold sm:text-5xl">
-            <span className="text-gradient">Sold? Let&apos;s talk.</span>
-          </h2>
-          <p className="mx-auto mt-5 max-w-md text-muted-foreground">
-            Tell us about your project. We respond within 24 hours.
-          </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all hover:opacity-90"
-          >
-            Start a project <ArrowRight className="h-4 w-4" />
-          </Link>
+      <section className="relative z-10 border-t border-border py-32">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="glass relative overflow-hidden rounded-3xl p-12 text-center sm:p-16">
+            <div
+              className="absolute inset-0 -z-10 opacity-60"
+              style={{
+                background: "radial-gradient(ellipse at center, oklch(0.25 0 0) 0%, transparent 70%)",
+              }}
+            />
+            <h2 className="mx-auto max-w-2xl font-heading text-4xl font-bold sm:text-5xl">
+              <span className="text-gradient">Sold? Let&apos;s talk.</span>
+            </h2>
+            <p className="mx-auto mt-5 max-w-md text-muted-foreground">
+              Tell us about your project. We respond within 24 hours.
+            </p>
+            <Link
+              href="/#contact"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 text-sm font-semibold text-background transition-all hover:opacity-90"
+            >
+              Start a project <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 

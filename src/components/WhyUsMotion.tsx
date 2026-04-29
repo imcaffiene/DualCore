@@ -27,7 +27,7 @@ export function ComparisonCardMotion({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.5 }}
-      className="flex flex-col"
+      className="flex h-full flex-col"
     >
       {children}
     </motion.div>

@@ -57,7 +57,7 @@ export default function Services() {
               className="group p-8 rounded-2xl bg-surface border border-surface-border hover:border-primary/50 transition-colors relative overflow-hidden"
             >
               {/* Hover gradient background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="absolute inset-0 bg-linear-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               
               <div className="relative z-10">
                 <div className="mb-6 inline-flex p-3 rounded-xl bg-background border border-surface-border">

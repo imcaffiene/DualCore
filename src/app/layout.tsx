@@ -6,18 +6,21 @@ import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { CookieBanner } from "@/components/CookieBanner";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Suspense } from "react";
 
 
 const sora = Sora({
   subsets: ["latin"],
+  display: "swap",      // ← add this
+  preload: true,
   variable: "--font-heading",
-  display: "swap",
 });
 
 const manrope = Manrope({
   subsets: ["latin"],
+  display: "swap",      // ← add this
+  preload: true,
   variable: "--font-body",
-  display: "swap",
 });
 
 // Root-level metadata — overridden by each page's own `export const metadata`
@@ -58,10 +61,12 @@ export default function RootLayout({
       <body>
         <PageTransition>
           {children}
-          <Analytics />
-          <GoogleAnalytics />
-          <CookieBanner />
-          <SpeedInsights />
+          <Suspense fallback={null}>
+            <Analytics />
+            <GoogleAnalytics />
+            <CookieBanner />
+            <SpeedInsights />
+          </Suspense>
         </PageTransition>
       </body>
     </html>
