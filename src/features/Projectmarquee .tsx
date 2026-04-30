@@ -44,7 +44,7 @@ function MarqueeRow({
 
   return (
     <div
-      className="relative flex w-full overflow-hidden"
+      className="relative flex w-full mx-auto max-w-7xl px-6 overflow-hidden"
       style={{
         WebkitMaskImage:
           "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
