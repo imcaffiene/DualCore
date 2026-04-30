@@ -11,24 +11,22 @@ import { Suspense } from "react";
 
 const sora = Sora({
   subsets: ["latin"],
-  display: "swap",      // ← add this
+  display: "swap",
   preload: true,
   variable: "--font-heading",
 });
 
 const manrope = Manrope({
   subsets: ["latin"],
-  display: "swap",      // ← add this
+  display: "swap",
   preload: true,
   variable: "--font-body",
 });
 
-// Root-level metadata — overridden by each page's own `export const metadata`
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.2xstudio.in/"),
   title: {
     default: "2xStudio — AI Agents & Full-Stack Engineering Studio",
-    // Each page sets its own title; this template wraps it if they don't
     template: "%s | 2xStudio",
   },
   description:
