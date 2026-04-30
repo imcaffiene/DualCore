@@ -17,8 +17,7 @@ export interface CaseStudy extends Project {
 export const projects: CaseStudy[] = [
   //-----------------------------------------//
 
-
-{
+  {
     id: "dmflow-instagram-automation",
     title: "DMFlow — Instagram DM Automation SaaS",
     description:
@@ -79,7 +78,7 @@ export const projects: CaseStudy[] = [
       "OpenAI",
     ],
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&h=1000&fit=crop",
+      "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1777569191/178d6746-b837-455d-a264-6d6156e84114_qq8h8r.jpg",
     category: "fullstack",
     year: "2025",
     client: "Confidential — Internal Enterprise Tool",
@@ -109,7 +108,7 @@ export const projects: CaseStudy[] = [
     ],
   },
   //------------------------------------------//
-  
+
   //-----------------------------------------//
   {
     id: "timespark-scheduler",
@@ -118,7 +117,7 @@ export const projects: CaseStudy[] = [
       "Smart scheduling platform that lets employees share availability and let others book slots instantly — no back-and-forth emails.",
     tags: ["Next.js", "TypeScript", "Prisma", "Nylas API", "NextAuth"],
     image:
-      "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1600&h=1000&fit=crop",
+      "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1777568184/b3543fde-ee01-4c00-9c71-c22b01e32733_xkq8am.jpg",
     category: "web",
     year: "2025",
     client: "Confidential — Enterprise Client",
@@ -187,7 +186,8 @@ export const projects: CaseStudy[] = [
     description:
       "All-in-one school management app for students, teachers, and transport staff — attendance, assignments, bus tracking, and more.",
     tags: ["Flutter", "Node.js", "PostgreSQL", "TypeScript"],
-    image: "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776957447/769839a0-c20d-4591-b0ff-adaf0412b3dc_himy4q.jpg",
+    image:
+      "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776957447/769839a0-c20d-4591-b0ff-adaf0412b3dc_himy4q.jpg",
     category: "mobile",
     platforms: ["android", "ios"],
     year: "2025",
@@ -223,7 +223,8 @@ export const projects: CaseStudy[] = [
     description:
       "AI-powered networking app connecting users with paid experts for career, mental health, and entrepreneurship guidance.",
     tags: ["Flutter", "GraphQL", "Node.js", "AI"],
-    image: "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776957283/11e4ae74-6e39-4150-828f-c585cea9a714_kd13xu.jpg",
+    image:
+      "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776957283/11e4ae74-6e39-4150-828f-c585cea9a714_kd13xu.jpg",
     category: "mobile",
     platforms: ["android", "ios"],
     year: "2024",
@@ -259,7 +260,8 @@ export const projects: CaseStudy[] = [
     description:
       "AI-powered recipe app that identifies fridge ingredients from a photo and suggests personalized recipes instantly.",
     tags: ["Flutter", "Firebase", "TypeScript", "AI/ML"],
-    image: "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776956634/13.jpg",
+    image:
+      "https://res.cloudinary.com/dzzuo1ivo/image/upload/v1776956634/13.jpg",
     category: "mobile",
     platforms: ["android", "ios"],
     year: "2025",
