@@ -101,7 +101,7 @@ export default function HomePage() {
 
 
       {/* PROJECT UI MARQUEE */}
-      <ProjectMarquee />
+      {/* <ProjectMarquee /> */}
 
       {/* ── SERVICES BENTO ── */}
       <section className="relative z-10 py-32">

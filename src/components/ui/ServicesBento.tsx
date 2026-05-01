@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
-  ArrowUpRight, Code2, Smartphone, Sparkles,
+   Code2, Smartphone, Sparkles,
   Layers, Rocket, Zap, Bot, Workflow, BrainCircuit,
 } from "lucide-react";
 
@@ -155,7 +155,6 @@ function BentoCard({
             <span className="hidden rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider text-foreground/50 backdrop-blur sm:inline-flex">
               {tag}
             </span>
-            <ArrowUpRight className="h-4 w-4 text-foreground/25 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground/70" />
           </div>
         </div>
 
