@@ -3,52 +3,34 @@ import { SITE_URL } from "@/lib/seo";
 import { projects } from "@/data/projectData";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const now = new Date();
 
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: `${SITE_URL}/`,
-      lastModified,
+      url: SITE_URL,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
       url: `${SITE_URL}/projects`,
-      lastModified,
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
-      url: `${SITE_URL}/process`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/why-us`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${SITE_URL}/about`,
-      lastModified,
+      lastModified: now,
       changeFrequency: "monthly",
-      priority: 0.7,
-    },
-    {
-      url: `${SITE_URL}/contact`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.8,
     },
   ];
 
   const projectPages: MetadataRoute.Sitemap = projects.map((p) => ({
     url: `${SITE_URL}/projects/${p.id}`,
-    lastModified,
-    changeFrequency: "monthly",
-    priority: 0.6,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
   }));
 
   return [...staticPages, ...projectPages];

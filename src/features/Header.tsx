@@ -9,8 +9,8 @@ import { Menu, X } from "lucide-react";
 const navItems = [
   { href: "/", label: "Home", exact: true },
   { href: "/projects", label: "Work" },
-  { href: "/why-us", label: "Why Us" },
   { href: "/about", label: "About" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Header() {
@@ -23,90 +23,128 @@ export function Header() {
   }
 
   return (
-    <header className="fixed left-1/2 top-4 z-50 w-[min(960px,calc(100%-1.5rem))] -translate-x-1/2">
-      <div className="flex h-14 items-center justify-between rounded-full border border-white/8 bg-white/[0.03] px-2 pl-5 backdrop-blur-xl shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
+    <header
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        height: 64,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 clamp(16px, 4vw, 40px)",
+        background: "rgba(12, 12, 12, 0.8)",
+        backdropFilter: "blur(20px)",
+        borderBottom: "1px solid #1A1A1A",
+        zIndex: 50,
+      }}
+    >
+      <Link href="/" style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none" }}>
+        <span style={{ fontFamily: "var(--font-display)", fontSize: 20, color: "#FAFAF8", letterSpacing: "0.02em" }}>
+          2X<span style={{ color: "#FF6B00" }}>STUDIO</span>
+        </span>
+      </Link>
 
-        {/* ── Logo ── */}
-        <Link href="/" aria-label="2xStudio home" className="flex items-center gap-2.5 group">
-          <svg
-            width="30"
-            height="30"
-            viewBox="0 0 30 30"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden
-          >
-            <rect
-              x="9" y="2" width="16" height="16" rx="3.5"
-              transform="rotate(12 9 2)"
-              className="fill-foreground/20"
-            />
-            <rect x="5" y="10" width="16" height="16" rx="3.5" className="fill-foreground" />
-            <rect x="9" y="10" width="8" height="6" rx="1.5" className="fill-foreground/8" />
-          </svg>
-        </Link>
-
-        <nav className="hidden items-center gap-1 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors hover:text-foreground ${isActive(item.href, item.exact)
-                  ? "bg-white/12 text-foreground"
-                  : "text-foreground/60"
-                }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
+      <nav style={{ display: "flex", alignItems: "center", gap: 32 }} className="hidden md:flex">
+        {navItems.map((item) => (
           <Link
-            href="/#contact"
-            className="hidden rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background transition-all hover:opacity-90 md:inline-flex"
+            key={item.href}
+            href={item.href}
+            style={{
+              fontFamily: "var(--font-mono)",
+              fontSize: 11,
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: isActive(item.href, item.exact) ? "#FF6B00" : "#555",
+              textDecoration: "none",
+              transition: "color 0.15s",
+            }}
           >
-            Hire Us
+            {item.label}
           </Link>
-          <button
-            onClick={() => setOpen((o) => !o)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground md:hidden"
-            aria-label="Toggle menu"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
+        ))}
+      </nav>
+
+      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <Link
+          href="/#contact"
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: 10,
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            color: "#FAFAF8",
+            background: "#FF6B00",
+            padding: "8px 16px",
+            borderRadius: 2,
+            textDecoration: "none",
+          }}
+          className="hidden md:inline-block"
+        >
+          Start a project
+        </Link>
+        <button
+          onClick={() => setOpen((o) => !o)}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 40,
+            height: 40,
+            background: "transparent",
+            border: "1px solid #222",
+            borderRadius: 2,
+            color: "#555",
+            cursor: "pointer",
+          }}
+          className="md:hidden"
+        >
+          {open ? <X size={18} /> : <Menu size={18} />}
+        </button>
       </div>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="mt-2 flex flex-col gap-1 rounded-2xl border border-white/8 bg-white/[0.03] p-3 backdrop-blur-xl shadow-[0_8px_24px_rgba(0,0,0,0.2)] md:hidden"
+            style={{
+              position: "absolute",
+              top: 64,
+              left: 0,
+              right: 0,
+              background: "#0C0C0C",
+              borderBottom: "1px solid #1A1A1A",
+              padding: 16,
+              display: "flex",
+              flexDirection: "column",
+              gap: 8,
+            }}
+            className="md:hidden"
           >
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className={`rounded-xl px-4 py-2.5 text-sm font-medium transition-colors ${isActive(item.href, item.exact)
-                    ? "bg-white/12 text-foreground"
-                    : "text-foreground/70"
-                  }`}
+                style={{
+                  fontFamily: "var(--font-mono)",
+                  fontSize: 12,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  color: isActive(item.href, item.exact) ? "#FF6B00" : "#666",
+                  padding: "12px 16px",
+                  textDecoration: "none",
+                  background: isActive(item.href, item.exact) ? "#111" : "transparent",
+                  borderRadius: 2,
+                }}
               >
                 {item.label}
               </Link>
             ))}
-            <Link
-              href="/#contact"
-              onClick={() => setOpen(false)}
-              className="mt-1 rounded-xl bg-foreground px-4 py-2.5 text-center text-sm font-semibold text-background"
-            >
-              Hire Us
-            </Link>
           </motion.div>
         )}
       </AnimatePresence>

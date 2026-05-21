@@ -20,7 +20,7 @@ const PROJECT_TYPES = [
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
-export function ContactSection({ className = "pb-24 pt-40" }: { className?: string }) {
+export function ContactSection({ className, id, style }: { className?: string; id?: string; style?: React.CSSProperties }) {
   const [formState, setFormState] = useState<FormState>("idle");
   const [projectTypeOpen, setProjectTypeOpen] = useState(false);
   const projectTypeRef = useRef<HTMLDivElement | null>(null);
@@ -90,14 +90,9 @@ export function ContactSection({ className = "pb-24 pt-40" }: { className?: stri
   )}`;
 
   return (
-    <section id="contact" className={`relative overflow-hidden ${className}`}>
-      <div
-        className="absolute inset-x-0 top-0 -z-10 h-[600px] opacity-60 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 60% 80% at 50% 0%, oklch(0.2 0 0) 0%, transparent 70%)",
-        }}
-      />
+    <section id={id || "contact"} className={`relative overflow-hidden ${className || ""}`} style={style}>
+      <div className="ember-section-glow" />
+      <div className="ember-section-glow-soft" />
 
       <div className="mx-auto max-w-6xl px-6">
         <div className="grid gap-16 lg:grid-cols-2">

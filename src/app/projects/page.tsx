@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
-import { motion, useInView, type Variants } from "framer-motion";
+import { motion, useInView, useScroll, useTransform, type Variants } from "framer-motion";
 import { useRef, useState } from "react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { projects } from "@/data/projectData";
 import type { CaseStudy } from "@/data/projectData";
-import { Header } from "@/features/Header";
-import { Footer } from "@/features/Footer";
+import { Navigation } from "@/features/Navigation";
+import { SiteFooter } from "@/features/SiteFooter";
+import { TransitionLink } from "@/components/TransitionLink";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -24,6 +24,10 @@ const FILTERS: { label: string; value: Filter; }[] = [
 
 export default function ProjectsPage() {
   const [filter, setFilter] = useState<Filter>("all");
+  const heroRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroY = useTransform(heroScroll, [0, 1], ["0%", "18%"]);
 
   const filtered = projects.filter((p) => {
     if (filter === "all") return true;
@@ -31,88 +35,133 @@ export default function ProjectsPage() {
     return p.category === "mobile" && p.platforms?.includes(filter);
   });
 
+  const ease = [0.16, 1, 0.3, 1] as const;
+
   return (
-    <div className="relative min-h-screen bg-black">
-      {/* ── Cosmic Nebula Background ── */}
-      <div
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{
-          background: `
-            radial-gradient(ellipse 110% 70% at 25% 80%, rgba(147, 51, 234, 0.12), transparent 55%),
-            radial-gradient(ellipse 130% 60% at 75% 15%, rgba(59, 130, 246, 0.10), transparent 65%),
-            radial-gradient(ellipse 80% 90% at 20% 30%, rgba(236, 72, 153, 0.14), transparent 50%),
-            radial-gradient(ellipse 100% 40% at 60% 70%, rgba(16, 185, 129, 0.08), transparent 45%),
-            #000000
-          `,
-        }}
-      />
+    <div className="midnight-ember-shell relative min-h-screen w-full">
+      <div className="midnight-ember-overlay pointer-events-none fixed inset-0 z-0" />
 
-      <Header />
+      <Navigation />
 
-      {/* ── Hero ── */}
-      <section className="relative z-10 overflow-hidden pt-40 pb-20">
-
-        <div className="mx-auto max-w-7xl px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      {/* ── Hero — full viewport, parallax bg text ── */}
+      <section
+        ref={heroRef}
+        className="relative overflow-hidden flex flex-col justify-end"
+        style={{ minHeight: "100vh", borderBottom: "1px solid #141414" }}
+      >
+        <motion.div
+          style={{ y: heroY }}
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+          aria-hidden
+        >
+          <span
+            className="font-display leading-none"
+            style={{
+              fontSize: "clamp(160px, 28vw, 500px)",
+              color: "rgba(255,107,0,0.028)",
+              letterSpacing: "-0.04em",
+              whiteSpace: "nowrap",
+            }}
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-foreground/40">
-              Selected work
-            </span>
+            WORK
+          </span>
+        </motion.div>
 
-            {/* Large index number — decorative */}
-            <div className="relative mt-4">
-              <span
-                aria-hidden
-                className="pointer-events-none absolute -top-6 left-0 select-none font-heading text-[120px] font-bold leading-none text-foreground/4 sm:text-[180px]"
-              >
-                {filtered.length.toString().padStart(2, "0")}
-              </span>
-              <h1 className="relative font-heading text-5xl font-bold leading-[1.05] sm:text-6xl lg:text-7xl">
-                <span className="text-gradient">Projects we've</span>
-                <br />
-                <span className="text-foreground">shipped end-to-end.</span>
-              </h1>
-            </div>
-
-            <p className="mt-6 max-w-md text-muted-foreground">
-              Every project was designed, built, and launched by the two of us.
-              If something resonates, let's talk.
-            </p>
-          </motion.div>
-
-          {/* Filters */}
+        <div className="relative z-10 px-6 md:px-10 lg:px-14 pb-16 pt-40">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25, ease: "easeOut" }}
-            className="mt-10 flex flex-wrap gap-2"
+            transition={{ duration: 0.6, ease, delay: 0.1 }}
+            className="font-mono text-[10px] tracking-[0.25em] uppercase mb-10 flex items-center gap-2"
+            style={{ color: "#FF6B00" }}
           >
-            {FILTERS.map((f) => (
-              <button
-                key={f.value}
-                onClick={() => setFilter(f.value)}
-                className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${filter === f.value
-                    ? "bg-foreground text-background"
-                    : "glass text-foreground/60 hover:text-foreground"
-                  }`}
-              >
-                {f.label}
-                {f.value === "all" && (
-                  <span className="ml-2 text-xs opacity-50">
-                    {projects.length}
-                  </span>
-                )}
-              </button>
-            ))}
+            <span>◆</span> Our work
           </motion.div>
+
+          <div className="overflow-hidden mb-2">
+            <motion.h1
+              initial={{ y: "100%" }}
+              animate={{ y: "0%" }}
+              transition={{ duration: 0.85, ease, delay: 0.2 }}
+              className="font-display leading-[0.82]"
+              style={{ fontSize: "clamp(72px, 13vw, 200px)", color: "#FAFAF8" }}
+            >
+              PROJECTS
+            </motion.h1>
+          </div>
+          <div className="overflow-hidden mb-2">
+            <motion.h2
+              initial={{ y: "100%" }}
+              animate={{ y: "0%" }}
+              transition={{ duration: 0.85, ease, delay: 0.32 }}
+              className="font-display leading-[0.82]"
+              style={{ fontSize: "clamp(72px, 13vw, 200px)", color: "#FF6B00", fontStyle: "italic" }}
+            >
+              WE'VE SHIPPED
+            </motion.h2>
+          </div>
+          <div className="overflow-hidden">
+            <motion.h2
+              initial={{ y: "100%" }}
+              animate={{ y: "0%" }}
+              transition={{ duration: 0.85, ease, delay: 0.44 }}
+              className="font-display leading-[0.82]"
+              style={{ fontSize: "clamp(72px, 13vw, 200px)", color: "#FAFAF8" }}
+            >
+              END-TO-END.
+            </motion.h2>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease, delay: 0.7 }}
+            className="flex flex-col md:flex-row md:items-end justify-between gap-6 mt-14 pt-8"
+            style={{ borderTop: "1px solid #141414" }}
+          >
+            <p
+              className="font-sans leading-[1.85] max-w-sm"
+              style={{ fontSize: "clamp(12px, 1.1vw, 15px)", color: "#777", fontWeight: 300 }}
+            >
+              Every project was designed, built, and launched by the two of us. If something resonates, let's talk.
+            </p>
+            <div className="flex items-center gap-6">
+              <span className="font-mono text-[9px] tracking-[0.22em] uppercase" style={{ color: "#555" }}>
+                {projects.length} Projects
+              </span>
+              <span style={{ width: 1, height: 28, background: "#2A2A2A", display: "block" }} />
+              <span className="font-mono text-[9px] tracking-[0.22em] uppercase" style={{ color: "#555" }}>
+                Since 2024
+              </span>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Filters ── */}
+      <section className="relative z-10 px-6 md:px-10 lg:px-14 py-10" style={{ borderBottom: "1px solid #141414" }}>
+        <div className="flex flex-wrap gap-2">
+          {FILTERS.map((f) => (
+            <button
+              key={f.value}
+              onClick={() => setFilter(f.value)}
+              className={`rounded-full px-5 py-2 text-sm font-medium transition-all duration-200 ${filter === f.value
+                  ? "bg-foreground text-background"
+                  : "border border-[#2A2A2A] text-[#777] hover:text-[#FAFAF8]"
+                }`}
+            >
+              {f.label}
+              {f.value === "all" && (
+                <span className="ml-2 text-xs opacity-50">{projects.length}</span>
+              )}
+            </button>
+          ))}
         </div>
       </section>
 
       {/* ── Editorial rows ── */}
       <section className="relative z-10 pb-24">
+        <div className="ember-section-glow-soft" />
         {filtered.length === 0 ? (
           <div className="py-24 text-center text-muted-foreground">
             No projects in this category yet.
@@ -134,7 +183,7 @@ export default function ProjectsPage() {
       {/* ── CTA ── */}
       <CtaBanner />
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
@@ -191,7 +240,7 @@ function EditorialRow({
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
         >
-          <Link href={`/projects/${project.id}`} className="group block">
+          <TransitionLink href={`/projects/${project.id}`} className="group block">
             <div className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-3xl bg-white/2 p-6 sm:aspect-4/3 sm:p-10">
               <img
                 src={project.image}
@@ -208,7 +257,7 @@ function EditorialRow({
                 </span>
               </div>
             </div>
-          </Link>
+          </TransitionLink>
         </motion.div>
 
         {/* Copy column */}
@@ -240,12 +289,12 @@ function EditorialRow({
 
             {/* Title */}
             <h2 className="mt-3 font-heading text-3xl font-bold sm:text-4xl">
-              <Link
+              <TransitionLink
                 href={`/projects/${project.id}`}
                 className="transition-opacity hover:opacity-70"
               >
                 {project.title}
-              </Link>
+              </TransitionLink>
             </h2>
 
             {/* Description */}
@@ -288,13 +337,13 @@ function EditorialRow({
 
             {/* CTA */}
             <div className="mt-8 flex items-center gap-4">
-              <Link
+              <TransitionLink
                 href={`/projects/${project.id}`}
                 className="group inline-flex items-center gap-2 text-sm font-semibold text-foreground transition-opacity hover:opacity-70"
               >
                 View case study
                 <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-              </Link>
+              </TransitionLink>
 
               {project.liveUrl && (
                 <a
@@ -351,18 +400,18 @@ function CtaBanner() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link
+            <TransitionLink
               href="/#contact"
               className="inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-3 text-sm font-semibold text-background transition-opacity hover:opacity-85"
             >
               Start a project <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
+            </TransitionLink>
+            <TransitionLink
               href="/#contact"
               className="glass inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-foreground transition-opacity hover:opacity-70"
             >
               See full portfolio
-            </Link>
+            </TransitionLink>
           </div>
         </motion.div>
       </div>

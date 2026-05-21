@@ -5,9 +5,11 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { canonicalUrl } from "@/lib/seo";
 import { projects } from "@/data/projectData";
-import { Header } from "@/features/Header";
+import { Navigation } from "@/features/Navigation";
 import { CaseStudyHeroMotion, MetricsMotion } from "@/components/CaseStudyMotion";
-import { Footer } from "@/features/Footer";
+import { SiteFooter } from "@/features/SiteFooter";
+import { JsonLd } from "@/components/JsonLd";
+import { buildCaseStudyJsonLd } from "@/lib/jsonld";
 
 
 
@@ -92,25 +94,15 @@ export default async function CaseStudyPage({
   const prev = projects[(idx - 1 + projects.length) % projects.length];
 
   return (
-    <div className="relative min-h-screen bg-black">
-      {/* ── Cosmic Nebula Background ── */}
-      <div
-        className="pointer-events-none fixed inset-0 z-0"
-        style={{
-          background: `
-            radial-gradient(ellipse 110% 70% at 25% 80%, rgba(147, 51, 234, 0.12), transparent 55%),
-            radial-gradient(ellipse 130% 60% at 75% 15%, rgba(59, 130, 246, 0.10), transparent 65%),
-            radial-gradient(ellipse 80% 90% at 20% 30%, rgba(236, 72, 153, 0.14), transparent 50%),
-            radial-gradient(ellipse 100% 40% at 60% 70%, rgba(16, 185, 129, 0.08), transparent 45%),
-            #000000
-          `,
-        }}
-      />
+    <div className="midnight-ember-shell relative min-h-screen w-full">
+      <div className="midnight-ember-overlay pointer-events-none fixed inset-0 z-0" />
 
-      <Header />
+      <JsonLd data={buildCaseStudyJsonLd(project)} />
+      <Navigation />
 
       {/* Hero */}
       <section className="relative z-10 overflow-hidden pb-16 pt-32">
+        <div className="ember-section-glow" />
         <div className="mx-auto max-w-5xl px-6">
           <CaseStudyHeroMotion>
             <Link
@@ -177,6 +169,7 @@ export default async function CaseStudyPage({
 
       {/* Body sections */}
       <section className="relative z-10 pb-24">
+        <div className="ember-section-glow-soft" />
         <div className="mx-auto grid max-w-6xl gap-16 px-6 lg:grid-cols-[1fr_2fr]">
           {/* Sidebar */}
           <aside className="space-y-8 lg:sticky lg:top-28 lg:self-start">
@@ -312,7 +305,7 @@ export default async function CaseStudyPage({
         </div>
       </section>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }
