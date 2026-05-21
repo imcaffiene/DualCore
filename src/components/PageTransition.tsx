@@ -23,17 +23,14 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   const navigateTo = useCallback((path: string) => {
     if (phase !== "idle") return;
     pendingPath.current = path;
+    router.push(path);
     setPhase("covering");
-  }, [phase]);
+  }, [phase, router]);
 
   const onCoverComplete = useCallback(() => {
-    if (pendingPath.current) {
-      const path = pendingPath.current;
-      pendingPath.current = null;
-      router.push(path);
-      setPhase("revealing");
-    }
-  }, [router]);
+    pendingPath.current = null;
+    setPhase("revealing");
+  }, []);
 
   const onRevealComplete = useCallback(() => {
     setPhase("idle");
