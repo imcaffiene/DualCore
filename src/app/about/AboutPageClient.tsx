@@ -72,7 +72,7 @@ function FaqItem({ item, index, inView }: { item: { q: string; a: string }; inde
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.22, ease }}
-          className="flex-shrink-0 mt-0.5 font-display"
+          className="shrink-0 mt-0.5 font-display"
               style={{ color: open ? "#FF6B00" : "#666", fontSize: 22, lineHeight: 1 }}
         >
           +
@@ -487,9 +487,9 @@ export default function AboutPageClient() {
               <span style={{ color: "#FF6B00", fontStyle: "italic" }}>SHIP SOMETHING?</span>
             </h2>
           </div>
-          <div className="flex flex-col gap-5 items-start md:items-end flex-shrink-0">
+          <div className="flex flex-col gap-5 items-start md:items-end shrink-0">
             <p
-              className="font-sans text-[13px] leading-[1.85] max-w-[260px] md:text-right"
+              className="font-sans text-[13px] leading-[1.85] max-w-65 md:text-right"
               style={{ color: "#777", fontWeight: 300 }}
             >
               We're taking on a small number of projects this quarter. Tell us about yours.

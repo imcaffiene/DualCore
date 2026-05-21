@@ -59,6 +59,7 @@ interface CharButtonProps {
   className?: string;
   style?: React.CSSProperties;
   staggerDelay?: number;
+  disabled?: boolean;
 }
 
 export function CharButton({
@@ -70,6 +71,7 @@ export function CharButton({
   className = "",
   style,
   staggerDelay = 0.025,
+  disabled,
 }: CharButtonProps) {
   const [hovered, setHovered] = useState(false);
 
@@ -102,16 +104,18 @@ export function CharButton({
   return (
     <button
       type={type}
-      className={`font-mono uppercase cursor-pointer ${className}`}
+      disabled={disabled}
+      className={`font-mono uppercase ${className}`}
       style={{
         ...sizeMap[size],
+        ...(disabled ? { opacity: 0.4, cursor: "not-allowed" } : { cursor: "pointer" }),
         ...merged,
         transition: "background 0.25s ease, border-color 0.25s ease, color 0.2s ease",
         ...style,
       }}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={() => !disabled && setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={onClick}
+      onClick={disabled ? undefined : onClick}
     >
       <span
         style={{

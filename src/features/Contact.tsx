@@ -7,7 +7,8 @@ import { CharButton } from "@/components/ui/CharButton";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 export function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [form, setForm] = useState({ name: "", email: "", projectType: "", message: "" });
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -128,7 +129,7 @@ export function Contact() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.7, ease, delay: 0.15 }}
           >
-            {submitted ? (
+            {formState === "success" ? (
               <div
                 className="flex flex-col gap-6 pt-10"
                 style={{ borderTop: "1px solid hsl(var(--border))" }}
@@ -147,15 +148,64 @@ export function Contact() {
                 </p>
                 <CharButton
                   variant="ghost"
-                  onClick={() => setSubmitted(false)}
+                  onClick={() => setFormState("idle")}
                   className="self-start mt-4"
                 >
                   Send another →
                 </CharButton>
               </div>
+            ) : formState === "error" ? (
+              <div
+                className="flex flex-col gap-6 pt-10"
+                style={{ borderTop: "1px solid hsl(var(--border))" }}
+              >
+                <div
+                  className="font-display leading-none"
+                  style={{ fontSize: "clamp(60px, 7vw, 96px)", color: "#FF4444" }}
+                >
+                  ERROR.
+                </div>
+                <p
+                  className="text-base leading-relaxed font-sans max-w-sm"
+                  style={{ color: "hsl(var(--text2))", fontWeight: 300 }}
+                >
+                  Something went wrong. Please try again or email us directly.
+                </p>
+                <CharButton
+                  variant="ghost"
+                  onClick={() => setFormState("idle")}
+                  className="self-start mt-4"
+                >
+                  Try again →
+                </CharButton>
+              </div>
             ) : (
               <form
-                onSubmit={e => { e.preventDefault(); setSubmitted(true); }}
+                onSubmit={async e => {
+                  e.preventDefault();
+                  if (formState === "submitting") return;
+                  const name = form.name.trim();
+                  const email = form.email.trim();
+                  const message = form.message.trim();
+                  if (!name || !email || !message) return;
+                  setFormState("submitting");
+                  try {
+                    const res = await fetch("/api/contact", {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({ name, email, phone: "", projectType: form.projectType || "Not specified", message }),
+                    });
+                    const data = await res.json();
+                    if (res.ok && data.success) {
+                      setFormState("success");
+                      setForm({ name: "", email: "", projectType: "", message: "" });
+                    } else {
+                      setFormState("error");
+                    }
+                  } catch {
+                    setFormState("error");
+                  }
+                }}
                 className="flex flex-col gap-10 pt-0"
                 style={{ borderTop: "1px solid hsl(var(--border))" }}
               >
@@ -170,8 +220,10 @@ export function Contact() {
                     <input
                       required
                       type="text"
-                      placeholder="Jane Doe"
+                      placeholder="name"
                       style={inputStyle}
+                      value={form.name}
+                      onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
                       onFocus={focusOrange}
                       onBlur={blurGray}
                     />
@@ -186,8 +238,10 @@ export function Contact() {
                     <input
                       required
                       type="email"
-                      placeholder="jane@company.com"
+                      placeholder="email"
                       style={inputStyle}
+                      value={form.email}
+                      onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
                       onFocus={focusOrange}
                       onBlur={blurGray}
                     />
@@ -203,7 +257,8 @@ export function Contact() {
                   </label>
                   <select
                     required
-                    defaultValue=""
+                    value={form.projectType}
+                    onChange={e => setForm(f => ({ ...f, projectType: e.target.value }))}
                     style={{ ...inputStyle, cursor: "pointer", appearance: "none", background: "transparent" }}
                     onFocus={focusOrange}
                     onBlur={blurGray}
@@ -229,6 +284,8 @@ export function Contact() {
                     rows={4}
                     placeholder="What are you building, and why is it hard?"
                     style={{ ...inputStyle, resize: "none", paddingTop: 10 }}
+                    value={form.message}
+                    onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                     onFocus={focusOrange}
                     onBlur={blurGray}
                   />
@@ -239,8 +296,9 @@ export function Contact() {
                   variant="filled"
                   size="lg"
                   className="self-start"
+                  disabled={formState === "submitting"}
                 >
-                  Send message →
+                  {formState === "submitting" ? "Sending..." : "Send message →"}
                 </CharButton>
               </form>
             )}
