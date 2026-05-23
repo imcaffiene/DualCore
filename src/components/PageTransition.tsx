@@ -23,8 +23,8 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   const navigateTo = useCallback((path: string) => {
     if (phase !== "idle") return;
     pendingPath.current = path;
-    router.push(path);
     setPhase("covering");
+    router.push(path);
   }, [phase, router]);
 
   const onCoverComplete = useCallback(() => {
@@ -44,10 +44,10 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         {phase === "covering" && (
           <motion.div
             key="cover"
-            initial={{ y: "-100%" }}
-            animate={{ y: "0%" }}
-            exit={{ y: "0%" }}
-            transition={{ duration: 0.65, ease, delay: 0.15 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 1 }}
+            transition={{ duration: 0.2 }}
             onAnimationComplete={onCoverComplete}
             style={{
               position: "fixed",
@@ -73,7 +73,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
             <motion.span
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.3 }}
+              transition={{ delay: 0.05, duration: 0.2 }}
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(28px, 5vw, 52px)",
@@ -92,7 +92,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
             key="reveal"
             initial={{ y: "0%" }}
             animate={{ y: "100%" }}
-            transition={{ duration: 0.65, ease }}
+            transition={{ duration: 0.45, ease }}
             onAnimationComplete={onRevealComplete}
             style={{
               position: "fixed",
@@ -118,7 +118,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
             <motion.span
               initial={{ opacity: 1, y: 0 }}
               animate={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.15 }}
               style={{
                 fontFamily: "var(--font-display)",
                 fontSize: "clamp(28px, 5vw, 52px)",
