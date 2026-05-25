@@ -24,6 +24,9 @@
 .DS_Store
 *.pem
 
+# package manager lock files (this project uses bun)
+package-lock.json
+
 # debug
 npm-debug.log*
 yarn-debug.log*
