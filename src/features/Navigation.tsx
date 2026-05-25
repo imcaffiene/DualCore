@@ -32,8 +32,7 @@ export function Navigation() {
   const links = [
     { label: "Work", action: () => { setMenuOpen(false); navigateTo("/projects"); } },
     { label: "Studio", action: () => { setMenuOpen(false); navigateTo("/about"); } },
-    // { label: "Why Us", action: () => window.location.href = "/why-us" },
-    // { label: "Services", action: () => scrollToSection("services") },
+    { label: "Blog", action: () => { setMenuOpen(false); navigateTo("/blog"); } },
     { label: "Contact", action: () => scrollToSection("contact") },
   ];
 

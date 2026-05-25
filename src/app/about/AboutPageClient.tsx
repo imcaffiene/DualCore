@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { Navigation } from "@/features/Navigation";
+import { SiteFooter } from "@/features/SiteFooter";
 import { CharButton } from "@/components/ui/CharButton";
 import { usePageTransition } from "@/components/PageTransition";
 
@@ -500,6 +501,7 @@ export default function AboutPageClient() {
           </div>
         </motion.div>
       </section>
+      <SiteFooter />
     </div>
   );
 }

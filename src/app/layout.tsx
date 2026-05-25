@@ -10,6 +10,7 @@ import { Cursor } from "@/components/Cursor";
 import { GlobalGlow } from "@/components/GlobalGlow";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationJsonLd } from "@/lib/jsonld";
+import { SITE_URL } from "@/lib/seo";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -28,21 +29,27 @@ export const metadata: Metadata = {
     "We build production AI agents, automation systems, and complex full-stack applications. Two senior engineers shipping complex apps, AI agents, automation, and mobile apps. Available for new projects.",
   keywords: [
     "AI agents",
+    "AI agent development",
+    "hire AI developers",
     "full-stack development",
     "automation systems",
     "SaaS development",
     "Next.js development",
     "mobile app development",
     "React Native",
+    "Flutter",
     "production AI",
     "workflow automation",
     "engineering studio",
     "freelance developers",
     "hire developers",
+    "LLM integration",
+    "OpenAI",
+    "software agency India",
   ],
   authors: [
-    { name: "Sumit Kumar" },
-    { name: "Shubham Singh" },
+    { name: "Sumit Kumar", url: `${SITE_URL}/about` },
+    { name: "Shubham Singh", url: `${SITE_URL}/about` },
   ],
   creator: "2xStudio",
   publisher: "2xStudio",
@@ -69,6 +76,7 @@ export const metadata: Metadata = {
     description:
       "Two senior engineers building production AI agents, automation systems, and complex full-stack applications.",
     creator: "@i_m_caffeine",
+    site: "@i_m_caffeine",
     images: ["https://www.2xstudio.in/og-image.png"],
   },
   robots: {
@@ -82,9 +90,8 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
+  // Replace with your actual Google Search Console verification code
+  // verification: { google: "YOUR_ACTUAL_CODE_HERE" },
 };
 
 export default function RootLayout({
@@ -98,8 +105,20 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#0C0C0C" />
+        <meta name="geo.region" content="IN" />
+        <meta name="geo.placename" content="India" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* RSS Autodiscovery — tells feed readers and Google about your RSS feed */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="2xStudio Engineering Blog"
+          href={`${SITE_URL}/feed.xml`}
+        />
+        {/* LLM/AI Crawler Discovery — llms.txt standard */}
+        <link rel="llms" type="text/plain" href={`${SITE_URL}/llms.txt`} title="LLM-readable site index" />
+        <link rel="llms-full" type="text/plain" href={`${SITE_URL}/llms-full.txt`} title="Full content for AI indexing" />
         <JsonLd data={organizationJsonLd} />
       </head>
       <body>

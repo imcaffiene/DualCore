@@ -8,6 +8,7 @@ import { SITE_URL } from "./seo";
 
 // ── Organization (reused across pages) ──
 export const organizationJsonLd = {
+  "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${SITE_URL}#organization`,
   name: "2xStudio",
@@ -17,6 +18,19 @@ export const organizationJsonLd = {
     "A two-person engineering studio specializing in production AI agents, automation systems, and complex full-stack applications.",
   foundingDate: "2024",
   numberOfEmployees: { "@type": "QuantitativeValue", value: 2 },
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/og-image.png`,
+    width: 1200,
+    height: 630,
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    email: "imcaffiene@gmail.com",
+    availableLanguage: ["English", "Hindi"],
+    areaServed: "Worldwide",
+  },
   sameAs: [
     "https://x.com/i_m_caffeine",
     "https://www.linkedin.com/in/shubhamsingh2135/",
