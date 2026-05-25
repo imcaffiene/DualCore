@@ -208,13 +208,16 @@ export function Hero() {
               ))}
             </div>
 
-            <CharButton
-              variant="filled"
-              onClick={() => go("contact")}
-              style={{ width: "100%", justifyContent: "center" }}
+            <div
+              className="flex items-center gap-2"
+              style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.16em", textTransform: "uppercase", color: "hsl(var(--text3))" }}
             >
-              Start a project →
-            </CharButton>
+              <span
+                className="w-1.5 h-1.5 rounded-full animate-pulse-dot"
+                style={{ background: "hsl(var(--green))", flexShrink: 0 }}
+              />
+              Est. 2025 · India
+            </div>
           </motion.div>
         </div>
       </div>
