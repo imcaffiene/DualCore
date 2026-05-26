@@ -12,6 +12,7 @@ export default function GlobalError({
 }) {
   useEffect(() => {
     console.error(error);
+    document.title = "Error — 2xStudio";
   }, [error]);
 
   return (

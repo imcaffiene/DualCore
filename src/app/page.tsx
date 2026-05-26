@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { buildProfessionalServiceJsonLd, buildWebSiteJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "2xStudio — Hire AI Developers & Full-Stack Engineers | Production AI Agents & SaaS Development",
+  title: "2xStudio — AI Agents & Full-Stack Engineering Studio",
   description:
     "Looking to hire AI developers or a full-stack engineering team? 2xStudio builds production AI agents, automation systems, SaaS platforms, and complex web & mobile applications.",
   keywords: [

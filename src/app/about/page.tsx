@@ -5,11 +5,11 @@ import { buildAboutPageJsonLd } from "@/lib/jsonld";
 import AboutPageClient from "./AboutPageClient";
 
 export const metadata: Metadata = {
-  title: "About 2xStudio — Two Senior Engineers, One Studio",
+  title: "About 2xStudio — Sumit Kumar & Shubham Singh | Engineering Team",
   description:
-    "Two senior engineers, zero fluff, all shipped. We build production AI agents, full-stack applications, and mobile apps. Meet the team behind 2xStudio.",
+    "Meet Sumit Kumar (AI & Full-Stack) and Shubham Singh (Mobile). Two senior engineers building production AI agents, full-stack apps, and mobile apps.",
   openGraph: {
-    title: "About 2xStudio — Two Senior Engineers, One Studio",
+    title: "About 2xStudio — Sumit Kumar & Shubham Singh",
     description:
       "Two senior engineers building production AI agents, full-stack apps, and mobile apps — no agencies, no middlemen.",
     url: canonicalUrl("/about"),

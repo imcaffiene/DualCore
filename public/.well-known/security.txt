@@ -1,0 +1,4 @@
+Contact: mailto:imcaffiene@gmail.com
+Expires: 2027-01-01T00:00:00.000Z
+Preferred-Languages: en, hi
+Canonical: https://www.2xstudio.in/.well-known/security.txt

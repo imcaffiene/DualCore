@@ -1,0 +1,14 @@
+/* TEAM */
+Name: Sumit Kumar
+Role: Full-Stack Engineer & AI Architect
+Site: https://www.2xstudio.in
+Twitter: @i_m_caffeine
+
+Name: Shubham Singh
+Role: Mobile Engineer — iOS & Android
+Site: https://www.2xstudio.in
+
+/* SITE */
+Built with: Next.js, TypeScript, Tailwind CSS, Framer Motion
+Hosted on: Vercel
+First launch: 2024

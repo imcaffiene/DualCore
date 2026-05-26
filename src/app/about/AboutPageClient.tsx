@@ -152,14 +152,14 @@ function TeamSection({ member, index }: { member: typeof team[0]; index: number 
           </span>
 
           <div className="mt-auto pt-12">
-            <h2
+            <h3
               className="font-display leading-[0.82]"
               style={{ fontSize: "clamp(64px, 9vw, 136px)", color: "#FAFAF8", letterSpacing: "-0.01em" }}
             >
               {member.firstName}
               <br />
               <span style={{ color: "#FF6B00", fontStyle: "italic" }}>{member.lastName}</span>
-            </h2>
+            </h3>
             <p
               className="font-mono text-[10px] tracking-[0.22em] uppercase mt-5"
               style={{ color: "#777" }}
@@ -297,11 +297,11 @@ export default function AboutPageClient() {
               className="font-display leading-[0.82]"
               style={{ fontSize: "clamp(72px, 13vw, 200px)", color: "#FAFAF8" }}
             >
-              TWO DEVS.
+              About 2xStudio
             </motion.h1>
           </div>
           <div className="overflow-hidden mb-2">
-            <motion.h2
+            <motion.div
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
               transition={{ duration: 0.85, ease, delay: 0.32 }}
@@ -309,10 +309,10 @@ export default function AboutPageClient() {
               style={{ fontSize: "clamp(72px, 13vw, 200px)", color: "#FF6B00", fontStyle: "italic" }}
             >
               ZERO FLUFF.
-            </motion.h2>
+            </motion.div>
           </div>
           <div className="overflow-hidden">
-            <motion.h2
+            <motion.div
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
               transition={{ duration: 0.85, ease, delay: 0.44 }}
@@ -320,7 +320,7 @@ export default function AboutPageClient() {
               style={{ fontSize: "clamp(72px, 13vw, 200px)", color: "#FAFAF8" }}
             >
               ALL SHIPPED.
-            </motion.h2>
+            </motion.div>
           </div>
 
           <motion.div

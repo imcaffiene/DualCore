@@ -69,9 +69,9 @@ function Block({
 }) {
   return (
     <div>
-      <div className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
+      <h2 className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
         {label}
-      </div>
+      </h2>
       <p className="mt-4 text-base leading-relaxed text-foreground/85 sm:text-lg">
         {children}
       </p>
@@ -195,9 +195,9 @@ export default async function CaseStudyPage({
             <Block label="The Problem">{project.problem}</Block>
 
             <div>
-              <div className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-foreground/50">
                 Our Approach
-              </div>
+              </h2>
               <ol className="mt-4 space-y-3">
                 {project.approach.map((step, i) => (
                   <li

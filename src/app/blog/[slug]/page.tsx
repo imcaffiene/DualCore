@@ -139,9 +139,9 @@ export default async function BlogPostPage({
               {post.author.split(" ").map(n => n[0]).join("")}
             </div>
             <div className="flex-1">
-              <div className="font-sans font-medium" style={{ fontSize: "14px", color: "#FAFAF8" }}>
+              <Link href="/about" className="font-sans font-medium transition-colors hover:text-[#FF6B00]" style={{ fontSize: "14px", color: "#FAFAF8" }}>
                 {post.author}
-              </div>
+              </Link>
               <div className="font-sans" style={{ fontSize: "12px", color: "#555", marginTop: 1 }}>
                 {post.authorRole}
               </div>

@@ -16,7 +16,7 @@ export const organizationJsonLd = {
   email: "imcaffiene@gmail.com",
   description:
     "A two-person engineering studio specializing in production AI agents, automation systems, and complex full-stack applications.",
-  foundingDate: "2024",
+  foundingDate: "2024-01-01",
   numberOfEmployees: { "@type": "QuantitativeValue", value: 2 },
   logo: {
     "@type": "ImageObject",
@@ -34,6 +34,7 @@ export const organizationJsonLd = {
   sameAs: [
     "https://x.com/i_m_caffeine",
     "https://www.linkedin.com/in/shubhamsingh2135/",
+    "https://github.com/imcaffiene",
   ],
 };
 
@@ -131,6 +132,14 @@ export function buildWebSiteJsonLd() {
     description:
       "AI agents, full-stack applications, and automation systems — engineered for production by a two-person studio.",
     publisher: { "@id": `${SITE_URL}#organization` },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
   };
 }
 
@@ -183,13 +192,13 @@ export function buildAboutPageJsonLd() {
   };
 }
 
-// ── Process page: Service schema ──
+// ── Process (on homepage): Service schema ──
 export function buildProcessPageJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     name: "2xStudio Engineering Process",
-    url: `${SITE_URL}/process`,
+    url: `${SITE_URL}/#services`,
     provider: { "@id": `${SITE_URL}#organization` },
     description:
       "Five-phase development process: Discovery, Design, Build, Launch, Support. Transparent timelines, regular demos, and zero surprises.",
@@ -209,13 +218,13 @@ export function buildProcessPageJsonLd() {
   };
 }
 
-// ── Contact page: ContactPage schema ──
+// ── Contact (on homepage): ContactPage schema ──
 export function buildContactPageJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: "Hire 2xStudio — Start a Project",
-    url: `${SITE_URL}/contact`,
+    url: `${SITE_URL}/#contact`,
     mainEntity: {
       "@type": "Organization",
       name: "2xStudio",
