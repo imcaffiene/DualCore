@@ -64,12 +64,12 @@ export function useMdxComponents(): MDXComponents {
       </h1>
     ),
     h2: ({ children, ...props }) => (
-      <h2 className="font-display text-xl font-bold leading-[1.25] sm:text-2xl mt-10 mb-4" style={{ color: "#FAFAF8" }} {...props}>
+      <h2 className="font-sans text-xl font-semibold leading-[1.3] sm:text-2xl mt-10 mb-4" style={{ color: "#FAFAF8", letterSpacing: "-0.01em" }} {...props}>
         {children}
       </h2>
     ),
     h3: ({ children, ...props }) => (
-      <h3 className="font-display text-lg font-bold leading-[1.3] sm:text-xl mt-8 mb-3" style={{ color: "#FAFAF8" }} {...props}>
+      <h3 className="font-sans text-base font-semibold leading-[1.4] sm:text-lg mt-8 mb-3" style={{ color: "#DEDEDA", letterSpacing: "-0.005em" }} {...props}>
         {children}
       </h3>
     ),
@@ -91,17 +91,17 @@ export function useMdxComponents(): MDXComponents {
       </a>
     ),
     ul: ({ children, ...props }) => (
-      <ul className="font-sans mb-5 space-y-1.5" style={{ fontSize: "clamp(14px, 1.1vw, 16px)", color: "#888", fontWeight: 350, lineHeight: 1.8, paddingLeft: "1.5em" }} {...props}>
+      <ul className="font-sans mb-5 space-y-1.5 list-disc" style={{ fontSize: "clamp(14px, 1.1vw, 16px)", color: "#888", fontWeight: 350, lineHeight: 1.8, paddingLeft: "1.5em" }} {...props}>
         {children}
       </ul>
     ),
     ol: ({ children, ...props }) => (
-      <ol className="font-sans mb-5 space-y-1.5" style={{ fontSize: "clamp(14px, 1.1vw, 16px)", color: "#888", fontWeight: 350, lineHeight: 1.8, paddingLeft: "1.5em" }} {...props}>
+      <ol className="font-sans mb-5 space-y-1.5 list-decimal" style={{ fontSize: "clamp(14px, 1.1vw, 16px)", color: "#888", fontWeight: 350, lineHeight: 1.8, paddingLeft: "1.5em" }} {...props}>
         {children}
       </ol>
     ),
     li: ({ children, ...props }) => (
-      <li className="pl-1" {...props}>{children}</li>
+      <li className="pl-1" style={{ color: "#888", fontSize: "clamp(14px, 1.1vw, 16px)", fontWeight: 350 }} {...props}>{children}</li>
     ),
     blockquote: ({ children, ...props }) => (
       <blockquote
@@ -139,7 +139,7 @@ export function useMdxComponents(): MDXComponents {
     pre: ({ children, ...props }) => <>{children}</>,
     hr: ({ ...props }) => <hr className="my-16 border-t" style={{ borderColor: "#1C1C1C" }} {...props} />,
     img: ({ src, alt, ...props }) => (
-      <div className="my-10 overflow-hidden rounded-xl">
+      <span className="my-10 overflow-hidden rounded-xl" style={{ display: "block" }}>
         <img
           src={src}
           alt={alt || ""}
@@ -148,7 +148,7 @@ export function useMdxComponents(): MDXComponents {
           loading="lazy"
           {...props}
         />
-      </div>
+      </span>
     ),
     table: ({ children, ...props }) => (
       <div className="overflow-x-auto my-10 rounded-xl" style={{ border: "1px solid #1C1C1C" }}>

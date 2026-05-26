@@ -15,7 +15,7 @@ export interface BlogPost {
   keywords: string[];
   author: string;
   authorRole: string;
-  image: string;
+  image: string | undefined;
   readTime: string;
   content: string;
 }
@@ -40,7 +40,7 @@ export function getAllPosts(): Omit<BlogPost, "content">[] {
       keywords: data.keywords || tags,
       author: data.author || "2xStudio",
       authorRole: data.authorRole || "",
-      image: data.image || "https://www.2xstudio.in/og-image.png",
+      image: data.image || undefined,
       readTime: readTime.text,
     };
   });
@@ -66,7 +66,7 @@ export function getPost(slug: string): BlogPost | null {
     keywords: data.keywords || tags,
     author: data.author || "2xStudio",
     authorRole: data.authorRole || "",
-    image: data.image || "https://www.2xstudio.in/og-image.png",
+    image: data.image || undefined,
     readTime: readTime.text,
     content,
   };
@@ -109,7 +109,7 @@ export function buildArticleJsonLd(post: BlogPost) {
     description: post.description,
     image: {
       "@type": "ImageObject",
-      url: post.image,
+      url: post.image ?? "https://www.2xstudio.in/og-image.png",
       width: 1200,
       height: 630,
     },
@@ -187,7 +187,7 @@ export function buildBlogListJsonLd(posts?: Omit<BlogPost, "content">[]) {
       description: p.description,
       url: `${SITE_URL}/blog/${p.slug}`,
       datePublished: p.date,
-      image: p.image,
+      image: p.image ?? "https://www.2xstudio.in/og-image.png",
       keywords: p.keywords.join(", "),
       author: {
         "@type": "Person",

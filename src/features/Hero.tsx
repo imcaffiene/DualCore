@@ -226,7 +226,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease, delay: 0.5 }}
-        className="border-t border-border flex-shrink-0 relative z-10"
+        className="border-t border-border shrink-0 relative z-10"
       >
         <div
           className="flex flex-wrap items-center justify-between gap-4"

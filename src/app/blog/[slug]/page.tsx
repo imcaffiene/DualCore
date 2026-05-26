@@ -35,7 +35,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${post.title} — 2xStudio Blog`,
       description: post.description,
-      images: [{ url: post.image, width: 1200, height: 630, alt: post.title }],
+      images: [{ url: post.image ?? "https://www.2xstudio.in/og-image.png", width: 1200, height: 630, alt: post.title }],
       url: canonicalUrl(`/blog/${post.slug}`),
       type: "article",
       publishedTime: post.date,
@@ -48,7 +48,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${post.title} — 2xStudio Blog`,
       description: post.description,
-      images: [post.image],
+      images: [post.image ?? "https://www.2xstudio.in/og-image.png"],
       creator: "@i_m_caffeine",
       site: "@i_m_caffeine",
     },
