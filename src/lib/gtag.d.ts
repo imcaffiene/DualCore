@@ -1,19 +1,21 @@
-type GtagConsentValue = "granted" | "denied";
-
-interface GtagConsentParams {
-  analytics_storage?: GtagConsentValue;
-  ad_storage?: GtagConsentValue;
-  ad_user_data?: GtagConsentValue;
-  ad_personalization?: GtagConsentValue;
-  wait_for_update?: number;
+interface GtagConfig {
+  page_path?: string;
+  [key: string]: unknown;
 }
 
-declare function gtag(command: "js", date: Date): void;
-declare function gtag(command: "config", targetId: string, config?: Record<string, unknown>): void;
-declare function gtag(command: "event", action: string, params?: Record<string, unknown>): void;
-declare function gtag(command: "consent", type: "default" | "update", params: GtagConsentParams): void;
+interface GtagEvent {
+  action: string;
+  category?: string;
+  label?: string;
+  value?: number;
+  [key: string]: unknown;
+}
 
 interface Window {
-  gtag: typeof gtag;
-  dataLayer: unknown[];
+  gtag: (
+    command: "config" | "event" | "js" | "set" | "consent",
+    targetId: string | Date,
+    config?: GtagConfig | GtagEvent | { [key: string]: string },
+  ) => void;
+  dataLayer?: unknown[];
 }

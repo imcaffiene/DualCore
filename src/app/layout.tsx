@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Inter, Bebas_Neue, JetBrains_Mono } from "next/font/google";
+import { Inter, Bebas_Neue, JetBrains_Mono, Source_Serif_4 } from "next/font/google";
 import { PageTransition } from "@/components/PageTransition";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
@@ -33,6 +33,14 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-mono-custom",
+  display: "swap",
+  preload: false,
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-serif-custom",
   display: "swap",
   preload: false,
 });
@@ -129,7 +137,7 @@ export default function RootLayout({
       lang="en"
       data-scroll-behavior="smooth"
       suppressHydrationWarning
-      className={`${inter.variable} ${bebasNeue.variable} ${jetbrainsMono.variable}`}
+      className={`${inter.variable} ${bebasNeue.variable} ${jetbrainsMono.variable} ${sourceSerif.variable}`}
     >
       <head>
         <meta charSet="utf-8" />
@@ -137,6 +145,7 @@ export default function RootLayout({
         <meta name="geo.region" content="IN" />
         <meta name="geo.placename" content="India" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="sitemap" type="application/xml" href={`${SITE_URL}/sitemap.xml`} />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         {/* RSS Autodiscovery — tells feed readers and Google about your RSS feed */}
         <link
@@ -150,7 +159,7 @@ export default function RootLayout({
         <link rel="llms-full" type="text/plain" href={`${SITE_URL}/llms-full.txt`} title="Full content for AI indexing" />
         <JsonLd data={organizationJsonLd} />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <Cursor />
         <GlobalGlow />
         <PageTransition>

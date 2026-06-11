@@ -192,54 +192,6 @@ export function buildAboutPageJsonLd() {
   };
 }
 
-// ── Process (on homepage): Service schema ──
-export function buildProcessPageJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "2xStudio Engineering Process",
-    url: `${SITE_URL}/#services`,
-    provider: { "@id": `${SITE_URL}#organization` },
-    description:
-      "Five-phase development process: Discovery, Design, Build, Launch, Support. Transparent timelines, regular demos, and zero surprises.",
-    serviceType: "Custom Software Development",
-    areaServed: { "@type": "Place", name: "Worldwide" },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Development Phases",
-      itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Discovery — Stakeholder interviews, scope definition, fixed-price quote" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Design — Information architecture, high-fidelity Figma, clickable prototypes" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Build — Production-grade web apps, AI agents, mobile apps with regular demos" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Launch — QA, accessibility audit, performance pass, app store submission" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Support — 14-day free bug-fix window and optional monthly retainer" } },
-      ],
-    },
-  };
-}
-
-// ── Contact (on homepage): ContactPage schema ──
-export function buildContactPageJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    name: "Hire 2xStudio — Start a Project",
-    url: `${SITE_URL}/#contact`,
-    mainEntity: {
-      "@type": "Organization",
-      name: "2xStudio",
-      email: "imcaffiene@gmail.com",
-      contactPoint: {
-        "@type": "ContactPoint",
-        contactType: "sales",
-        email: "imcaffiene@gmail.com",
-        availableLanguage: ["English", "Hindi"],
-        areaServed: "Worldwide",
-      },
-    },
-  };
-}
-
 // ── Projects listing: ItemList schema ──
 export function buildProjectsListJsonLd(
   projects: { id: string; title: string; description: string; image: string }[]

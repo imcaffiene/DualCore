@@ -15,7 +15,7 @@ export function SiteFooter() {
   const [timeRange, setTimeRange] = useState("09–19");
   const { navigateTo } = usePageTransition();
 
-  function NavLink({ href, className, style, children }: { href: string; className?: string; style?: React.CSSProperties; children: React.ReactNode }) {
+  function NavLink({ href, className, style, children }: { href: string; className?: string; style?: React.CSSProperties; children: React.ReactNode; }) {
     return (
       <a
         href={href}
@@ -33,16 +33,19 @@ export function SiteFooter() {
     const interval = setInterval(() => setTimeRange(getTimeRange()), 60000);
     return () => clearInterval(interval);
   }, []);
-  
+
   return (
     <footer className="relative mt-32 border-t border-border/60 bg-background">
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-10">
         <div className="grid gap-16 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <div className="font-mono text-[10px] tracking-[0.22em] uppercase" style={{ color: "hsl(var(--primary))" }}>
+            <div className="font-mono text-[10px] tracking-[0.22em] uppercase"
+              style={{ color: "hsl(var(--primary))" }}>
               Open for projects
             </div>
-            <h2 className="mt-6 font-display leading-[0.95] tracking-tight" style={{ fontSize: "clamp(36px, 5vw, 72px)", color: "hsl(var(--foreground))" }}>
+
+            <h2 className="mt-6 font-display leading-[0.95] tracking-tight"
+              style={{ fontSize: "clamp(36px, 5vw, 72px)", color: "hsl(var(--foreground))" }}>
               Have something <em style={{ color: "hsl(var(--primary))" }}>hard</em>
               <br /> to build?
             </h2>
@@ -53,23 +56,108 @@ export function SiteFooter() {
 
           <div className="grid grid-cols-2 gap-10 lg:col-span-6 lg:grid-cols-3">
             <FooterCol label="Site">
-              <li><NavLink href="/projects" className="hover:opacity-70 transition-opacity" style={{ color: "hsl(var(--foreground))", fontFamily: "var(--font-display)", fontSize: "18px" }}>Work</NavLink></li>
-              <li><NavLink href="/#services" className="hover:opacity-70 transition-opacity" style={{ color: "hsl(var(--foreground))", fontFamily: "var(--font-display)", fontSize: "18px" }}>Services</NavLink></li>
-              <li><NavLink href="/about" className="hover:opacity-70 transition-opacity" style={{ color: "hsl(var(--foreground))", fontFamily: "var(--font-display)", fontSize: "18px" }}>Studio</NavLink></li>
-              <li><NavLink href="/#contact" className="hover:opacity-70 transition-opacity" style={{ color: "hsl(var(--foreground))", fontFamily: "var(--font-display)", fontSize: "18px" }}>Contact</NavLink></li>
+              <li>
+                <NavLink href="/projects"
+                  className="hover:opacity-70 transition-opacity"
+                  style={{
+                    color: "hsl(var(--foreground))",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "18px"
+                  }}
+                >
+                  Work
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink href="/#services"
+                  className="hover:opacity-70 transition-opacity"
+                  style={{
+                    color: "hsl(var(--foreground))",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "18px"
+                  }}
+                >
+                  Services
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink href="/about"
+                  className="hover:opacity-70 transition-opacity"
+                  style={{
+                    color: "hsl(var(--foreground))",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "18px"
+                  }}
+                >
+                  Studio
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink href="/#contact"
+                  className="hover:opacity-70 transition-opacity"
+                  style={{
+                    color: "hsl(var(--foreground))",
+                    fontFamily: "var(--font-display)",
+                    fontSize: "18px"
+                  }}>
+                  Contact
+                </NavLink>
+              </li>
             </FooterCol>
+
             <FooterCol label="Connect">
-              <li><a href="mailto:imcaffiene@gmail.com" className="hover:opacity-70 transition-opacity" style={{ color: "hsl(var(--foreground))" }}>Email</a></li>
-              <li><a href="https://www.linkedin.com/in/shubhamsingh2135/" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity" style={{ color: "hsl(var(--foreground))" }}>LinkedIn</a></li>
-              <li><a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity" style={{ color: "hsl(var(--foreground))" }}>GitHub</a></li>
-              <li><a href="https://x.com/i_m_caffeine" target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity" style={{ color: "hsl(var(--foreground))" }}>X / Twitter</a></li>
+              <li>
+                <a href="mailto:imcaffiene@gmail.com"
+                  className="hover:opacity-70 transition-opacity"
+                  style={{ color: "hsl(var(--foreground))" }}>
+                  Email
+                </a>
+              </li>
+
+              <li>
+                <a href="https://www.linkedin.com/in/shubhamsingh2135/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-70 transition-opacity"
+                  style={{ color: "hsl(var(--foreground))" }}>
+                  LinkedIn
+                </a>
+              </li>
+
+              <li>
+                <a href="https://github.com/imcaffiene"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-70 transition-opacity"
+                  style={{ color: "hsl(var(--foreground))" }}>
+                  GitHub
+                </a>
+              </li>
+
+              <li>
+                <a href="https://x.com/i_m_caffeine"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-70 transition-opacity"
+                  style={{ color: "hsl(var(--foreground))" }}>
+                  X / Twitter
+                </a>
+              </li>
             </FooterCol>
+
             <div className="col-span-2 lg:col-span-1">
               <div className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: "hsl(var(--text3))" }}>Studio</div>
-              <div className="mt-4 font-display text-lg leading-snug" style={{ color: "hsl(var(--foreground))" }}>
+              <div
+                className="mt-4 font-display text-lg leading-snug"
+                style={{ color: "hsl(var(--foreground))" }}
+              >
                 Remote-first<br />
                 India
               </div>
+
               <div className="mt-3 font-mono text-xs" style={{ color: "hsl(var(--muted-foreground))" }}>
                 UTC+05:30 · Now {timeRange}
               </div>
@@ -98,7 +186,7 @@ export function SiteFooter() {
   );
 }
 
-function FooterCol({ label, children }: { label: string; children: React.ReactNode }) {
+function FooterCol({ label, children }: { label: string; children: React.ReactNode; }) {
   return (
     <div>
       <div className="font-mono text-[9px] tracking-[0.2em] uppercase" style={{ color: "hsl(var(--text3))" }}>{label}</div>

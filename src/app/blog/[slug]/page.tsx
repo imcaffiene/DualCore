@@ -4,6 +4,23 @@ import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+import { visit } from "unist-util-visit";
+
+function remarkUnwrapImages() {
+  return (tree: any) => {
+    visit(tree, "paragraph", (_node: any, index: number | undefined, parent: any) => {
+      const node = _node as any;
+      if (
+        parent &&
+        index !== undefined &&
+        node.children.length === 1 &&
+        node.children[0].type === "image"
+      ) {
+        parent.children.splice(index, 1, node.children[0]);
+      }
+    });
+  };
+}
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { ArrowLeft } from "lucide-react";
 import { canonicalUrl } from "@/lib/seo";
@@ -174,7 +191,7 @@ export default async function BlogPostPage({
             components={mdxComponents}
             options={{
               mdxOptions: {
-                remarkPlugins: [remarkGfm],
+                remarkPlugins: [remarkGfm, remarkUnwrapImages],
                 rehypePlugins: [
                   rehypeSlug,
                   [rehypeAutolinkHeadings, { behavior: "wrap", properties: { className: ["heading-anchor"] } }],

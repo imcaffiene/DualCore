@@ -175,10 +175,6 @@ a, button, [role="button"] {
   font-family: var(--font-display-custom), sans-serif;
 }
 
-.font-mono-dm {
-  font-family: var(--font-mono-custom), monospace;
-}
-
 .text-gradient {
   background: linear-gradient(
     135deg,
@@ -191,299 +187,46 @@ a, button, [role="button"] {
   background-clip: text;
 }
 
-.glow-border {
-  box-shadow:
-    0 0 0 1px hsl(var(--primary) / 0.3),
-    0 0 20px -5px hsl(var(--primary) / 0.2);
+.font-serif {
+  font-family: var(--font-serif-custom), Georgia, serif;
 }
 
-.glow-border:hover {
-  box-shadow:
-    0 0 0 1px hsl(var(--primary) / 0.6),
-    0 0 30px -5px hsl(var(--primary) / 0.3);
+.heading-anchor {
+  color: inherit !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
 }
 
-.grid-bg {
-  background-image:
-    linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
-  background-size: 60px 60px;
+.heading-anchor:hover {
+  color: hsl(var(--primary)) !important;
 }
 
-.hero-grid-bg {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(
-    ellipse 80% 80% at 50% 50%,
-    black 30%,
-    transparent 100%
-  );
-}
-
-.flow-grid-bg {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-.marquee-mask {
-  -webkit-mask-image: linear-gradient(
-    90deg,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
-  mask-image: linear-gradient(
-    90deg,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  border: 1px solid hsl(var(--border));
-  font-family: var(--font-mono-custom), monospace;
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: hsl(var(--muted-foreground));
-}
-
-.hero-underline {
-  position: relative;
-}
-
-.hero-underline::after {
-  content: "";
-  position: absolute;
-  bottom: 4px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: hsl(var(--accent));
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: lineReveal 0.5s ease 0.9s forwards;
-}
-
-.reveal {
+.heading-anchor::before {
+  content: "#";
+  margin-right: 0.4em;
   opacity: 0;
-  transform: translateY(24px);
-  transition:
-    opacity 0.7s ease,
-    transform 0.7s ease;
+  transition: opacity 0.2s ease;
+  font-weight: 400;
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: none;
-}
-
-.reveal-delay-1 {
-  transition-delay: 0.1s;
-}
-
-.reveal-delay-2 {
-  transition-delay: 0.2s;
-}
-
-.reveal-delay-3 {
-  transition-delay: 0.3s;
-}
-
-.animate-fade-up {
-  opacity: 0;
-  transform: translateY(16px);
-  animation: fadeUp 0.6s ease forwards;
-}
-
-.animate-fade-up-delay-1 {
-  animation-delay: 0.1s;
-}
-
-.animate-fade-up-delay-2 {
-  animation-delay: 0.2s;
-}
-
-.animate-fade-up-delay-3 {
-  animation-delay: 0.35s;
-}
-
-.animate-fade-up-delay-4 {
-  animation-delay: 0.45s;
-}
-
-.animate-fade-up-delay-5 {
-  animation-delay: 0.55s;
-}
-
-.animate-fade-right {
-  opacity: 0;
-  transform: translateX(24px);
-  animation: fadeRight 0.8s ease 0.4s forwards;
+.heading-anchor:hover::before {
+  opacity: 0.4;
 }
 
 .animate-pulse-dot {
   animation: pulse-dot 2s ease infinite;
 }
 
-.animate-typing {
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid hsl(var(--accent));
-  width: 0;
-  animation:
-    typing 2.5s steps(28) 1.5s forwards,
-    blink 0.75s step-end infinite;
-}
-
-.animate-flow-pulse {
-  animation: flowPulse 1.8s ease infinite;
-}
-
 .animate-marquee {
   animation: marquee 20s linear infinite;
 }
 
-.orb {
-  animation: float 8s ease-in-out infinite;
-}
-
-.pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-.fade-up {
-  opacity: 0;
-  animation: fade-up 0.8s ease-out forwards;
-}
-
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes fadeRight {
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes lineReveal {
-  to {
-    transform: scaleX(1);
-  }
-}
-
 @keyframes pulse-dot {
   0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.4;
-  }
-}
-
-@keyframes typing {
-  to {
-    width: 180px;
-  }
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    border-color: hsl(var(--accent));
-  }
-
-  50% {
-    border-color: transparent;
-  }
-}
-
-@keyframes flowPulse {
-  0% {
-    opacity: 0.3;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.3;
-  }
+  100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 @keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-  }
-
-  33% {
-    transform: translate(30px, -20px) scale(1.05);
-  }
-
-  66% {
-    transform: translate(-20px, 15px) scale(0.95);
-  }
-}
-
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.4;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes checkPop {
-  0% {
-    transform: scale(0.4);
-    opacity: 0;
-  }
-  70% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+  to { transform: translateX(-50%); }
 }

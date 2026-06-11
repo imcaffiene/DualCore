@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import type { ComponentPropsWithoutRef } from "react";
 
 type TableProps = {
   headers: string[];
@@ -9,19 +10,23 @@ function Table({ headers, rows }: TableProps) {
   return (
     <div
       className="my-10 overflow-x-auto rounded-xl"
-      style={{ border: "1px solid #1C1C1C", background: "#0A0A0A" }}
+      style={{
+        border: "1px solid #1C1C1C",
+        background: "#0A0A0A",
+      }}
     >
       <table className="w-full border-collapse">
         <thead style={{ background: "#101010" }}>
           <tr>
-            {headers.map((header) => (
+            {headers.map((header, index) => (
               <th
-                key={header}
+                key={index}
                 className="px-6 py-4 text-left font-semibold"
                 style={{
-                  color: "#FAFAF8",
+                  color: "#F5F5F3",
                   borderBottom: "1px solid #1C1C1C",
                   fontSize: "14px",
+                  letterSpacing: "-0.01em",
                 }}
               >
                 {header}
@@ -31,17 +36,17 @@ function Table({ headers, rows }: TableProps) {
         </thead>
         <tbody>
           {rows.map((row, rowIndex) => (
-            <tr key={`${row[0]}-${rowIndex}`}>
+            <tr key={rowIndex}>
               {row.map((cell, cellIndex) => (
                 <td
-                  key={`${cell}-${cellIndex}`}
+                  key={cellIndex}
                   className="px-6 py-4 align-top"
                   style={{
-                    color: "#BBB",
+                    color: "#B8B8B3",
                     borderBottom:
                       rowIndex === rows.length - 1 ? "none" : "1px solid #141414",
                     fontSize: "14px",
-                    lineHeight: 1.6,
+                    lineHeight: 1.7,
                   }}
                 >
                   {cell}
@@ -55,124 +60,289 @@ function Table({ headers, rows }: TableProps) {
   );
 }
 
+type CodeProps = ComponentPropsWithoutRef<"code">;
+type PreProps = ComponentPropsWithoutRef<"pre">;
+
 export function useMdxComponents(): MDXComponents {
   return {
     Table,
+
     h1: ({ children, ...props }) => (
-      <h1 className="font-display text-2xl font-bold leading-[1.2] sm:text-3xl mt-12 mb-6" style={{ color: "#FAFAF8" }} {...props}>
+      <h1
+        className="mt-12 mb-6 font-sans text-3xl font-bold leading-[1.15] sm:text-4xl"
+        style={{
+          color: "#FFFFFF",
+          letterSpacing: "-0.02em",
+        }}
+        {...props}
+      >
         {children}
       </h1>
     ),
+
     h2: ({ children, ...props }) => (
-      <h2 className="font-sans text-xl font-semibold leading-[1.3] sm:text-2xl mt-10 mb-4" style={{ color: "#FAFAF8", letterSpacing: "-0.01em" }} {...props}>
+      <h2
+        className="mt-10 mb-5 border-l-[3px] pl-4 font-sans text-[26px] font-semibold leading-[1.28] sm:text-[30px]"
+        style={{
+          color: "#F5F5F3",
+          borderColor: "#FF6B00",
+          letterSpacing: "-0.012em",
+        }}
+        {...props}
+      >
         {children}
       </h2>
     ),
+
     h3: ({ children, ...props }) => (
-      <h3 className="font-sans text-base font-semibold leading-[1.4] sm:text-lg mt-8 mb-3" style={{ color: "#DEDEDA", letterSpacing: "-0.005em" }} {...props}>
+      <h3
+        className="mt-8 mb-3 font-sans text-[22px] font-medium leading-[1.38] sm:text-2xl"
+        style={{
+          color: "#ECECE7",
+          letterSpacing: "-0.006em",
+        }}
+        {...props}
+      >
         {children}
       </h3>
     ),
+
     p: ({ children, ...props }) => (
-      <p className="font-sans leading-[1.8] mb-5" style={{ fontSize: "clamp(14px, 1.1vw, 16px)", color: "#888", fontWeight: 350 }} {...props}>
+      <p
+        className="mb-6 font-serif leading-[1.85]"
+        style={{
+          fontSize: "clamp(15.5px, 1.05vw, 17px)",
+          color: "#B3B3AE",
+          fontWeight: 400,
+        }}
+        {...props}
+      >
         {children}
       </p>
     ),
+
     a: ({ href, children, ...props }) => (
       <a
         href={href}
         target={href?.startsWith("http") ? "_blank" : undefined}
         rel={href?.startsWith("http") ? "noopener noreferrer" : undefined}
         className="transition-colors duration-200"
-        style={{ color: "#FF6B00", textDecoration: "underline", textUnderlineOffset: 2, textDecorationThickness: 1 }}
+        style={{
+          color: "#FF6B00",
+          textDecoration: "underline",
+          textUnderlineOffset: 3,
+          textDecorationThickness: 1,
+        }}
         {...props}
       >
         {children}
       </a>
     ),
+
     ul: ({ children, ...props }) => (
-      <ul className="font-sans mb-5 space-y-1.5 list-disc" style={{ fontSize: "clamp(14px, 1.1vw, 16px)", color: "#888", fontWeight: 350, lineHeight: 1.8, paddingLeft: "1.5em" }} {...props}>
+      <ul
+        className="mb-6 list-disc space-y-2 font-serif"
+        style={{
+          fontSize: "clamp(16px, 1.2vw, 18px)",
+          color: "#B3B3AE",
+          fontWeight: 400,
+          lineHeight: 1.85,
+          paddingLeft: "1.5em",
+        }}
+        {...props}
+      >
         {children}
       </ul>
     ),
+
     ol: ({ children, ...props }) => (
-      <ol className="font-sans mb-5 space-y-1.5 list-decimal" style={{ fontSize: "clamp(14px, 1.1vw, 16px)", color: "#888", fontWeight: 350, lineHeight: 1.8, paddingLeft: "1.5em" }} {...props}>
+      <ol
+        className="mb-6 list-decimal space-y-2 font-serif"
+        style={{
+          fontSize: "clamp(16px, 1.2vw, 18px)",
+          color: "#B3B3AE",
+          fontWeight: 400,
+          lineHeight: 1.85,
+          paddingLeft: "1.5em",
+        }}
+        {...props}
+      >
         {children}
       </ol>
     ),
+
     li: ({ children, ...props }) => (
-      <li className="pl-1" style={{ color: "#888", fontSize: "clamp(14px, 1.1vw, 16px)", fontWeight: 350 }} {...props}>{children}</li>
+      <li
+        className="pl-1"
+        style={{
+          color: "#B3B3AE",
+          fontSize: "clamp(16px, 1.2vw, 18px)",
+          fontWeight: 400,
+        }}
+        {...props}
+      >
+        {children}
+      </li>
     ),
+
     blockquote: ({ children, ...props }) => (
       <blockquote
-        className="border-l-[3px] pl-6 py-2 mb-6 italic font-sans"
-        style={{ borderColor: "#FF6B00", color: "#999", fontSize: "clamp(14px, 1.1vw, 16px)", lineHeight: 1.8 }}
+        className="mb-6 border-l-[3px] py-3 pl-6 font-serif italic"
+        style={{
+          borderColor: "#FF6B00",
+          color: "#C4C4BF",
+          fontSize: "clamp(16px, 1.2vw, 18px)",
+          lineHeight: 1.85,
+          background: "rgba(255,107,0,0.03)",
+        }}
         {...props}
       >
         {children}
       </blockquote>
     ),
-    code: ({ className, children, ...props }: React.ComponentPropsWithoutRef<"code">) => {
+
+    code: ({ className, children, ...props }: CodeProps) => {
       const isInline = !className;
+
       if (isInline) {
         return (
           <code
-            className="font-mono px-2 py-0.5 rounded"
-            style={{ background: "#1A1A1A", color: "#FF6B00", fontSize: "0.85em" }}
+            className="rounded px-2 py-0.5 font-mono"
+            style={{
+              background: "#1A1A1A",
+              color: "#FF6B00",
+              fontSize: "0.85em",
+            }}
             {...props}
           >
             {children}
           </code>
         );
       }
+
       return (
-        <pre
-          className="overflow-x-auto rounded-xl mb-8 p-6 leading-[1.8]"
-          style={{ background: "#0A0A0A", border: "1px solid #1C1C1C", fontSize: "14px" }}
+        <code
+          className={`font-mono ${className ?? ""}`}
+          style={{
+            color: "#DDDDD8",
+            fontSize: "14px",
+            lineHeight: 1.8,
+          }}
+          {...props}
         >
-          <code className={`font-mono ${className || ""}`} style={{ color: "#DDD" }} {...props}>
-            {children}
-          </code>
-        </pre>
+          {children}
+        </code>
       );
     },
-    pre: ({ children, ...props }) => <>{children}</>,
-    hr: ({ ...props }) => <hr className="my-16 border-t" style={{ borderColor: "#1C1C1C" }} {...props} />,
-    img: ({ src, alt, ...props }) => (
-      <span className="my-10 overflow-hidden rounded-xl" style={{ display: "block" }}>
-        <img
-          src={src}
-          alt={alt || ""}
-          className="w-full object-cover"
-          style={{ border: "1px solid #1C1C1C" }}
-          loading="lazy"
-          {...props}
-        />
-      </span>
+
+    pre: ({ children, ...props }: PreProps) => (
+      <pre
+        className="mb-8 overflow-x-auto rounded-xl p-6"
+        style={{
+          background: "#0A0A0A",
+          border: "1px solid #1C1C1C",
+          fontSize: "14px",
+        }}
+        {...props}
+      >
+        {children}
+      </pre>
     ),
+
+    hr: ({ ...props }) => (
+      <hr
+        className="my-12 border-t"
+        style={{ borderColor: "#1C1C1C" }}
+        {...props}
+      />
+    ),
+
+    img: ({ src, alt, ...props }) => (
+      <img
+        src={src}
+        alt={alt || ""}
+        className="my-10 w-full rounded-xl object-cover"
+        style={{
+          border: "1px solid #1C1C1C",
+          display: "block",
+        }}
+        loading="lazy"
+        {...props}
+      />
+    ),
+
     table: ({ children, ...props }) => (
-      <div className="overflow-x-auto my-10 rounded-xl" style={{ border: "1px solid #1C1C1C" }}>
-        <table className="w-full" {...props}>
+      <div
+        className="my-10 overflow-x-auto rounded-xl"
+        style={{
+          border: "1px solid #1C1C1C",
+          background: "#0A0A0A",
+        }}
+      >
+        <table className="w-full border-collapse" {...props}>
           {children}
         </table>
       </div>
     ),
+
     thead: ({ children, ...props }) => (
-      <thead style={{ background: "#0A0A0A" }} {...props}>
+      <thead style={{ background: "#101010" }} {...props}>
         {children}
       </thead>
     ),
+
+    tbody: ({ children, ...props }) => <tbody {...props}>{children}</tbody>,
+
     th: ({ children, ...props }) => (
-      <th className="font-mono text-[11px] tracking-[0.15em] uppercase px-6 py-3.5 text-left font-semibold" style={{ color: "#888", borderBottom: "1px solid #1C1C1C" }} {...props}>
+      <th
+        className="px-6 py-4 text-left font-sans text-sm font-semibold"
+        style={{
+          color: "#F1F1EC",
+          borderBottom: "1px solid #1C1C1C",
+          letterSpacing: "-0.01em",
+        }}
+        {...props}
+      >
         {children}
       </th>
     ),
+
     td: ({ children, ...props }) => (
-      <td className="px-6 py-3.5 font-sans" style={{ color: "#BBB", borderBottom: "1px solid #141414", fontSize: "14px" }} {...props}>
+      <td
+        className="px-6 py-4 align-top font-sans"
+        style={{
+          color: "#B8B8B3",
+          borderBottom: "1px solid #141414",
+          fontSize: "14px",
+          lineHeight: 1.7,
+        }}
+        {...props}
+      >
         {children}
       </td>
     ),
-    strong: ({ children, ...props }) => <strong style={{ color: "#FAFAF8", fontWeight: 600 }} {...props}>{children}</strong>,
-    em: ({ children, ...props }) => <em style={{ color: "#DDD" }} {...props}>{children}</em>,
+
+    strong: ({ children, ...props }) => (
+      <strong
+        style={{
+          color: "#FAFAF8",
+          fontWeight: 600,
+        }}
+        {...props}
+      >
+        {children}
+      </strong>
+    ),
+
+    em: ({ children, ...props }) => (
+      <em
+        style={{
+          color: "#E0E0DB",
+        }}
+        {...props}
+      >
+        {children}
+      </em>
+    ),
   };
 }

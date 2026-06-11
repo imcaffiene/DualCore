@@ -11,8 +11,8 @@ import { usePageTransition } from "@/components/PageTransition";
 const ease = [0.16, 1, 0.3, 1] as const;
 
 const stats = [
-  { num: "50+",  label: "Projects shipped" },
-  { num: "4+",   label: "Years building"   },
+  { num: "8+",  label: "Projects shipped" },
+  { num: "1+",   label: "Years building"   },
   { num: "3",    label: "Platforms"        },
   { num: "24h",  label: "Response time"    },
 ];
