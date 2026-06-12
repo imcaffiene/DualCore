@@ -143,7 +143,7 @@ export default async function BlogPostPage({
             </div>
           )}
 
-          <h1 className="font-display leading-[1.1] mb-4" style={{ fontSize: "clamp(24px, 3vw, 36px)", color: "#FAFAF8" }}>
+          <h1 className="font-sans font-bold leading-[1.2] mb-4" style={{ fontSize: "clamp(24px, 3vw, 36px)", color: "#FAFAF8", letterSpacing: "-0.01em" }}>
             {post.title}
           </h1>
 
@@ -258,7 +258,7 @@ export default async function BlogPostPage({
                   style={{ borderTop: "1px solid #1C1C1C", borderBottom: i === relatedPosts.length - 1 ? "1px solid #1C1C1C" : "none" }}
                 >
                   <div className="flex-1 min-w-0">
-                    <div className="font-display leading-[1.2] mb-1 transition-colors duration-200 group-hover:text-[#FF6B00]" style={{ fontSize: "15px", color: "#FAFAF8" }}>
+                    <div className="font-sans font-semibold leading-[1.2] mb-1 transition-colors duration-200 group-hover:text-[#FF6B00]" style={{ fontSize: "15px", color: "#FAFAF8" }}>
                       {related.title}
                     </div>
                     <div className="font-sans truncate" style={{ fontSize: "13px", color: "#666" }}>
@@ -280,7 +280,7 @@ export default async function BlogPostPage({
           style={{ border: "1px solid #1C1C1C", background: "#080808" }}
         >
           <div>
-            <div className="font-display" style={{ fontSize: "clamp(20px, 1.5vw, 24px)", color: "#FAFAF8" }}>
+            <div className="font-sans font-bold" style={{ fontSize: "clamp(20px, 1.5vw, 24px)", color: "#FAFAF8" }}>
               Build something ambitious?
             </div>
             <p className="font-sans mt-3 leading-relaxed" style={{ fontSize: "15px", color: "#777", fontWeight: 300 }}>

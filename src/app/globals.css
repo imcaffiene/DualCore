@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --font-sans-custom: 'Inter', sans-serif;
-  --font-display-custom: 'Bebas Neue', sans-serif;
-  --font-mono-custom: 'JetBrains Mono', monospace;
+  --font-sans-custom: "Inter", sans-serif;
+  --font-display-custom: "Bebas Neue", sans-serif;
+  --font-mono-custom: "JetBrains Mono", monospace;
+  --font-serif-custom: "Georgia", serif;
 
   --background: 0 0% 5%;
   --bg2: 0 0% 8%;
@@ -137,16 +138,29 @@ body::before {
   z-index: 1;
 }
 
+/* Use readable mixed-case font for default headings */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-sans-custom), sans-serif;
+  text-transform: none;
+}
+
+/* Use this class only where you intentionally want Bebas Neue */
+.font-display {
   font-family: var(--font-display-custom), sans-serif;
 }
 
-a, button, [role="button"] {
+.font-serif {
+  font-family: var(--font-serif-custom), Georgia, serif;
+}
+
+a,
+button,
+[role="button"] {
   cursor: none !important;
 }
 
@@ -171,10 +185,6 @@ a, button, [role="button"] {
   background: hsl(var(--primary) / 0.6);
 }
 
-.font-display {
-  font-family: var(--font-display-custom), sans-serif;
-}
-
 .text-gradient {
   background: linear-gradient(
     135deg,
@@ -185,10 +195,6 @@ a, button, [role="button"] {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-.font-serif {
-  font-family: var(--font-serif-custom), Georgia, serif;
 }
 
 .heading-anchor {
@@ -223,10 +229,16 @@ a, button, [role="button"] {
 
 @keyframes pulse-dot {
   0%,
-  100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
 @keyframes marquee {
-  to { transform: translateX(-50%); }
+  to {
+    transform: translateX(-50%);
+  }
 }

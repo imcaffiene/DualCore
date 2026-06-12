@@ -69,10 +69,12 @@ export function useMdxComponents(): MDXComponents {
 
     h1: ({ children, ...props }) => (
       <h1
-        className="mt-12 mb-6 font-sans text-3xl font-bold leading-[1.15] sm:text-4xl"
+        className="mt-10 mb-5 font-sans font-bold leading-[1.15]"
         style={{
-          color: "#FFFFFF",
+          color: "#F5F5F3",
+          fontSize: "clamp(26px, 2.4vw, 34px)",
           letterSpacing: "-0.02em",
+          textTransform: "none",
         }}
         {...props}
       >
@@ -82,11 +84,14 @@ export function useMdxComponents(): MDXComponents {
 
     h2: ({ children, ...props }) => (
       <h2
-        className="mt-10 mb-5 border-l-[3px] pl-4 font-sans text-[26px] font-semibold leading-[1.28] sm:text-[30px]"
+        className="mt-12 mb-5 font-sans font-semibold leading-tight"
         style={{
-          color: "#F5F5F3",
-          borderColor: "#FF6B00",
+          color: "#FF6B00",
+          fontSize: "clamp(20px, 1.8vw, 26px)",
           letterSpacing: "-0.012em",
+          textTransform: "none",
+          borderBottom: "1px solid rgba(255,107,0,0.22)",
+          paddingBottom: "10px",
         }}
         {...props}
       >
@@ -98,8 +103,9 @@ export function useMdxComponents(): MDXComponents {
       <h3
         className="mt-8 mb-3 font-sans text-[22px] font-medium leading-[1.38] sm:text-2xl"
         style={{
-          color: "#ECECE7",
+          color: "#FF6B00",
           letterSpacing: "-0.006em",
+          textTransform: "none",
         }}
         {...props}
       >
