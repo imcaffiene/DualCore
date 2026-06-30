@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { CharButton } from "@/components/ui/CharButton";
+import { usePageTransition } from "@/components/PageTransition";
 
 function StatCounter({ val, label, delay = 0 }: { val: string; label: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -66,6 +67,7 @@ const stats = [
 
 export function Hero() {
   const heroRef = useRef<HTMLElement>(null);
+  const { navigateTo } = usePageTransition();
 
   const go = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -237,7 +239,7 @@ export function Hero() {
           </p>
 
           <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-            <CharButton variant="filled" onClick={() => go("work")}>
+            <CharButton variant="filled" onClick={() => navigateTo("/projects")}>
               See our work →
             </CharButton>
             <CharButton
@@ -267,40 +269,6 @@ export function Hero() {
         </div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.85, duration: 0.5 }}
-        style={{
-          borderTop: "1px solid #141414",
-          background: "#070707",
-          padding: "8px 0",
-          overflow: "hidden",
-          flexShrink: 0,
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <div className="flex whitespace-nowrap animate-marquee">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} style={{ display: "flex", alignItems: "center", gap: 28, flexShrink: 0, padding: "0 28px" }}>
-              {[
-                "9 systems in production", "4 AI agents deployed", "99.97% uptime · 90d",
-                "Accepting new projects", "Complex Apps", "AI Agents", "Automation", "Mobile",
-              ].map((item, j) => (
-                <span key={j} style={{ display: "flex", alignItems: "center", gap: 28 }}>
-                  <span
-                    style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.18em", textTransform: "uppercase", color: "#272727" }}
-                  >
-                    {item}
-                  </span>
-                  <span style={{ color: "#FF6B00", fontSize: 5 }}>◆</span>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </motion.div>
     </section>
   );
 }

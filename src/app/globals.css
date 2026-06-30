@@ -158,6 +158,10 @@ h6 {
   font-family: var(--font-serif-custom), Georgia, serif;
 }
 
+.font-heading {
+  font-family: var(--font-display-custom), sans-serif;
+}
+
 a,
 button,
 [role="button"] {
@@ -223,10 +227,6 @@ button,
   animation: pulse-dot 2s ease infinite;
 }
 
-.animate-marquee {
-  animation: marquee 20s linear infinite;
-}
-
 @keyframes pulse-dot {
   0%,
   100% {
@@ -234,11 +234,5 @@ button,
   }
   50% {
     opacity: 0.4;
-  }
-}
-
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
   }
 }

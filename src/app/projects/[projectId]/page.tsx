@@ -94,15 +94,12 @@ export default async function CaseStudyPage({
   const prev = projects[(idx - 1 + projects.length) % projects.length];
 
   return (
-    <div className="midnight-ember-shell relative min-h-screen w-full">
-      <div className="midnight-ember-overlay pointer-events-none fixed inset-0 z-0" />
-
+    <div className="min-h-screen w-full">
       <JsonLd data={buildCaseStudyJsonLd(project)} />
       <Navigation />
 
       {/* Hero */}
       <section className="relative z-10 overflow-hidden pb-16 pt-32">
-        <div className="ember-section-glow" />
         <div className="mx-auto max-w-5xl px-6">
           <CaseStudyHeroMotion>
             <Link
@@ -169,7 +166,6 @@ export default async function CaseStudyPage({
 
       {/* Body sections */}
       <section className="relative z-10 pb-24">
-        <div className="ember-section-glow-soft" />
         <div className="mx-auto grid max-w-6xl gap-16 px-6 lg:grid-cols-[1fr_2fr]">
           {/* Sidebar */}
           <aside className="space-y-8 lg:sticky lg:top-28 lg:self-start">

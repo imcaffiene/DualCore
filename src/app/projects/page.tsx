@@ -38,9 +38,7 @@ export default function ProjectsPage() {
   const ease = [0.16, 1, 0.3, 1] as const;
 
   return (
-    <div className="midnight-ember-shell relative min-h-screen w-full">
-      <div className="midnight-ember-overlay pointer-events-none fixed inset-0 z-0" />
-
+    <div className="min-h-screen w-full">
       <Navigation />
 
       {/* ── Hero — full viewport, parallax bg text ── */}
@@ -161,7 +159,6 @@ export default function ProjectsPage() {
 
       {/* ── Editorial rows ── */}
       <section className="relative z-10 pb-24">
-        <div className="ember-section-glow-soft" />
         {filtered.length === 0 ? (
           <div className="py-24 text-center text-muted-foreground">
             No projects in this category yet.

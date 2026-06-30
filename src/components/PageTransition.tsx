@@ -1,8 +1,8 @@
 "use client";
 
-import { createContext, useCallback, useContext, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 interface TransitionContext {
   navigateTo: (path: string) => void;
@@ -17,23 +17,65 @@ type Phase = "idle" | "covering" | "revealing";
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [phase, setPhase] = useState<Phase>("idle");
   const pendingPath = useRef<string | null>(null);
+  const pendingHash = useRef<string | null>(null);
+  const navStart = useRef(0);
+  const revealTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const MIN_COVER_MS = 350;
 
   const navigateTo = useCallback((path: string) => {
     if (phase !== "idle") return;
-    pendingPath.current = path;
+    const hashIndex = path.indexOf("#");
+    if (hashIndex >= 0) {
+      pendingHash.current = path.slice(hashIndex + 1);
+      pendingPath.current = path.slice(0, hashIndex);
+    } else {
+      pendingHash.current = null;
+      pendingPath.current = path;
+    }
+    navStart.current = Date.now();
     setPhase("covering");
     router.push(path);
   }, [phase, router]);
 
-  const onCoverComplete = useCallback(() => {
-    pendingPath.current = null;
-    setPhase("revealing");
-  }, []);
+  // Safety net: force reveal if cover has been showing too long
+  useEffect(() => {
+    if (phase !== "covering") return;
+    const timer = setTimeout(() => {
+      if (phase === "covering") {
+        pendingPath.current = null;
+        setPhase("revealing");
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [phase]);
+
+  useEffect(() => {
+    if (phase === "covering" && pendingPath.current) {
+      const target = pendingPath.current.replace(/\/$/, "");
+      const current = pathname.replace(/\/$/, "");
+      if (current === target) {
+        pendingPath.current = null;
+        const elapsed = Date.now() - navStart.current;
+        const remaining = Math.max(0, MIN_COVER_MS - elapsed);
+        revealTimer.current = setTimeout(() => setPhase("revealing"), remaining);
+      }
+    }
+    return () => {
+      if (revealTimer.current) clearTimeout(revealTimer.current);
+    };
+  }, [pathname, phase]);
 
   const onRevealComplete = useCallback(() => {
     setPhase("idle");
+    if (pendingHash.current) {
+      const el = document.getElementById(pendingHash.current);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+      pendingHash.current = null;
+    }
   }, []);
 
   return (
@@ -48,7 +90,6 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 1 }}
             transition={{ duration: 0.2 }}
-            onAnimationComplete={onCoverComplete}
             style={{
               position: "fixed",
               inset: 0,

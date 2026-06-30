@@ -19,6 +19,19 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   const scrollToSection = (id: string) => {
     setMenuOpen(false);
     if (pathname !== "/") {
@@ -80,9 +93,10 @@ export function Navigation() {
           </CharButton>
 
           <button
-            className="md:hidden flex flex-col gap-1.25 p-1 z-50"
+            className="md:hidden flex flex-col items-center justify-center gap-1 size-11 z-50"
             onClick={() => setMenuOpen(o => !o)}
-            aria-label="Toggle menu"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
             style={{ background: "none", border: "none", cursor: "pointer" }}
           >
             {[0, 1, 2].map(i => (
